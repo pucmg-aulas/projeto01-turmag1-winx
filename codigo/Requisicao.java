@@ -4,25 +4,22 @@ public class Requisicao {
 
     LocalDateTime dataEntrada;
     LocalDateTime dataSaida;
-    int quantPesooas;
+    int quantPessoas;
     Cliente cliente;
     Mesa mesa;
 
 
-    public Requisicao(LocalDateTime dataEntrada, LocalDateTime dataSaida, int quantPesooas, Cliente cliente, Mesa mesa) {
+    public Requisicao(LocalDateTime dataEntrada, int quantPesooas, Cliente cliente) {
         this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
-        this.quantPesooas = quantPesooas;
+        this.quantPessoas = quantPesooas;
         this.cliente = cliente;
-        this.mesa = mesa;
     }
 
 
-    public void alocarMesa() {
+    public void alocarMesa(Mesa mesa) {
+        this.mesa = mesa;
+        mesa.ocuparMesa();
 
-        if(Mesa.verificarDisponibilidade()){
-
-        }
     }
 
     public void finalizarAtendimento(){
