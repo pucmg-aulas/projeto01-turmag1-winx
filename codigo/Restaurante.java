@@ -27,6 +27,8 @@ public class Restaurante{
             requisicao1.alocarMesa(m);
         }
         //tratar pra quando for null e ter que colocar no array lista de espera
+
+        System.out.println("Branch features added!");
         
     }
 
