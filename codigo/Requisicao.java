@@ -2,11 +2,11 @@ import java.time.LocalDateTime;
 
 public class Requisicao {
 
-    LocalDateTime dataEntrada;
-    LocalDateTime dataSaida;
-    int quantPessoas;
-    Cliente cliente;
-    Mesa mesa;
+    public LocalDateTime dataEntrada;
+    public LocalDateTime dataSaida;
+    public int quantPessoas;
+    public Cliente cliente;
+    public Mesa mesa;
 
 
     public Requisicao(LocalDateTime dataEntrada, int quantPesooas, Cliente cliente) {
@@ -17,14 +17,27 @@ public class Requisicao {
 
 
     public void alocarMesa(Mesa mesa) {
-        this.mesa = mesa;
-        mesa.ocuparMesa();
-
+       
+        for(Mesa mesas: Restaurante.mesas){
+            if(mesa.quantidade >= quantPessoas && mesa.ocupado == false){
+                this.mesa = mesa;
+                mesa.ocuparMesa();
+                break;
+            }
+        }
+        if (this.mesa == null){
+            Restaurante.adicionarNaListaDeEspera(this);
+        }
     }
 
-    public void finalizarAtendimento(){
+    public void finalizarRequisicao(){
         
+        this.dataSaida = LocalDateTime.now();
+        mesa.desocuparMesa();
+
     }
+
+
     
 
 
