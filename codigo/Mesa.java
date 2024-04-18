@@ -11,6 +11,10 @@ public class Mesa {
         this.ocupado = true;
     }
 
+    public void desocuparMesa(){
+        this.ocupado = false;
+        
+    }
 
 
     public static boolean verificarDisponibilidade() {

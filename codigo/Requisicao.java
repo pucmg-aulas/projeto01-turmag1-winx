@@ -4,7 +4,7 @@ public class Requisicao {
 
     LocalDateTime dataEntrada;
     LocalDateTime dataSaida;
-    int quantPessoas;
+    public int quantPessoas;
     Cliente cliente;
     Mesa mesa;
 
@@ -19,12 +19,16 @@ public class Requisicao {
     public void alocarMesa(Mesa mesa) {
         this.mesa = mesa;
         mesa.ocuparMesa();
-
     }
 
-    public void finalizarAtendimento(){
+    public void finalizarRequisicao(){
         
+        this.dataSaida = LocalDateTime.now();
+        mesa.desocuparMesa();
+
     }
+
+
     
 
 
