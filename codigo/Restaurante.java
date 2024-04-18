@@ -5,7 +5,7 @@ public class Restaurante{
 
     public static ArrayList<Mesa> mesas = new ArrayList<>();
     public static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
-    public static ArrayList<Mesa> listasEspera = new ArrayList<>();
+    public static ArrayList<Requisicao> listasEspera = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -34,18 +34,28 @@ public class Restaurante{
 
     public void adicionarMesaNoVetor(){
 
+        
 
     }
 
     public void adicionarNaListaDeEspera(){
-
+        
     }
 
     public void retirarDaListaDeEspera() {
 
+    for (Mesa mesa : mesas) {
+            for (Requisicao requisicao : listasEspera) {
+                if (mesa.verificaCapacidade(requisicao.quantPessoas)){
+                    requisicao.alocarMesa(mesa);
+                    listasEspera.remove(requisicao);
+                }
+            }
+        }
     }
 
     public void atualizarMesaDisponivel() {
+
 
     }
     
@@ -57,6 +67,6 @@ public class Restaurante{
             }
         }
 
-        return  null;     
+        return null;     
     }
 }
