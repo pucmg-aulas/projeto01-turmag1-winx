@@ -19,9 +19,9 @@ public class Requisicao {
     public void alocarMesa(Mesa mesa) {
        
         for(Mesa mesas: Restaurante.mesas){
-            if(mesa.quantidade >= quantPessoas && mesa.ocupado == false){
-                this.mesa = mesa;
-                mesa.ocuparMesa();
+            if(mesas.quantidade >= quantPessoas && mesas.ocupado == false){
+                this.mesa = mesas;
+                mesas.ocuparMesa();
                 break;
             }
         }
