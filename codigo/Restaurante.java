@@ -28,8 +28,6 @@ public class Restaurante{
         }
         //tratar pra quando for null e ter que colocar no array lista de espera
 
-        System.out.println("Branch features added!");
-        
     }
 
     public void adicionarMesaNoVetor(){
@@ -38,8 +36,10 @@ public class Restaurante{
 
     }
 
-    public void adicionarNaListaDeEspera(){
+    public static void adicionarNaListaDeEspera(Requisicao requisicao){
         
+        listasEspera.add(requisicao);
+
     }
 
     public void retirarDaListaDeEspera() {
