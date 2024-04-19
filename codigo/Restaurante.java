@@ -1,37 +1,101 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Restaurante{
 
     public static ArrayList<Mesa> mesas = new ArrayList<>();
     public static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
     public static ArrayList<Requisicao> listasEspera = new ArrayList<>();
+    public static Requisicao requisicao;
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int op;
 
-
-        Mesa mesa1 = new Mesa(4, true);
+        Mesa mesa1 = new Mesa(4, false);
         Mesa mesa2 = new Mesa(6, true);
         Mesa mesa3 = new Mesa(8, true);
         mesas.add(mesa1);
         mesas.add(mesa2);
         mesas.add(mesa3);
 
-        Cliente cliente1 = new Cliente("Danilo", "067.958.847-65");
+        System.out.println("""
+                           ***************MENU***************
+                           * 1 - Abrir Requisição           *
+                           * 2 - Alocar uma mesa ao Cliente *
+                           * 3 - Sair                      *
+                           **********************************""");
+        op = scanner.nextInt();
 
-        //adicionar get e set pros atributos
-        Requisicao requisicao1 = new Requisicao(LocalDateTime.now(), 4, cliente1);
-        
-        Mesa m = verificarMesasDisponiveis(requisicao1.quantPessoas);
-        if (m != null){
-            requisicao1.alocarMesa(m);
+        while(op != 3){
+            switch(op){
+            case 1 -> {
+                requisicao = cadastrarCliente();
+            }
+            case 2 -> {
+                Mesa m = verificarMesasDisponiveis(requisicao.quantPessoas);
+                if (m != null){
+                    requisicao.alocarMesa(m);
+                    System.out.println("Cliente alocado para mesa"); // mesa pode ter um indice para identifica-la?
+                }
+                if (m == null){
+                    System.out.println("Infelizmente não temos uma mesa disponível para esse cliente!");
+                }
+            }
+            case 3 -> {
+                break;
+            }
+            }
+            
+            System.out.println("""
+                ***************MENU***************
+                * 1 - Abrir Requisição           *
+                * 2 - Alocar uma mesa ao Cliente *
+                * 3 -  Sair                      *
+                **********************************""");
+            op = scanner.nextInt();
+            System.out.println("");
+          
         }
-        if (m == null){
-            adicionarNaListaDeEspera(requisicao1);
-        }
-        //tratar pra quando for null e ter que colocar no array lista de espera
+
+        scanner.close();
 
     }
+
+    private static Requisicao abrirRequisicao(Cliente cliente) {
+        Scanner scanner = new Scanner(System.in);
+        int quantPessoas;
+
+        System.out.println("Vamos abrir uma requisição para "+ cliente.nome);
+        System.out.print("Quantidade de pessoas: ");
+        quantPessoas = scanner.nextInt();
+
+
+        Requisicao requisicao = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
+        
+
+        return requisicao;
+    }
+
+    public static Requisicao cadastrarCliente(){
+        Scanner scanner = new Scanner(System.in);
+        String nome_cliente, cpf;
+
+        System.out.println("--- Bem vindo! ---\n");
+        System.out.print("Nome do cliente: ");
+        nome_cliente = scanner.nextLine();
+
+        System.out.println("CPF: (no formato 000.000.000-00)");
+        cpf = scanner.nextLine();
+
+        scanner.close();
+
+        Cliente cliente  = new Cliente(nome_cliente, cpf);
+
+         return abrirRequisicao(cliente);
+    }
+
 
     public void adicionarMesaNoVetor(){
 
@@ -72,4 +136,5 @@ public class Restaurante{
 
         return null;     
     }
+
 }
