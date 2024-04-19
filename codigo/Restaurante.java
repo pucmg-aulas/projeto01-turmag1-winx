@@ -10,21 +10,24 @@ public class Restaurante{
     public static void main(String[] args) {
 
 
-        Cliente cliente1 = new Cliente("Danilo", "067.958.847-65"); 
-
-        Mesa mesa1 = new Mesa(4, false);
+        Mesa mesa1 = new Mesa(4, true);
         Mesa mesa2 = new Mesa(6, false);
         Mesa mesa3 = new Mesa(8, false);
         mesas.add(mesa1);
         mesas.add(mesa2);
         mesas.add(mesa3);
 
+        Cliente cliente1 = new Cliente("Danilo", "067.958.847-65");
+
         //adicionar get e set pros atributos
         Requisicao requisicao1 = new Requisicao(LocalDateTime.now(), 4, cliente1);
         
         Mesa m = verificarMesasDisponiveis(requisicao1.quantPessoas);
         if (m != null){
-            requisicao1.alocarMesa();
+            requisicao1.alocarMesa(m);
+        }
+        if (m == null){
+            adicionarNaListaDeEspera(requisicao1);
         }
         //tratar pra quando for null e ter que colocar no array lista de espera
 
@@ -47,7 +50,7 @@ public class Restaurante{
     for (Mesa mesa : mesas) {
             for (Requisicao requisicao : listasEspera) {
                 if (mesa.verificaCapacidade(requisicao.quantPessoas)){
-                    requisicao.alocarMesa();
+                    requisicao.alocarMesa(mesa);
                     listasEspera.remove(requisicao);
                 }
             }
