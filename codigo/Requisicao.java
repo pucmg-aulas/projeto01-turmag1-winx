@@ -9,9 +9,9 @@ public class Requisicao {
     public Mesa mesa;
 
 
-    public Requisicao(LocalDateTime dataEntrada, int quantPesooas, Cliente cliente) {
+    public Requisicao(LocalDateTime dataEntrada, int quantPessoas, Cliente cliente) {
         this.dataEntrada = dataEntrada;
-        this.quantPessoas = quantPesooas;
+        this.quantPessoas = quantPessoas;
         this.cliente = cliente;
     }
 

@@ -11,8 +11,8 @@ public class Restaurante{
 
 
         Mesa mesa1 = new Mesa(4, true);
-        Mesa mesa2 = new Mesa(6, false);
-        Mesa mesa3 = new Mesa(8, false);
+        Mesa mesa2 = new Mesa(6, true);
+        Mesa mesa3 = new Mesa(8, true);
         mesas.add(mesa1);
         mesas.add(mesa2);
         mesas.add(mesa3);
@@ -65,7 +65,7 @@ public class Restaurante{
     //mudar void-->Mesa
     public static Mesa verificarMesasDisponiveis(int quantPessoas) {
         for (Mesa mesa : mesas) {
-            if (mesa.verificaCapacidade(quantPessoas)){
+            if (mesa.ocupado == false && mesa.verificaCapacidade(quantPessoas)){
                 return mesa;
             }
         }
