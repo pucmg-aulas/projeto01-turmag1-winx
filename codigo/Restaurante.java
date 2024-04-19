@@ -24,7 +24,7 @@ public class Restaurante{
         
         Mesa m = verificarMesasDisponiveis(requisicao1.quantPessoas);
         if (m != null){
-            requisicao1.alocarMesa(m);
+            requisicao1.alocarMesa();
         }
         //tratar pra quando for null e ter que colocar no array lista de espera
 
@@ -47,7 +47,7 @@ public class Restaurante{
     for (Mesa mesa : mesas) {
             for (Requisicao requisicao : listasEspera) {
                 if (mesa.verificaCapacidade(requisicao.quantPessoas)){
-                    requisicao.alocarMesa(mesa);
+                    requisicao.alocarMesa();
                     listasEspera.remove(requisicao);
                 }
             }
