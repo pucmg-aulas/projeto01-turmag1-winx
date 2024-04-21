@@ -80,11 +80,11 @@ public class Restaurante{
 
     public static Requisicao cadastrarCliente(){
         Scanner scanner = new Scanner(System.in);
-        String nome_cliente, cpf;
+        String nomeCliente, cpf;
 
         System.out.println("--- Bem vindo! ---\n");
         System.out.print("Nome do cliente: ");
-        nome_cliente = scanner.nextLine();
+        nomeCliente = scanner.nextLine();
 
         System.out.println("CPF: (no formato 000.000.000-00)");
         cpf = scanner.nextLine();
