@@ -74,7 +74,7 @@ public class Restaurante{
 
         Requisicao requisicao = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
         
-
+        scanner.close();
         return requisicao;
     }
 
@@ -91,9 +91,9 @@ public class Restaurante{
 
         scanner.close();
 
-        Cliente cliente  = new Cliente(nome_cliente, cpf);
+        Cliente cliente = new Cliente(nomeCliente, cpf);
 
-         return abrirRequisicao(cliente);
+        return abrirRequisicao(cliente);
     }
 
 

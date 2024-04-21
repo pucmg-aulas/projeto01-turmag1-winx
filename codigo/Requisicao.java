@@ -17,15 +17,19 @@ public class Requisicao {
 
 
     public void alocarMesa(Mesa mesa) {
-            this.mesa = mesa;
-            mesa.ocuparMesa();
+        this.mesa = mesa;
+        mesa.ocuparMesa();
     }
 
     public void finalizarRequisicao(){
-        
         this.dataSaida = LocalDateTime.now();
         mesa.desocuparMesa();
+    }
 
+    public String formataDataHora(LocalDateTime dataSaida){
+
+        
+        return "";
     }
 
 
