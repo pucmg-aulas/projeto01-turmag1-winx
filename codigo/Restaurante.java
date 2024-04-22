@@ -29,7 +29,7 @@ public class Restaurante{
                            ***************MENU***************
                            * 1 - Abrir Requisição           *
                            * 2 - Alocar uma mesa ao Cliente *
-                           * 3 - Sair                      *
+                           * 3 - Sair                       *
                            **********************************""");
         op = scanner.nextInt();
 
@@ -39,14 +39,7 @@ public class Restaurante{
                 abrirRequisicao();
             }
             case 2 -> {
-                Mesa m = verificarMesasDisponiveis(requisicao.quantPessoas);
-                if (m != null){
-                    requisicao.alocarMesa(m);
-                    System.out.println("Cliente alocado para mesa"); // mesa pode ter um indice para identifica-la?
-                }
-                if (m == null){
-                    System.out.println("Infelizmente não temos uma mesa disponível para esse cliente!");
-                }
+                // fazer a verificação de requisição
             }
             case 3 -> {
                 break;
@@ -81,6 +74,8 @@ public class Restaurante{
 
 
         Requisicao requisicao = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
+
+        decidirDestinoDaRequisicao(requisicao);
         
         scanner.close();
 
@@ -115,16 +110,30 @@ public class Restaurante{
     }
 
     public static void adicionarNaListaDeEspera(Requisicao requisicao){
-        
+         
+
         listasEspera.add(requisicao);
 
+    }
+
+    public static void perguntarClienteQuerEntrarListaDeEspera(Requisicao requisicao){
+        Scanner scanner = new Scanner(System.in);
+        String resposta;
+
+        System.out.println("O cliente deseja entrar na lista de espera? (sim/não) ");
+        resposta = scanner.nextLine();
+        
+
+        if (resposta.equals("sim")){
+            adicionarNaListaDeEspera(requisicao);
+        } 
     }
 
     public void retirarDaListaDeEspera() {
 
     for (Mesa mesa : mesas) {
             for (Requisicao requisicao : listasEspera) {
-                if (mesa.verificaCapacidade(requisicao.quantPessoas)){
+                if (mesa.verificaCapacidade(requisicao.getQuantPessoas())){
                     requisicao.alocarMesa(mesa);
                     listasEspera.remove(requisicao);
                 }
@@ -147,5 +156,17 @@ public class Restaurante{
 
         return null;     
     }
+
+    public static void decidirDestinoDaRequisicao(Requisicao requisicao){
+        Mesa m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
+                if (m != null){
+                    requisicao.alocarMesa(m); // mesa pode ter um indice para identifica-la?
+                }
+                if (m == null){
+                    perguntarClienteQuerEntrarListaDeEspera(requisicao);
+                }
+    }
+    
+
 
 }

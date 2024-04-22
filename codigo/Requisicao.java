@@ -26,6 +26,10 @@ public class Requisicao {
         mesa.desocuparMesa();
     }
 
+    public int getQuantPessoas(){
+        return quantPessoas; 
+    }
+
     
 
 
