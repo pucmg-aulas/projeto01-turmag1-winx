@@ -30,6 +30,14 @@ public class Requisicao {
         return quantPessoas; 
     }
 
+    public LocalDateTime getDataEntrada() {
+        return dataEntrada;
+    }
+
+    
+
+
+
     
 
 

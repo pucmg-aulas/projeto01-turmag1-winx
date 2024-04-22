@@ -26,11 +26,11 @@ public class Restaurante{
         mesas.add(mesa3);
 
         System.out.println("""
-                           ***************MENU***************
-                           * 1 - Abrir Requisição           *
-                           * 2 - Alocar uma mesa ao Cliente *
-                           * 3 - Sair                       *
-                           **********************************""");
+                           ***************MENU**************
+                           * 1 - Abrir Requisição          *
+                           * 2 - Finalizar Requisição      *
+                           * 3 - Sair                      *
+                           *********************************""");
         op = scanner.nextInt();
 
         while(op != 3){
@@ -39,7 +39,7 @@ public class Restaurante{
                 abrirRequisicao();
             }
             case 2 -> {
-                // fazer a verificação de requisição
+                // fazer a verificação de requisição para finalizar requisição
             }
             case 3 -> {
                 break;
@@ -72,12 +72,9 @@ public class Restaurante{
         System.out.print("Quantidade de pessoas: ");
         quantPessoas = scanner.nextInt();
 
-
         Requisicao requisicao = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
 
         decidirDestinoDaRequisicao(requisicao);
-        
-        scanner.close();
 
         listasRequisicoes.add(requisicao);
     }
@@ -92,8 +89,6 @@ public class Restaurante{
 
         System.out.print("CPF: (no formato 000.000.000-00) ");
         cpf = scanner.nextLine();
-
-        scanner.close();
 
         Cliente cliente = new Cliente(nomeCliente, cpf);
 
@@ -126,7 +121,10 @@ public class Restaurante{
 
         if (resposta.equals("sim")){
             adicionarNaListaDeEspera(requisicao);
-        } 
+        
+        }
+
+        scanner.close();
     }
 
     public void retirarDaListaDeEspera() {
