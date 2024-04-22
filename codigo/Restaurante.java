@@ -7,7 +7,12 @@ public class Restaurante{
     public static ArrayList<Mesa> mesas = new ArrayList<>();
     public static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
     public static ArrayList<Requisicao> listasEspera = new ArrayList<>();
-    public static Requisicao requisicao;
+    public Requisicao requisicao;
+
+    // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
+    // Abrir requisição que chama cadastrarCliente, não o contrário (para boas práticas)
+
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +36,7 @@ public class Restaurante{
         while(op != 3){
             switch(op){
             case 1 -> {
-                requisicao = cadastrarCliente();
+                abrirRequisicao();
             }
             case 2 -> {
                 Mesa m = verificarMesasDisponiveis(requisicao.quantPessoas);
@@ -63,11 +68,14 @@ public class Restaurante{
 
     }
 
-    private static Requisicao abrirRequisicao(Cliente cliente) {
+    private static void abrirRequisicao() {
         Scanner scanner = new Scanner(System.in);
         int quantPessoas;
+        Cliente cliente;
 
-        System.out.println("Vamos abrir uma requisição para "+ cliente.nome);
+        cliente = cadastrarCliente();
+
+        System.out.println("Vamos abrir uma requisição para "+ cliente.getNome());
         System.out.print("Quantidade de pessoas: ");
         quantPessoas = scanner.nextInt();
 
@@ -75,10 +83,11 @@ public class Restaurante{
         Requisicao requisicao = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
         
         scanner.close();
-        return requisicao;
+
+        listasRequisicoes.add(requisicao);
     }
 
-    public static Requisicao cadastrarCliente(){
+    public static Cliente cadastrarCliente(){
         Scanner scanner = new Scanner(System.in);
         String nomeCliente, cpf;
 
@@ -86,14 +95,16 @@ public class Restaurante{
         System.out.print("Nome do cliente: ");
         nomeCliente = scanner.nextLine();
 
-        System.out.println("CPF: (no formato 000.000.000-00)");
+        System.out.print("CPF: (no formato 000.000.000-00) ");
         cpf = scanner.nextLine();
 
         scanner.close();
 
         Cliente cliente = new Cliente(nomeCliente, cpf);
 
-        return abrirRequisicao(cliente);
+        return cliente;
+
+
     }
 
 

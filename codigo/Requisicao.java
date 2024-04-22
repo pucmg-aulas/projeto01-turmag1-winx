@@ -2,11 +2,11 @@ import java.time.LocalDateTime;
 
 public class Requisicao {
 
-    public LocalDateTime dataEntrada;
-    public LocalDateTime dataSaida;
-    public int quantPessoas;
-    public Cliente cliente;
-    public Mesa mesa;
+    private LocalDateTime dataEntrada;
+    private LocalDateTime dataSaida;
+    private int quantPessoas;
+    private Cliente cliente;
+    private Mesa mesa;
 
 
     public Requisicao(LocalDateTime dataEntrada, int quantPessoas, Cliente cliente) {
