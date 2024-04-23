@@ -2,40 +2,48 @@ import java.time.LocalDateTime;
 
 public class Requisicao {
 
-    public LocalDateTime dataEntrada;
-    public LocalDateTime dataSaida;
-    public int quantPessoas;
-    public Cliente cliente;
-    public Mesa mesa;
+    private LocalDateTime dataEntrada;
+    private LocalDateTime dataSaida;
+    private int quantPessoas;
+    private Cliente cliente;
+    private Mesa mesa;
 
 
-    public Requisicao(LocalDateTime dataEntrada, int quantPesooas, Cliente cliente) {
+    public Requisicao(LocalDateTime dataEntrada, int quantPessoas, Cliente cliente) {
         this.dataEntrada = dataEntrada;
-        this.quantPessoas = quantPesooas;
+        this.quantPessoas = quantPessoas;
         this.cliente = cliente;
     }
 
 
     public void alocarMesa(Mesa mesa) {
-       
-        for(Mesa mesas: Restaurante.mesas){
-            if(mesa.quantidade >= quantPessoas && mesa.ocupado == false){
-                this.mesa = mesa;
-                mesa.ocuparMesa();
-                break;
-            }
-        }
-        if (this.mesa == null){
-            Restaurante.adicionarNaListaDeEspera(this);
-        }
+        this.mesa = mesa;
+        mesa.ocuparMesa();
     }
 
     public void finalizarRequisicao(){
-        
         this.dataSaida = LocalDateTime.now();
         mesa.desocuparMesa();
-
     }
+
+    public int getQuantPessoas(){
+        return quantPessoas; 
+    }
+
+    public LocalDateTime getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public String getClienteNome(){
+        return cliente.getNome();
+    }
+
+
+    
+
+
+
+    
 
 
     
