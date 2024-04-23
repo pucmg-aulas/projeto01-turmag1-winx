@@ -1,10 +1,18 @@
 public class Mesa {
-    public int quantidade;
-    public boolean ocupado;
+    private int quantidade;
+    private boolean ocupado;
 
     public Mesa(int quantidade, boolean ocupado){
         this.quantidade = quantidade;
         this.ocupado = ocupado;
+    }
+
+    public int getQuantidade(){
+        return quantidade;
+    }
+
+    public boolean getOcupado(){
+        return ocupado;
     }
 
     public void ocuparMesa(){

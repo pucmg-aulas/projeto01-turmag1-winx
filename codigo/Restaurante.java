@@ -16,48 +16,38 @@ public class Restaurante{
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int op;
+        int op = 0;
 
-        Mesa mesa1 = new Mesa(4, false);
-        Mesa mesa2 = new Mesa(6, true);
+        Mesa mesa1 = new Mesa(4, true);
+        Mesa mesa2 = new Mesa(6, false);
         Mesa mesa3 = new Mesa(8, true);
         mesas.add(mesa1);
         mesas.add(mesa2);
         mesas.add(mesa3);
 
-        System.out.println("""
+        
+
+        while(op != 3) {
+            System.out.println("""
                            ***************MENU**************
                            * 1 - Abrir Requisição          *
                            * 2 - Finalizar Requisição      *
                            * 3 - Sair                      *
                            *********************************""");
-        op = scanner.nextInt();
-
-        while(op != 3){
-            switch(op){
-            case 1 -> {
-                abrirRequisicao();
-            }
-            case 2 -> {
-                // fazer a verificação de requisição para finalizar requisição
-            }
-            case 3 -> {
-                break;
-            }
-            }
-            
-            System.out.println("""
-                ***************MENU***************
-                * 1 - Abrir Requisição           *
-                * 2 - Alocar uma mesa ao Cliente *
-                * 3 -  Sair                      *
-                **********************************""");
             op = scanner.nextInt();
-            System.out.println("");
-          
-        }
 
-        scanner.close();
+            switch(op){
+                case 1 -> {
+                    abrirRequisicao();
+                }
+                case 2 -> {
+                    // fazer a verificação de requisição para finalizar requisição
+                }
+                case 3 -> {
+                    break;
+                }
+            }   
+        }
 
     }
 
@@ -68,15 +58,14 @@ public class Restaurante{
 
         cliente = cadastrarCliente();
 
-        System.out.println("Vamos abrir uma requisição para "+ cliente.getNome());
-        System.out.print("Quantidade de pessoas: ");
+        System.out.println("\nVamos abrir uma requisição para "+ cliente.getNome());
+        System.out.print("Quantidade de pessoas na mesa: ");
         quantPessoas = scanner.nextInt();
+        
 
         Requisicao requisicao = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
 
         decidirDestinoDaRequisicao(requisicao);
-
-        listasRequisicoes.add(requisicao);
     }
 
     public static Cliente cadastrarCliente(){
@@ -93,8 +82,6 @@ public class Restaurante{
         Cliente cliente = new Cliente(nomeCliente, cpf);
 
         return cliente;
-
-
     }
 
 
@@ -105,7 +92,6 @@ public class Restaurante{
     }
 
     public static void adicionarNaListaDeEspera(Requisicao requisicao){
-         
 
         listasEspera.add(requisicao);
 
@@ -115,16 +101,16 @@ public class Restaurante{
         Scanner scanner = new Scanner(System.in);
         String resposta;
 
-        System.out.println("O cliente deseja entrar na lista de espera? (sim/não) ");
+        System.out.print("\nInfelizmente não possuímos uma mesa com capacidade para " + requisicao.getQuantPessoas() +" pessoas. \nO cliente deseja entrar na lista de espera? (sim/não) ");
         resposta = scanner.nextLine();
         
 
         if (resposta.equals("sim")){
             adicionarNaListaDeEspera(requisicao);
-        
+            System.out.println("\nCliente "+ requisicao.getClienteNome() + " entrou na lista de espera.\n");
+        } else if (resposta.equals("não")) {
+            System.out.println("\nCliente "+ requisicao.getClienteNome() + " não deseja entrar na lista de espera. Atendimento finalizado.\n");
         }
-
-        scanner.close();
     }
 
     public void retirarDaListaDeEspera() {
@@ -147,7 +133,7 @@ public class Restaurante{
     //mudar void-->Mesa
     public static Mesa verificarMesasDisponiveis(int quantPessoas) {
         for (Mesa mesa : mesas) {
-            if (mesa.ocupado == false && mesa.verificaCapacidade(quantPessoas)){
+            if (mesa.getOcupado() == false && mesa.verificaCapacidade(quantPessoas)){
                 return mesa;
             }
         }
@@ -159,6 +145,8 @@ public class Restaurante{
         Mesa m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
                 if (m != null){
                     requisicao.alocarMesa(m); // mesa pode ter um indice para identifica-la?
+                    listasRequisicoes.add(requisicao);
+                    System.out.println("\nO cliente "+ requisicao.getClienteNome() + " foi alocado com sucesso a uma mesa com capacidade para "+ m.getQuantidade() + " pessoas.\n");
                 }
                 if (m == null){
                     perguntarClienteQuerEntrarListaDeEspera(requisicao);

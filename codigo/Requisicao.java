@@ -34,6 +34,11 @@ public class Requisicao {
         return dataEntrada;
     }
 
+    public String getClienteNome(){
+        return cliente.getNome();
+    }
+
+
     
 
 
