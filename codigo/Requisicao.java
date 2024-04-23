@@ -26,6 +26,10 @@ public class Requisicao {
         mesa.desocuparMesa();
     }
 
+    
+
+
+
     public int getQuantPessoas(){
         return quantPessoas; 
     }
@@ -36,6 +40,14 @@ public class Requisicao {
 
     public String getClienteNome(){
         return cliente.getNome();
+    }
+
+    public void setDataSaida(LocalDateTime dataSaida){
+        this.dataSaida = dataSaida;
+    }
+
+    public Mesa getMesa(){
+        return mesa;
     }
 
 

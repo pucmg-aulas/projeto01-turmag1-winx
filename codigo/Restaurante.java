@@ -7,6 +7,7 @@ public class Restaurante{
     public static ArrayList<Mesa> mesas = new ArrayList<>();
     public static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
     public static ArrayList<Requisicao> listasEspera = new ArrayList<>();
+    public static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
     public Requisicao requisicao;
 
     // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
@@ -18,8 +19,8 @@ public class Restaurante{
         Scanner scanner = new Scanner(System.in);
         int op = 0;
 
-        Mesa mesa1 = new Mesa(4, true);
-        Mesa mesa2 = new Mesa(6, false);
+        Mesa mesa1 = new Mesa(4, false);
+        Mesa mesa2 = new Mesa(6, true);
         Mesa mesa3 = new Mesa(8, true);
         mesas.add(mesa1);
         mesas.add(mesa2);
@@ -27,13 +28,15 @@ public class Restaurante{
 
         
 
-        while(op != 3) {
+        while(op != 5) {
             System.out.println("""
-                           ***************MENU**************
-                           * 1 - Abrir Requisição          *
-                           * 2 - Finalizar Requisição      *
-                           * 3 - Sair                      *
-                           *********************************""");
+                           ***************MENU*******************************
+                           * 1 - Abrir Requisição                           *
+                           * 2 - Finalizar Requisição                       *
+                           * 3 - Listar requisiçoes na lista de espera      *
+                           * 4 - Listar requisiçoes abertas                 *
+                           * 5 - Sair                                       *
+                           **************************************************""");
             op = scanner.nextInt();
 
             switch(op){
@@ -42,13 +45,38 @@ public class Restaurante{
                 }
                 case 2 -> {
                     // fazer a verificação de requisição para finalizar requisição
+                    finalizarRequisicao();
                 }
                 case 3 -> {
+                    // fazer a verificação de requisição para finalizar requisição
+                    listarRequisicoesNaListaDeEspera();
+                }
+                case 4 -> {
+                    // fazer a verificação de requisição para finalizar requisição
+                    listarRequisicoesAbertas();
+                }
+                case 5 -> {
+                    System.out.println("Até logo!");
                     break;
                 }
             }   
         }
 
+    }
+
+    private static void listarRequisicoesAbertas() {
+        System.out.println("\n** Requisições Abertas **");
+
+        for(Requisicao requisicao : listasRequisicoes){
+            System.out.println((listasRequisicoes.indexOf(requisicao) + 1) + ". Cliente: " + requisicao.getClienteNome() + " Mesa contendo: "+ requisicao.getQuantPessoas() + " pessoas.\n");
+        }
+    }
+
+    private static void listarRequisicoesNaListaDeEspera() {
+        System.out.println("\n** Requisições na Lista de Espera **");
+        for(Requisicao requisicao : listasEspera){
+            System.out.println((listasEspera.indexOf(requisicao) + 1) + ". Cliente: " + requisicao.getClienteNome() + " Mesa para: "+ requisicao.getQuantPessoas() + " pessoas.\n");
+        }
     }
 
     private static void abrirRequisicao() {
@@ -84,19 +112,6 @@ public class Restaurante{
         return cliente;
     }
 
-
-    public void adicionarMesaNoVetor(){
-
-        
-
-    }
-
-    public static void adicionarNaListaDeEspera(Requisicao requisicao){
-
-        listasEspera.add(requisicao);
-
-    }
-
     public static void perguntarClienteQuerEntrarListaDeEspera(Requisicao requisicao){
         Scanner scanner = new Scanner(System.in);
         String resposta;
@@ -113,25 +128,8 @@ public class Restaurante{
         }
     }
 
-    public void retirarDaListaDeEspera() {
-
-    for (Mesa mesa : mesas) {
-            for (Requisicao requisicao : listasEspera) {
-                if (mesa.verificaCapacidade(requisicao.getQuantPessoas())){
-                    requisicao.alocarMesa(mesa);
-                    listasEspera.remove(requisicao);
-                }
-            }
-        }
-    }
-
-    public void atualizarMesaDisponivel() {
-
-
-    }
-    
-    //mudar void-->Mesa
-    public static Mesa verificarMesasDisponiveis(int quantPessoas) {
+     //mudar void-->Mesa
+     public static Mesa verificarMesasDisponiveis(int quantPessoas) {
         for (Mesa mesa : mesas) {
             if (mesa.getOcupado() == false && mesa.verificaCapacidade(quantPessoas)){
                 return mesa;
@@ -141,18 +139,85 @@ public class Restaurante{
         return null;     
     }
 
+    public static void adicionarRequisicaoNoVetor(Requisicao requisicao){
+        listasRequisicoes.add(requisicao);
+    }
+
     public static void decidirDestinoDaRequisicao(Requisicao requisicao){
         Mesa m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
                 if (m != null){
                     requisicao.alocarMesa(m); // mesa pode ter um indice para identifica-la?
-                    listasRequisicoes.add(requisicao);
+
+                    adicionarRequisicaoNoVetor(requisicao);
+
+                    if(listasEspera.contains(requisicao)){
+                        requisicoesDaListaDeEsperaAtendidas.add(requisicao);
+                    }
+
                     System.out.println("\nO cliente "+ requisicao.getClienteNome() + " foi alocado com sucesso a uma mesa com capacidade para "+ m.getQuantidade() + " pessoas.\n");
                 }
-                if (m == null){
+                if (m == null && !listasEspera.contains(requisicao)){
                     perguntarClienteQuerEntrarListaDeEspera(requisicao);
                 }
     }
-    
 
+
+    public void adicionarMesaNoVetor(){
+
+        
+
+    }
+
+    public static void adicionarNaListaDeEspera(Requisicao requisicao){
+
+        listasEspera.add(requisicao);
+
+    }
+
+    private static Requisicao pesquisarRequisicao(){
+        Scanner scanner = new Scanner(System.in);
+        String nomeCliente;
+
+
+        System.out.print("\nNome do cliente responsavel pela requisição: ");
+        nomeCliente = scanner.nextLine();
+
+        for(Requisicao requisicao : listasRequisicoes){
+            if (requisicao.getClienteNome().equals(nomeCliente)){
+                return requisicao;
+            }
+        }
+
+        return null;
+    }
+
+    
+    private static void finalizarRequisicao() {
+        Requisicao req;
+        req  = pesquisarRequisicao();
+
+        req.setDataSaida(LocalDateTime.now());
+        req.getMesa().desocuparMesa();
+        System.out.println("\nA requisição do cliente " + req.getClienteNome() + " foi finalizada com sucesso.\n");
+        
+        verificarListaDeEspera();
+    }
+
+
+    private static void verificarListaDeEspera() {
+        for (Requisicao requisicao : listasEspera){
+            decidirDestinoDaRequisicao(requisicao);
+        }
+        
+        listasEspera.removeAll(requisicoesDaListaDeEsperaAtendidas);
+    }
+
+
+
+    public void atualizarMesaDisponivel() {
+
+
+    }
+    
 
 }
