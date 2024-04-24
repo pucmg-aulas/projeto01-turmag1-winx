@@ -9,7 +9,6 @@ public class Restaurante{
     public static ArrayList<Requisicao> listasEspera = new ArrayList<>();
     public static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
     public Requisicao requisicao;
-    public Mesa mesa;
 
     // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
     // Abrir requisição que chama cadastrarCliente, não o contrário (para boas práticas)
@@ -242,5 +241,4 @@ public class Restaurante{
         System.out.println("Mesa adicionada com sucesso!");
         verificarListaDeEspera();
     }
-
 }
