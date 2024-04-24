@@ -21,15 +21,6 @@ public class Requisicao {
         mesa.ocuparMesa();
     }
 
-    public void finalizarRequisicao(){
-        this.dataSaida = LocalDateTime.now();
-        mesa.desocuparMesa();
-    }
-
-    
-
-
-
     public int getQuantPessoas(){
         return quantPessoas; 
     }
