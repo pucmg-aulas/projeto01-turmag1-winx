@@ -48,19 +48,5 @@ public class Requisicao {
 
     public Mesa getMesa(){
         return mesa;
-    }
-
-
-    
-
-
-
-    
-
-
-    
-
-
-
-    
+    } 
 }
