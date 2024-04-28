@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class Restaurante {
 
-    public static ArrayList<Mesa> mesas = new ArrayList<>();
-    public static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
-    public static ArrayList<Requisicao> listasEspera = new ArrayList<>();
-    public static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
-    public Requisicao requisicao;
+    private static ArrayList<Mesa> mesas = new ArrayList<>();
+    private static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
+    private static ArrayList<Requisicao> listasEspera = new ArrayList<>();
+    private static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
 
     // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
     // Abrir requisição que chama cadastrarCliente, não o contrário (para boas
@@ -23,17 +22,9 @@ public class Restaurante {
         Mesa mesa3 = new Mesa(8, false);
 
         mesas.add(mesa1);
-        mesas.add(mesa1);
-        mesas.add(mesa1);
-        mesas.add(mesa1);
-
         mesas.add(mesa2);
-        mesas.add(mesa2);
-        mesas.add(mesa2);
-        mesas.add(mesa2);
-
         mesas.add(mesa3);
-        mesas.add(mesa3);
+
 
         while (op != 7) {
             System.out.println("""
