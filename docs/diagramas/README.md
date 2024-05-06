@@ -12,3 +12,6 @@ Coloque aqui todas as versões do seu diagrama de classes. Cada versão deve com
 
 ### V.4
 ![Diagrama versão 4](Restaurante-v4.drawio.png)
+
+### V.5
+![Diagrama versão 5](Restaurante-V5.drawio.png)
