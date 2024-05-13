@@ -7,6 +7,8 @@ public class Requisicao {
     private int quantPessoas;
     private Cliente cliente;
     private Mesa mesa;
+    private Pedido pedido;
+
 
 
     public Requisicao(LocalDateTime dataEntrada, int quantPessoas, Cliente cliente) {

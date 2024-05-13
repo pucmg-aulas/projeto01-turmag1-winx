@@ -9,6 +9,8 @@ public class Restaurante {
     private static ArrayList<Requisicao> listasEspera = new ArrayList<>();
     private static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
 
+    private static ArrayList<Produto> produtos = new ArrayList<>();
+
     // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
     // Abrir requisição que chama cadastrarCliente, não o contrário (para boas
     // práticas)
@@ -35,7 +37,8 @@ public class Restaurante {
                     * 4 - Listar requisiçoes abertas                 *
                     * 5 - Adicionar uma nova mesa                    *
                     * 6 - Listar mesas                               *
-                    * 7 - Sair                                       *
+                    * 7 - Fazer pedido                               *
+                    * 8 - Sair                                       *
                     **************************************************""");
             op = scanner.nextInt();
 
@@ -64,6 +67,9 @@ public class Restaurante {
                     listarMesas();
                 }
                 case 7 -> {
+                    fazerPedido();
+                }
+                case 8 -> {
                     System.out.println("Até logo!");
                     break;
                 }
@@ -237,4 +243,61 @@ public class Restaurante {
         System.out.println("Mesa adicionada com sucesso!");
         verificarListaDeEspera();
     }
+
+    public static void fazerPedido(){
+        Scanner scanner = new Scanner(System.in);
+        Requisicao requisicao;
+        Produto produto;
+        String nomeProduto;
+        int indice = 0;
+
+        requisicao = pesquisarRequisicao();
+
+        System.out.print("\nQual produto quer pedir: ");
+        nomeProduto = scanner.nextLine();
+
+        while(indice != 1){
+
+
+        }
+
+
+        
+
+    }
+
+    private static Produto pesquisarProduto(String nomeProduto) {
+        Scanner scanner = new Scanner(System.in);
+        int op = 0;
+
+        while (op != 11) {
+            System.out.println("""
+                    ***************MENU*******************************
+                    * 1 - Moqueca de Tilápia                         *
+                    * 2 - Falafel Assado                             *
+                    * 3 - Salada Primavera com Macarrão Konjac       *
+                    * 4 - Escondidinho de Frango                     *
+                    * 5 - Strogonoff                                 *
+                    * 6 - Caçarola de Carne com legumes              *
+                    * 7 - Água                                       *
+                    * 8 - Suco                                       *
+                    * 8 - Refrigerante                               *
+                    * 9 - Cerveja                                    *
+                    * 10 - Taça de Vinho                             *
+                    * 11 - Sair                                      *
+                    **************************************************""");
+            op = scanner.nextInt();
+
+            switch (op) {
+                case 1 -> {
+                    // pesquisar no array pelo nome do produto do case 1
+                    // pegar o retorno que vai ser um item e adiciona isso como atributo na instancia de Pedido
+                }
+            }
+        }
+        
+
+        return null;
+    }
+
 }

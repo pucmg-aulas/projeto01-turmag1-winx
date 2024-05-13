@@ -4,8 +4,10 @@ public class Pedido {
   
   private double total;
   private static double TAXA;
-  private static ArrayList<Produto> produtos = new ArrayList<>();
+  private static Produto item;
   private Requisicao requisicao;
+
+
 
   
 
