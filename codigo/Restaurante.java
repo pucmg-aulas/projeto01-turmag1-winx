@@ -304,7 +304,7 @@ public class Restaurante {
                     * 7 - Água                                       *
                     * 8 - Suco                                       *
                     * 9 - Refrigerante                               *
-                    * 10 - Cerveja                                    *
+                    * 10 - Cerveja                                   *
                     * 11 - Taça de Vinho                             *
                     * 12 - Cancelar Pedido                           *
                     **************************************************""");
