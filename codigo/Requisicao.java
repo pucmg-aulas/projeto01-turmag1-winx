@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Requisicao {
 
@@ -7,7 +8,8 @@ public class Requisicao {
     private int quantPessoas;
     private Cliente cliente;
     private Mesa mesa;
-    private Pedido pedido;
+    private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
+    private final double TAXA = 0.10;
 
 
 
@@ -17,10 +19,22 @@ public class Requisicao {
         this.cliente = cliente;
     }
 
+    public void adicionarPedidoNoVetor(Pedido p) {
+        listaPedidos.add(p);
+        System.out.println("Pedido adicionado a comanda com sucesso!");
+    }
 
     public void alocarMesa(Mesa mesa) {
         this.mesa = mesa;
         mesa.ocuparMesa();
+    }
+
+    public double calculaTotalComTaxa() {
+        double total = 0;
+        for (Pedido pedido : listaPedidos) {
+            total += pedido.getTotal();
+        }
+        return total * (1 + TAXA);
     }
 
     public int getQuantPessoas(){
@@ -41,5 +55,9 @@ public class Requisicao {
 
     public Mesa getMesa(){
         return mesa;
-    } 
+    }
+
+    public double getTAXA() {
+        return TAXA;
+      }
 }

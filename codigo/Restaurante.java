@@ -9,7 +9,7 @@ public class Restaurante {
     private static ArrayList<Requisicao> listasEspera = new ArrayList<>();
     private static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
 
-    private static ArrayList<Produto> produtos = new ArrayList<>();
+    private static ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
     // Abrir requisição que chama cadastrarCliente, não o contrário (para boas
@@ -27,6 +27,17 @@ public class Restaurante {
         mesas.add(mesa2);
         mesas.add(mesa3);
 
+        listaProdutos.add(new Bebida("Água", 4.00, 20));
+        listaProdutos.add(new Bebida("Suco", 6.00, 20));
+        listaProdutos.add(new Bebida("Refrigerante", 8.00, 20));
+        listaProdutos.add(new Bebida("Cerveja", 12.00, 20));
+        listaProdutos.add(new Bebida("Taça de vinho", 10.00, 20));
+        listaProdutos.add(new Prato("Moqueca de Tilápia", 59.00, 20));
+        listaProdutos.add(new Prato("Falafel Assado", 55.00, 20));
+        listaProdutos.add(new Prato("Salada Primavera com Macarrão Konjac", 45.00, 20));
+        listaProdutos.add(new Prato("Escondidinho de Frango", 39.00, 20));
+        listaProdutos.add(new Prato("Strogonoff", 39.00, 20));
+        listaProdutos.add(new Prato("Caçarola de carne com legumes", 45.00, 20));
 
         while (op != 7) {
             System.out.println("""
@@ -212,6 +223,11 @@ public class Restaurante {
 
         req.setDataSaida(LocalDateTime.now());
         req.getMesa().desocuparMesa();
+
+        System.out.println("\nTotal do Comanda : " + req.calculaTotalComTaxa());
+
+        System.out.println("\nTotal dividido: " + req.calculaTotalComTaxa() / req.getQuantPessoas() + " por pessoa");
+
         System.out.println("\nA requisição do cliente " + req.getClienteNome() + " foi finalizada com sucesso.\n");
 
         verificarListaDeEspera();
@@ -244,31 +260,37 @@ public class Restaurante {
         verificarListaDeEspera();
     }
 
+    // SPRINT 2
+
     public static void fazerPedido(){
         Scanner scanner = new Scanner(System.in);
-        Requisicao requisicao;
-        Produto produto;
-        String nomeProduto;
-        int indice = 0;
+        Requisicao requisicao = null;
+        Produto produtoPedido = null;
+        int quantidade = 0;
 
         requisicao = pesquisarRequisicao();
 
-        System.out.print("\nQual produto quer pedir: ");
-        nomeProduto = scanner.nextLine();
+        System.out.print("\nQual produto quer pedir : ");
+        produtoPedido = selecionarProduto();
 
-        while(indice != 1){
-
-
-        }
+        System.out.print("\nQual a quantidade desse produto ? ");
+        quantidade = scanner.nextInt();
 
 
-        
-
+        Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
+        requisicao.adicionarPedidoNoVetor(p);
+        System.out.println("\nTotal do pedido : " + calculaTotalPedido(produtoPedido, quantidade));
     }
 
-    private static Produto pesquisarProduto(String nomeProduto) {
+    private static double calculaTotalPedido(Produto produto, int quantidade){
+        return produto.getPreco() * (double)quantidade;
+    }
+
+    private static Produto selecionarProduto() {
         Scanner scanner = new Scanner(System.in);
         int op = 0;
+        Produto produtoSelecionado = null;
+
 
         while (op != 11) {
             System.out.println("""
@@ -281,22 +303,131 @@ public class Restaurante {
                     * 6 - Caçarola de Carne com legumes              *
                     * 7 - Água                                       *
                     * 8 - Suco                                       *
-                    * 8 - Refrigerante                               *
-                    * 9 - Cerveja                                    *
-                    * 10 - Taça de Vinho                             *
-                    * 11 - Sair                                      *
+                    * 9 - Refrigerante                               *
+                    * 10 - Cerveja                                    *
+                    * 11 - Taça de Vinho                             *
+                    * 12 - Cancelar Pedido                           *
                     **************************************************""");
             op = scanner.nextInt();
 
             switch (op) {
                 case 1 -> {
-                    // pesquisar no array pelo nome do produto do case 1
-                    // pegar o retorno que vai ser um item e adiciona isso como atributo na instancia de Pedido
+                    produtoSelecionado = pesquisarProduto("Moqueca de Tilápia");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 2 -> {
+                    produtoSelecionado = pesquisarProduto("Falafel Assado");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 3 -> {
+                    produtoSelecionado = pesquisarProduto("Salada Primavera com Macarrão Konjac");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 4 -> {
+                    produtoSelecionado = pesquisarProduto("Escondidinho de Frango");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 5 -> {
+                    produtoSelecionado = pesquisarProduto("Strogonoff");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 6 -> {
+                    produtoSelecionado = pesquisarProduto("Caçarola de Carne com legumes");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 7 -> {
+                    produtoSelecionado = pesquisarProduto("Água");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 8 -> {
+                    produtoSelecionado = pesquisarProduto("Suco");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 9 -> {
+                    produtoSelecionado = pesquisarProduto("Refrigerante");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 10 -> {
+                    produtoSelecionado = pesquisarProduto("Cerveja");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 11 -> {
+                    produtoSelecionado = pesquisarProduto("Taça de vinho");
+                    if (produtoSelecionado.getEstoque() == 0) {
+                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
+                        produtoSelecionado = null;
+                    }
+                    break;
+                }
+            
+                case 12 -> {
+                    System.out.println("Pedido Cancelado.");
+                    break;
                 }
             }
+            if (produtoSelecionado != null) {
+                return produtoSelecionado;
+            }
         }
-        
+        return null;
+    }
 
+    private static Produto pesquisarProduto(String name) {
+        for (Produto produto : listaProdutos) {
+            if (produto.getNome().equals(name)) {
+                return produto;
+            }
+        }
         return null;
     }
 
