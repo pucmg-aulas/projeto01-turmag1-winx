@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,7 +40,7 @@ public class Restaurante {
         listaProdutos.add(new Prato("Strogonoff", 39.00, 20));
         listaProdutos.add(new Prato("Caçarola de carne com legumes", 45.00, 20));
 
-        while (op != 7) {
+        while (op != 8) {
             System.out.println("""
                     ***************MENU*******************************
                     * 1 - Abrir Requisição                           *
@@ -219,14 +220,15 @@ public class Restaurante {
 
     private static void finalizarRequisicao() {
         Requisicao req;
+        DecimalFormat df = new DecimalFormat("#.##");
         req = pesquisarRequisicao();
 
         req.setDataSaida(LocalDateTime.now());
         req.getMesa().desocuparMesa();
 
-        System.out.println("\nTotal do Comanda : " + req.calculaTotalComTaxa());
+        System.out.println("\nTotal do Comanda : " + df.format(req.calculaTotalComTaxa()));
 
-        System.out.println("\nTotal dividido: " + req.calculaTotalComTaxa() / req.getQuantPessoas() + " por pessoa");
+        System.out.println("\nTotal dividido: " + df.format(req.calculaTotalComTaxa() / req.getQuantPessoas()) + " por pessoa");
 
         System.out.println("\nA requisição do cliente " + req.getClienteNome() + " foi finalizada com sucesso.\n");
 
@@ -269,6 +271,10 @@ public class Restaurante {
         int quantidade = 0;
 
         requisicao = pesquisarRequisicao();
+        if (requisicao == null) {
+            System.out.println("\nNão é possível encontrar  a requisição desse cliente. \nConfira se digitou certo.");
+            return;
+        }
 
         System.out.print("\nQual produto quer pedir : ");
         produtoPedido = selecionarProduto();
@@ -276,10 +282,15 @@ public class Restaurante {
         System.out.print("\nQual a quantidade desse produto ? ");
         quantidade = scanner.nextInt();
 
+        if (!verificaEstoque(produtoPedido, quantidade)) {
+            System.out.println("\nNão é possível concluir o pedido com essa quantidade. \nO atual estoque do produto " + produtoPedido.getNome() + " é: " + produtoPedido.getEstoque());
+            return;
+        }
 
         Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
         requisicao.adicionarPedidoNoVetor(p);
         System.out.println("\nTotal do pedido : " + calculaTotalPedido(produtoPedido, quantidade));
+        produtoPedido.atualizaEstoque(-quantidade);
     }
 
     private static double calculaTotalPedido(Produto produto, int quantidade){
@@ -292,9 +303,9 @@ public class Restaurante {
         Produto produtoSelecionado = null;
 
 
-        while (op != 11) {
+        while (op != 12) {
             System.out.println("""
-                    ***************MENU*******************************
+                \n  ***************MENU*******************************
                     * 1 - Moqueca de Tilápia                         *
                     * 2 - Falafel Assado                             *
                     * 3 - Salada Primavera com Macarrão Konjac       *
@@ -313,100 +324,56 @@ public class Restaurante {
             switch (op) {
                 case 1 -> {
                     produtoSelecionado = pesquisarProduto("Moqueca de Tilápia");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 2 -> {
                     produtoSelecionado = pesquisarProduto("Falafel Assado");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 3 -> {
                     produtoSelecionado = pesquisarProduto("Salada Primavera com Macarrão Konjac");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 4 -> {
                     produtoSelecionado = pesquisarProduto("Escondidinho de Frango");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 5 -> {
                     produtoSelecionado = pesquisarProduto("Strogonoff");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 6 -> {
                     produtoSelecionado = pesquisarProduto("Caçarola de Carne com legumes");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 7 -> {
                     produtoSelecionado = pesquisarProduto("Água");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 8 -> {
                     produtoSelecionado = pesquisarProduto("Suco");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 9 -> {
                     produtoSelecionado = pesquisarProduto("Refrigerante");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 10 -> {
                     produtoSelecionado = pesquisarProduto("Cerveja");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
                 case 11 -> {
                     produtoSelecionado = pesquisarProduto("Taça de vinho");
-                    if (produtoSelecionado.getEstoque() == 0) {
-                        System.out.println("\nProduto : " + produtoSelecionado + "fora de estoque");
-                        produtoSelecionado = null;
-                    }
                     break;
                 }
             
@@ -431,4 +398,7 @@ public class Restaurante {
         return null;
     }
 
+    private static boolean verificaEstoque(Produto produto, int quantidade) {
+        return produto.getEstoque() >= quantidade;
+    }
 }

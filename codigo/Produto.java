@@ -33,6 +33,8 @@ public abstract class Produto {
     this.estoque = estoque;
   }
 
-
+  public void atualizaEstoque(int quantidade){
+    this.estoque += quantidade;
+  }
 
 }
