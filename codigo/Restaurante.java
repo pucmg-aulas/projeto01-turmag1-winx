@@ -50,7 +50,8 @@ public class Restaurante {
                     * 5 - Adicionar uma nova mesa                    *
                     * 6 - Listar mesas                               *
                     * 7 - Fazer pedido                               *
-                    * 8 - Sair                                       *
+                    * 8 - Total da requisição                        *
+                    * 9 - Sair                                       *
                     **************************************************""");
             op = scanner.nextInt();
 
@@ -82,6 +83,9 @@ public class Restaurante {
                     fazerPedido();
                 }
                 case 8 -> {
+                    resumoRequisicao2();
+                }
+                case 9 -> {
                     System.out.println("Até logo!");
                     break;
                 }
@@ -220,15 +224,12 @@ public class Restaurante {
 
     private static void finalizarRequisicao() {
         Requisicao req;
-        DecimalFormat df = new DecimalFormat("#.##");
         req = pesquisarRequisicao();
 
         req.setDataSaida(LocalDateTime.now());
         req.getMesa().desocuparMesa();
 
-        System.out.println("\nTotal do Comanda : " + df.format(req.calculaTotalComTaxa()));
-
-        System.out.println("\nTotal dividido: " + df.format(req.calculaTotalComTaxa() / req.getQuantPessoas()) + " por pessoa");
+        resumoRequisicao(req);
 
         System.out.println("\nA requisição do cliente " + req.getClienteNome() + " foi finalizada com sucesso.\n");
 
@@ -400,5 +401,21 @@ public class Restaurante {
 
     private static boolean verificaEstoque(Produto produto, int quantidade) {
         return produto.getEstoque() >= quantidade;
+    }
+
+    private static void resumoRequisicao2(){
+        Requisicao req;
+        req = pesquisarRequisicao();
+
+        resumoRequisicao(req);
+    }
+
+    private static void resumoRequisicao(Requisicao req) {
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        System.out.println("\nTotal do Comanda : " + df.format(req.calculaTotalComTaxa()));
+
+        System.out.println("\nTotal dividido: " + df.format(req.calculaTotalComTaxa() / req.getQuantPessoas()) + " por pessoa");
     }
 }
