@@ -59,7 +59,7 @@ public class Requisicao {
       }
 
     public int getQuantPessoas() {
-        return quantPessoas; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return quantPessoas; 
     }
 
     public ArrayList<Pedido> getListaPedidos() { 
