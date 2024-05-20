@@ -1,3 +1,4 @@
+package restaurante;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Restaurante {
         listaProdutos.add(new Prato("Strogonoff", 39.00, 20));
         listaProdutos.add(new Prato("Caçarola de carne com legumes", 45.00, 20));
 
-        while (op != 8) {
+        while (op != 9) {
             System.out.println("""
                     ***************MENU*******************************
                     * 1 - Abrir Requisição                           *
