@@ -44,7 +44,7 @@ public class RequisicaoTest {
     @Test
     public void testAdicionarPedidoNoVetor() {
         Produto produto = new Bebida("Água", 4.00, 20);
-        Pedido pedido = new Pedido(8.00, requisicao, produto, 2);
+        Pedido pedido = new Pedido(8.00, produto, 2);
         requisicao.adicionarPedidoNoVetor(pedido);
 
         assertTrue(requisicao.getListaPedidos().contains(pedido));
@@ -53,7 +53,8 @@ public class RequisicaoTest {
     @Test
     public void testCalcularTotalComTaxa() {
         Produto produto = new Bebida("Água", 4.00, 20);
-        Pedido pedido = new Pedido(8.00, requisicao, produto, 2);
+        Pedido pedido = new Pedido(8.00, produto, 2);
+        //Pedido pedido = new Pedido(8.00, requisicao, produto, 2);
         requisicao.adicionarPedidoNoVetor(pedido);
         double expected = 8.00 * 1.1; // 10% service charge
         assertEquals(expected, requisicao.calculaTotalComTaxa(), 0.01);

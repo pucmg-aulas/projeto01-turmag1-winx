@@ -289,7 +289,8 @@ public class Restaurante {
             return;
         }
 
-        Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
+        //Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
+        Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), produtoPedido, quantidade );
         requisicao.adicionarPedidoNoVetor(p);
         System.out.println("\nTotal do pedido : " + calculaTotalPedido(produtoPedido, quantidade));
         produtoPedido.atualizaEstoque(-quantidade);

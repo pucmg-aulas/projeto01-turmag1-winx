@@ -35,6 +35,7 @@ public abstract class Produto {
   }
 
   public void atualizaEstoque(int quantidade){
+      // adicionar bvalidação
     this.estoque += quantidade;
   }
 
