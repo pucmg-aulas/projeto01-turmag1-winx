@@ -1,3 +1,4 @@
+package restaurante;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Restaurante {
         listaProdutos.add(new Prato("Strogonoff", 39.00, 20));
         listaProdutos.add(new Prato("Caçarola de carne com legumes", 45.00, 20));
 
-        while (op != 8) {
+        while (op != 9) {
             System.out.println("""
                     ***************MENU*******************************
                     * 1 - Abrir Requisição                           *
@@ -50,7 +51,8 @@ public class Restaurante {
                     * 5 - Adicionar uma nova mesa                    *
                     * 6 - Listar mesas                               *
                     * 7 - Fazer pedido                               *
-                    * 8 - Sair                                       *
+                    * 8 - Total da requisição                        *
+                    * 9 - Sair                                       *
                     **************************************************""");
             op = scanner.nextInt();
 
@@ -82,6 +84,9 @@ public class Restaurante {
                     fazerPedido();
                 }
                 case 8 -> {
+                    resumoRequisicao2();
+                }
+                case 9 -> {
                     System.out.println("Até logo!");
                     break;
                 }
@@ -220,15 +225,12 @@ public class Restaurante {
 
     private static void finalizarRequisicao() {
         Requisicao req;
-        DecimalFormat df = new DecimalFormat("#.##");
         req = pesquisarRequisicao();
 
         req.setDataSaida(LocalDateTime.now());
         req.getMesa().desocuparMesa();
 
-        System.out.println("\nTotal do Comanda : " + df.format(req.calculaTotalComTaxa()));
-
-        System.out.println("\nTotal dividido: " + df.format(req.calculaTotalComTaxa() / req.getQuantPessoas()) + " por pessoa");
+        resumoRequisicao(req);
 
         System.out.println("\nA requisição do cliente " + req.getClienteNome() + " foi finalizada com sucesso.\n");
 
@@ -287,7 +289,8 @@ public class Restaurante {
             return;
         }
 
-        Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
+        //Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
+        Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), produtoPedido, quantidade );
         requisicao.adicionarPedidoNoVetor(p);
         System.out.println("\nTotal do pedido : " + calculaTotalPedido(produtoPedido, quantidade));
         produtoPedido.atualizaEstoque(-quantidade);
@@ -400,5 +403,21 @@ public class Restaurante {
 
     private static boolean verificaEstoque(Produto produto, int quantidade) {
         return produto.getEstoque() >= quantidade;
+    }
+
+    private static void resumoRequisicao2(){
+        Requisicao req;
+        req = pesquisarRequisicao();
+
+        resumoRequisicao(req);
+    }
+
+    private static void resumoRequisicao(Requisicao req) {
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        System.out.println("\nTotal do Comanda : " + df.format(req.calculaTotalComTaxa()));
+
+        System.out.println("\nTotal dividido: " + df.format(req.calculaTotalComTaxa() / req.getQuantPessoas()) + " por pessoa");
     }
 }

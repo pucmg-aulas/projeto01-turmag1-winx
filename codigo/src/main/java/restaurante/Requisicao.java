@@ -1,3 +1,4 @@
+package restaurante;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -37,10 +38,6 @@ public class Requisicao {
         return total * (1 + TAXA);
     }
 
-    public int getQuantPessoas(){
-        return quantPessoas; 
-    }
-
     public LocalDateTime getDataEntrada() {
         return dataEntrada;
     }
@@ -60,4 +57,13 @@ public class Requisicao {
     public double getTAXA() {
         return TAXA;
       }
+
+    public int getQuantPessoas() {
+        return quantPessoas; 
+    }
+
+    public ArrayList<Pedido> getListaPedidos() { 
+        return listaPedidos;
+    }
+        
 }

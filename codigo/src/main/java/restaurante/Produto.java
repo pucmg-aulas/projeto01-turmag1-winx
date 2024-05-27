@@ -1,3 +1,4 @@
+package restaurante;
 public abstract class Produto {
   private String nome;
   private double preco;
@@ -34,6 +35,7 @@ public abstract class Produto {
   }
 
   public void atualizaEstoque(int quantidade){
+      // adicionar bvalidação
     this.estoque += quantidade;
   }
 
