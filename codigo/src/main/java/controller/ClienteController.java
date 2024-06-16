@@ -12,16 +12,18 @@ package controller;
 import java.util.Scanner;
 import model.ClienteModel;
 import view.CadastrarClienteView;
+import controller.RequisicaoController;
 
 public class ClienteController {
     
     private CadastrarClienteView abrirRequisicaoView;
+    private RequisicaoController requisicaoController;
     
-        public ClienteModel cadastrarCliente(String nomeCliente, String cpfCliente) {
+        public ClienteModel cadastrarCliente(String nomeCliente, String cpfCliente, Integer qntPessoas) {
 
         ClienteModel cliente = new ClienteModel(nomeCliente, cpfCliente);
         
-        System.out.println(cliente.getNome());
+        requisicaoController.abrirRequisicao(cliente, qntPessoas);
 
         return cliente;
     }
