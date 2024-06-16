@@ -5,9 +5,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.MesaModel;
+
 public class Restaurante {
 
-    private static ArrayList<Mesa> mesas = new ArrayList<>();
+    private static ArrayList<MesaModel> mesas = new ArrayList<>();
     private static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
     private static ArrayList<Requisicao> listasEspera = new ArrayList<>();
     private static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
@@ -22,9 +24,9 @@ public class Restaurante {
         Scanner scanner = new Scanner(System.in);
         int op = 0;
 
-        Mesa mesa1 = new Mesa(4, false);
-        Mesa mesa2 = new Mesa(6, false);
-        Mesa mesa3 = new Mesa(8, false);
+        MesaModel mesa1 = new Mesa(4, false);
+        MesaModel mesa2 = new Mesa(6, false);
+        MesaModel mesa3 = new Mesa(8, false);
 
         mesas.add(mesa1);
         mesas.add(mesa2);

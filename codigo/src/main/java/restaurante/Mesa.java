@@ -34,16 +34,8 @@ public class Mesa {
         
     }
 
-
     public static boolean verificarDisponibilidade() {
         return true;
-    }
-
-    public boolean verificaCapacidade(int quantPessoas){
-        if (quantPessoas <= quantidade){
-            return true;
-        }
-        return false;
     }
 
     public void setOcupado() {

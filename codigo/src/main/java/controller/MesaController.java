@@ -4,10 +4,11 @@
  */
 package controller;
 
-/**
- *
- * @author thiag
- */
+import model.MesaModel;
+
 public class MesaController {
     
+    public boolean verificaCapacidade(int quantPessoas, MesaModel mesa){
+        return quantPessoas <= mesa.getQuantidade();
+    }
 }
