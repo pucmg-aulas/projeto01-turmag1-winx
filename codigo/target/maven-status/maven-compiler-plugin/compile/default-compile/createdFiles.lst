@@ -5,8 +5,6 @@ restaurante\Restaurante.class
 restaurante\Produto.class
 view\MenuView$2.class
 model\RequisicaoModel.class
-view\AbrirRequisicaoView.class
-view\AbrirRequisicaoView$1.class
 restaurante\Bebida.class
 model\PedidoModel.class
 view\FazerPedidoView$1.class

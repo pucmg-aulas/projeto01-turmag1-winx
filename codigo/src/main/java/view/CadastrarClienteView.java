@@ -10,6 +10,7 @@ package view;
  */
 
 import controller.ClienteController;
+import model.ClienteModel;
 
 public class CadastrarClienteView extends javax.swing.JFrame {
 
@@ -19,7 +20,7 @@ public class CadastrarClienteView extends javax.swing.JFrame {
     public CadastrarClienteView() {
         initComponents();
     }
-    
+   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,11 +33,9 @@ public class CadastrarClienteView extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        qntPessoas = new javax.swing.JSpinner();
-        abrirRequisicao = new javax.swing.JButton();
+        cadastrarCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
 
@@ -46,18 +45,16 @@ public class CadastrarClienteView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        abrirRequisicao.setText("Ok");
-        abrirRequisicao.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarCliente.setText("Ok");
+        cadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirRequisicaoActionPerformed(evt);
+                cadastrarClienteActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Nome");
 
         jLabel2.setText("CPF");
-
-        jLabel3.setText("Pessoas");
 
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,19 +72,15 @@ public class CadastrarClienteView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(abrirRequisicao)
-                .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nome)
-                    .addComponent(jLabel3)
-                    .addComponent(qntPessoas)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cadastrarCliente)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(nome)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,12 +95,8 @@ public class CadastrarClienteView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(qntPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(abrirRequisicao)
-                .addGap(12, 12, 12))
+                .addComponent(cadastrarCliente)
+                .addGap(68, 68, 68))
         );
 
         pack();
@@ -121,10 +110,12 @@ public class CadastrarClienteView extends javax.swing.JFrame {
        
     }//GEN-LAST:event_cpfActionPerformed
 
-    private void abrirRequisicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoActionPerformed
-       ClienteController clienteController;
-       clienteController.cadastrarCliente(String nome, String cpf);
-    }//GEN-LAST:event_abrirRequisicaoActionPerformed
+    private void cadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarClienteActionPerformed
+        ClienteController clienteController = new ClienteController();
+        String nomeCliente = String.valueOf(nome.getText());
+        String cpfCliente = String.valueOf(cpf.getText());
+        clienteController.cadastrarCliente(nomeCliente, cpfCliente); 
+    }//GEN-LAST:event_cadastrarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,14 +154,12 @@ public class CadastrarClienteView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abrirRequisicao;
+    private javax.swing.JButton cadastrarCliente;
     private javax.swing.JTextField cpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nome;
-    private javax.swing.JSpinner qntPessoas;
     // End of variables declaration//GEN-END:variables
 }

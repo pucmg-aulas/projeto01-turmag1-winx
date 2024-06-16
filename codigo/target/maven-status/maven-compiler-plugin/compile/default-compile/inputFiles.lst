@@ -1,5 +1,4 @@
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\model\PedidoModel.java
-G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\view\AbrirRequisicaoView.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\controller\RestauranteController.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\view\MenuView.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\controller\MenuController.java
@@ -12,7 +11,9 @@ G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\controller\PedidoControll
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\restaurante\Mesa.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\controller\MesaController.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\restaurante\Pedido.java
+G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\controller\ClienteController.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\restaurante\Restaurante.java
+G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\view\CadastrarClienteView.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\controller\RequisicaoController.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\model\MesaModel.java
 G:\LabProg\projeto01-turmag1-winx\codigo\src\main\java\model\RestauranteModel.java

@@ -17,9 +17,11 @@ public class ClienteController {
     
     private CadastrarClienteView abrirRequisicaoView;
     
-        public ClienteModel cadastrarCliente(String nome, String cpf) {
+        public ClienteModel cadastrarCliente(String nomeCliente, String cpfCliente) {
 
-        ClienteModel cliente = new ClienteModel(nome, cpf);
+        ClienteModel cliente = new ClienteModel(nomeCliente, cpfCliente);
+        
+        System.out.println(cliente.getNome());
 
         return cliente;
     }
