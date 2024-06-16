@@ -3,12 +3,15 @@ package controller;
 import model.RestauranteModel;
 import view.MenuView;
 import view.FazerPedidoView;
-import view.AbrirRequisicaoView;
+import view.CadastrarClienteView;
 
+
+import javax.swing.JFrame;
 public class MenuController {
 
     private RestauranteModel restauranteModel;
     private MenuView menuView;
+    private FazerPedidoView fazerPedidoView;
 
     public MenuController(RestauranteModel restauranteModel, MenuView menuView) {
         this.restauranteModel = restauranteModel;
@@ -20,6 +23,9 @@ public class MenuController {
         java.awt.EventQueue.invokeLater(() -> {
             RestauranteModel restauranteModel = new RestauranteModel();
             MenuView menuView = new MenuView();
+            FazerPedidoView pedidoView = new FazerPedidoView();
+            menuView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            pedidoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             new MenuController(restauranteModel, menuView);
             menuView.setVisible(true);
         });
@@ -27,12 +33,13 @@ public class MenuController {
 
     public void abrirFazerPedidoView() {
         FazerPedidoView fazerPedidoView = new FazerPedidoView();
+        fazerPedidoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fazerPedidoView.setVisible(true);
     }
 
     public void abrirAbrirRequisicaoView() {
-        AbrirRequisicaoView abrirRequisicaoView = new AbrirRequisicaoView();
+        CadastrarClienteView abrirRequisicaoView = new CadastrarClienteView();
+        abrirRequisicaoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         abrirRequisicaoView.setVisible(true);
     }
-
 }
