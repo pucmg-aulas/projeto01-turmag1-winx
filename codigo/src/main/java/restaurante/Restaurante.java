@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.MesaModel;
+import controller.MesaController;
 
 public class Restaurante {
 
@@ -15,6 +16,9 @@ public class Restaurante {
     private static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
 
     private static ArrayList<Produto> listaProdutos = new ArrayList<>();
+    
+    
+    private static MesaController mesaController;
 
     // Encontrar a requisição que você quer alocar uma mesa sabendo o cliente
     // Abrir requisição que chama cadastrarCliente, não o contrário (para boas
@@ -24,9 +28,9 @@ public class Restaurante {
         Scanner scanner = new Scanner(System.in);
         int op = 0;
 
-        MesaModel mesa1 = new Mesa(4, false);
-        MesaModel mesa2 = new Mesa(6, false);
-        MesaModel mesa3 = new Mesa(8, false);
+        MesaModel mesa1 = new MesaModel(4, false);
+        MesaModel mesa2 = new MesaModel(6, false);
+        MesaModel mesa3 = new MesaModel(8, false);
 
         mesas.add(mesa1);
         mesas.add(mesa2);
@@ -99,7 +103,7 @@ public class Restaurante {
 
     private static void listarMesas() {
         System.out.println("\n** Mesas **");
-        for (Mesa mesa : mesas) {
+        for (MesaModel mesa : mesas) {
             System.out.println((mesas.indexOf(mesa) + 1) + ". Mesa com capacidade para: " + mesa.getQuantidade()
                     + " pessoas." + (mesa.getOcupado() ? " Status: Ocupada" : " Status: Livre") + "\n");
         }
@@ -171,9 +175,9 @@ public class Restaurante {
         }
     }
 
-    public static Mesa verificarMesasDisponiveis(int quantPessoas) {
-        for (Mesa mesa : mesas) {
-            if (mesa.getOcupado() == false && mesa.verificaCapacidade(quantPessoas)) {
+    public static MesaModel verificarMesasDisponiveis(int quantPessoas) {
+        for (MesaModel mesa : mesas) {
+            if (mesa.isOcupado() == false && mesaController.verificaCapacidade(quantPessoas, mesa)) {
                 return mesa;
             }
         }
@@ -186,7 +190,7 @@ public class Restaurante {
     }
 
     public static void decidirDestinoDaRequisicao(Requisicao requisicao) {
-        Mesa m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
+        MesaModel m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
         if (m != null) {
             requisicao.alocarMesa(m); // mesa pode ter um indice para identifica-la?
 
@@ -256,12 +260,12 @@ public class Restaurante {
         System.out.println("Quantos lugares a mesa possui?");
         quantidade = scanner.nextInt();
 
-        Mesa m = new Mesa(quantidade, false);
+        MesaModel m = new MesaModel(quantidade, false);
 
         adicionarMesaNoVetor(m);
     }
 
-    public static void adicionarMesaNoVetor(Mesa m) {
+    public static void adicionarMesaNoVetor(MesaModel m) {
         mesas.add(m);
         System.out.println("Mesa adicionada com sucesso!");
         verificarListaDeEspera();

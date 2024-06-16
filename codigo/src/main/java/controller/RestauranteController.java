@@ -5,15 +5,13 @@
 package controller;
 
 import java.util.ArrayList;
-
-import java.util.ArrayList;
 import model.ClienteModel;
-import restaurante.Mesa;
+import model.MesaModel;
 import restaurante.Produto;
 import restaurante.Requisicao;
         
 public class RestauranteController {
-    private ArrayList<Mesa> mesas;
+    private ArrayList<MesaModel> mesas;
     private ArrayList<Requisicao> listasRequisicoes;
     private ArrayList<Requisicao> listasEspera;
     private ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas;
@@ -50,6 +48,7 @@ public class RestauranteController {
 
     public Produto selecionarProduto(int opcao) {
         // Retorna o produto selecionado pelo usuário
+        return null;
     }
 
     public void fazerPedido(Requisicao requisicao, Produto produto, int quantidade) {

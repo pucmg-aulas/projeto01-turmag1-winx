@@ -2,6 +2,7 @@ package restaurante;
 import model.ClienteModel;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import model.MesaModel;
 
 public class Requisicao {
 
@@ -9,7 +10,7 @@ public class Requisicao {
     private LocalDateTime dataSaida;
     private int quantPessoas;
     private ClienteModel cliente;
-    private Mesa mesa;
+    private MesaModel mesa;
     private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
     private final double TAXA = 0.10;
 
@@ -26,7 +27,7 @@ public class Requisicao {
         System.out.println("Pedido adicionado a comanda com sucesso!");
     }
 
-    public void alocarMesa(Mesa mesa) {
+    public void alocarMesa(MesaModel mesa) {
         this.mesa = mesa;
         mesa.ocuparMesa();
     }
@@ -51,7 +52,7 @@ public class Requisicao {
         this.dataSaida = dataSaida;
     }
 
-    public Mesa getMesa(){
+    public MesaModel getMesa(){
         return mesa;
     }
 

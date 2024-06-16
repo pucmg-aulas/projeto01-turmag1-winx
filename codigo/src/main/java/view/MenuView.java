@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.MenuController;
+
 /**
  *
  * @author thiag
@@ -13,8 +15,16 @@ public class MenuView extends javax.swing.JFrame {
     /**
      * Creates new form MenuView
      */
+    
+    
     public MenuView() {
         initComponents();
+    }
+    
+    private MenuController controller;
+    
+    public void setController(MenuController controller) {
+        this.controller = controller;
     }
 
     /**
@@ -26,21 +36,75 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        abrirRequisisaoBtn = new javax.swing.JButton();
+        mesasPainel = new javax.swing.JPanel();
+        fazerPedidoBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        abrirRequisisaoBtn.setText("Abrir Requisição");
+        abrirRequisisaoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirRequisisaoBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mesasPainelLayout = new javax.swing.GroupLayout(mesasPainel);
+        mesasPainel.setLayout(mesasPainelLayout);
+        mesasPainelLayout.setHorizontalGroup(
+            mesasPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        mesasPainelLayout.setVerticalGroup(
+            mesasPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+
+        fazerPedidoBtn.setText("Fazer Pedido");
+        fazerPedidoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fazerPedidoBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mesasPainel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(abrirRequisisaoBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(fazerPedidoBtn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(abrirRequisisaoBtn)
+                    .addComponent(fazerPedidoBtn))
+                .addGap(18, 18, 18)
+                .addComponent(mesasPainel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void abrirRequisisaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisisaoBtnActionPerformed
+
+         
+    }//GEN-LAST:event_abrirRequisisaoBtnActionPerformed
+
+    private void fazerPedidoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazerPedidoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fazerPedidoBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +142,8 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abrirRequisisaoBtn;
+    private javax.swing.JButton fazerPedidoBtn;
+    private javax.swing.JPanel mesasPainel;
     // End of variables declaration//GEN-END:variables
 }
