@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package restaurante;
+package model;
 
 /**
  *
  * @author imcat
  */
-public class Cliente {
+public class ClienteModel {
 
     private String nome;
     private String cpf;
 
-    public Cliente(String nomeCliente, String cpf){
+    public ClienteModel(String nomeCliente, String cpf){
         this.nome = nomeCliente;
         this.cpf = cpf;
     }

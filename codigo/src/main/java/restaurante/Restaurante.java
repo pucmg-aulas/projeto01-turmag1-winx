@@ -1,4 +1,5 @@
 package restaurante;
+import model.ClienteModel;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -122,7 +123,7 @@ public class Restaurante {
     private static void abrirRequisicao() {
         Scanner scanner = new Scanner(System.in);
         int quantPessoas;
-        Cliente cliente;
+        ClienteModel cliente;
 
         cliente = cadastrarCliente();
 
@@ -135,7 +136,7 @@ public class Restaurante {
         decidirDestinoDaRequisicao(requisicao);
     }
 
-    public static Cliente cadastrarCliente() {
+    public static ClienteModel cadastrarCliente() {
         Scanner scanner = new Scanner(System.in);
         String nomeCliente, cpf;
 
@@ -146,7 +147,7 @@ public class Restaurante {
         System.out.print("CPF: (no formato 000.000.000-00) ");
         cpf = scanner.nextLine();
 
-        Cliente cliente = new Cliente(nomeCliente, cpf);
+        ClienteModel cliente = new ClienteModel(nomeCliente, cpf);
 
         return cliente;
     }

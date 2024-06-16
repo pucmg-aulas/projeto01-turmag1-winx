@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import restaurante.Bebida;
-import restaurante.Cliente;
+import model.ClienteModel;
 import restaurante.Mesa;
 import restaurante.Pedido;
 import restaurante.Produto;
@@ -28,14 +28,14 @@ public class RequisicaoTest {
 
     }
     
-    private Cliente cliente;
+    private ClienteModel cliente;
     private Requisicao requisicao;
     private List<Requisicao> listasRequisicoes;
     private List<Requisicao> listasEspera;
 
     @BeforeEach
     public void setUp() {
-        cliente = new Cliente("John Doe", "000.000.000-00");
+        cliente = new ClienteModel("John Doe", "000.000.000-00");
         requisicao = new Requisicao(LocalDateTime.now(), 2, cliente);
         listasRequisicoes = new ArrayList<>();
         listasEspera = new ArrayList<>();
