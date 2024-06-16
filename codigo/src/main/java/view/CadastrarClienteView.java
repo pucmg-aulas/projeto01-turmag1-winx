@@ -38,6 +38,8 @@ public class CadastrarClienteView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        qntPessoas = new javax.swing.JSpinner();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -68,20 +70,24 @@ public class CadastrarClienteView extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Quantas pessoas estão com você?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(cadastrarCliente)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(nome)
                         .addComponent(jLabel2)
                         .addComponent(jLabel1)
-                        .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                    .addComponent(qntPessoas))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,14 +95,18 @@ public class CadastrarClienteView extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(qntPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cadastrarCliente)
-                .addGap(68, 68, 68))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,10 +124,11 @@ public class CadastrarClienteView extends javax.swing.JFrame {
 
         String nomeCliente = String.valueOf(nome.getText());
         String cpfCliente = String.valueOf(cpf.getText());
-        clienteController.cadastrarCliente(nomeCliente, cpfCliente); 
+        int pessoas = (Integer) qntPessoas.getValue();
+        clienteController.cadastrarCliente(nomeCliente, cpfCliente, pessoas); 
     }//GEN-LAST:event_cadastrarClienteActionPerformed
 
-    /**
+    /** 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -158,8 +169,10 @@ public class CadastrarClienteView extends javax.swing.JFrame {
     private javax.swing.JTextField cpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nome;
+    private javax.swing.JSpinner qntPessoas;
     // End of variables declaration//GEN-END:variables
 }
