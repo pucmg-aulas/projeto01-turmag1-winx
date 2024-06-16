@@ -23,6 +23,8 @@ public class RequisicaoController {
     public RequisicaoModel abrirRequisicao(ClienteModel cliente, int quantPessoas) {
         RequisicaoModel requisicao = new RequisicaoModel(LocalDateTime.now(), quantPessoas, cliente);
         decidirDestinoDaRequisicao(requisicao);
+        System.out.println(requisicao.getClienteNome());
+        
         return requisicao;
     }
 

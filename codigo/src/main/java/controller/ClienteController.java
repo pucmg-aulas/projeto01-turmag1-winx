@@ -13,16 +13,17 @@ import model.ClienteModel;
 import controller.RequisicaoController;
 
 public class ClienteController {
-    
+
     private RequisicaoController requisicaoController;
-    
-    public ClienteController(RequisicaoController requisicaoController){
+
+    public ClienteController(RequisicaoController requisicaoController) {
         this.requisicaoController = requisicaoController;
     }
-        
+
     public ClienteModel cadastrarCliente(String nomeCliente, String cpfCliente, Integer qntPessoas) {
         ClienteModel cliente = new ClienteModel(nomeCliente, cpfCliente);
         this.requisicaoController.abrirRequisicao(cliente, qntPessoas);
         return cliente;
     }
 }
+

@@ -11,12 +11,7 @@ import restaurante.Produto;
 import restaurante.Requisicao;
         
 public class RestauranteController {
-    private ArrayList<MesaModel> mesas;
-    private ArrayList<Requisicao> listasRequisicoes;
-    private ArrayList<Requisicao> listasEspera;
-    private ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas;
-    private ArrayList<Produto> listaProdutos;
-
+    
     public RestauranteController() {
         // Inicializa as listas e mesas
         // Adiciona produtos à listaProdutos

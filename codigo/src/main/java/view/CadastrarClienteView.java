@@ -20,8 +20,10 @@ public class CadastrarClienteView extends javax.swing.JFrame {
      */
     public CadastrarClienteView() {
         initComponents();
+        this.requisicaoController = new RequisicaoController();
+        this.clienteController = new ClienteController(requisicaoController);
     }
-    RequisicaoController requisicaoController;
+    RequisicaoController requisicaoController = new RequisicaoController();
     ClienteController clienteController = new ClienteController(requisicaoController);
     
     /**
