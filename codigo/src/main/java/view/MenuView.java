@@ -98,12 +98,11 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void abrirRequisisaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisisaoBtnActionPerformed
-
-         
+        controller.abrirAbrirRequisicaoView();
     }//GEN-LAST:event_abrirRequisisaoBtnActionPerformed
 
     private void fazerPedidoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazerPedidoBtnActionPerformed
-        // TODO add your handling code here:
+        controller.abrirFazerPedidoView();
     }//GEN-LAST:event_fazerPedidoBtnActionPerformed
 
     /**
