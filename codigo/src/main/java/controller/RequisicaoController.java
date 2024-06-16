@@ -10,15 +10,14 @@ import java.util.ArrayList;
 import model.RequisicaoModel;
 import model.ClienteModel;
 import model.MesaModel;
-import controller.MesaController;
-import restaurante.Mesa;
+
 
 
 public class RequisicaoController {
-    private ArrayList<RequisicaoModel> listasRequisicoes;
-    private ArrayList<RequisicaoModel> listasEspera;
-    private ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas;
-    private ArrayList<MesaModel> mesas;
+    private final ArrayList<RequisicaoModel> listasRequisicoes;
+    private final ArrayList<RequisicaoModel> listasEspera;
+    private final ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas;
+    private final ArrayList<MesaModel> mesas;
     
     private MesaController mesaController;
    
