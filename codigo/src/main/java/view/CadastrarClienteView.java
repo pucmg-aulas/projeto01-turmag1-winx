@@ -20,7 +20,7 @@ public class CadastrarClienteView extends javax.swing.JFrame {
     public CadastrarClienteView() {
         initComponents();
     }
-   
+    ClienteController clienteController = new ClienteController();
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,7 +111,7 @@ public class CadastrarClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfActionPerformed
 
     private void cadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarClienteActionPerformed
-        ClienteController clienteController = new ClienteController();
+
         String nomeCliente = String.valueOf(nome.getText());
         String cpfCliente = String.valueOf(cpf.getText());
         clienteController.cadastrarCliente(nomeCliente, cpfCliente); 
