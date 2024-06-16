@@ -15,32 +15,48 @@ import restaurante.Requisicao;
  */
 public class RestauranteModel {
 
-    private static ArrayList<Mesa> mesas = new ArrayList<>();
-    private static ArrayList<Requisicao> listasRequisicoes = new ArrayList<>();
-    private static ArrayList<Requisicao> listasEspera = new ArrayList<>();
-    private static ArrayList<Requisicao> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
+    private static ArrayList<MesaModel> mesas = new ArrayList<>();
+    private static ArrayList<RequisicaoModel> listasRequisicoes = new ArrayList<>();
+    private static ArrayList<RequisicaoModel> listasEspera = new ArrayList<>();
+    private static ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
     private static ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     public RestauranteModel() {
     }
 
-    public static ArrayList<Mesa> getMesas() {
+    public static ArrayList<MesaModel> getMesas() {
         return mesas;
     }
 
-    public static ArrayList<Requisicao> getListasRequisicoes() {
+    public static ArrayList<RequisicaoModel> getListasRequisicoes() {
         return listasRequisicoes;
     }
 
-    public static ArrayList<Requisicao> getListasEspera() {
+    public static ArrayList<RequisicaoModel> getListasEspera() {
         return listasEspera;
     }
 
-    public static ArrayList<Requisicao> getRequisicoesDaListaDeEsperaAtendidas() {
+    public static ArrayList<RequisicaoModel> getRequisicoesDaListaDeEsperaAtendidas() {
         return requisicoesDaListaDeEsperaAtendidas;
     }
 
     public static ArrayList<Produto> getListaProdutos() {
         return listaProdutos;
+    }
+
+    public void addListaEspera(RequisicaoModel requisicao) {
+        this.listasEspera.add(requisicao);
+    }
+
+    public void removeAllEspera(ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas) {
+        listasEspera.removeAll(requisicoesDaListaDeEsperaAtendidas);
+    }
+    
+    public void addRequisicoesDaListaDeEsperaAtendidas(RequisicaoModel requisicao){
+        this.requisicoesDaListaDeEsperaAtendidas.add(requisicao);
+    }
+    
+    public void adicionarRequisicaoNoVetor(RequisicaoModel requisicao) {
+        listasRequisicoes.add(requisicao);
     }
 }

@@ -9,22 +9,20 @@ package controller;
  * @author thiag
  */
 
-import java.util.Scanner;
 import model.ClienteModel;
-import view.CadastrarClienteView;
 import controller.RequisicaoController;
 
 public class ClienteController {
     
-    private CadastrarClienteView abrirRequisicaoView;
     private RequisicaoController requisicaoController;
     
-        public ClienteModel cadastrarCliente(String nomeCliente, String cpfCliente, Integer qntPessoas) {
-
-        ClienteModel cliente = new ClienteModel(nomeCliente, cpfCliente);
+    public ClienteController(RequisicaoController requisicaoController){
+        this.requisicaoController = requisicaoController;
+    }
         
-        requisicaoController.abrirRequisicao(cliente, qntPessoas);
-
+    public ClienteModel cadastrarCliente(String nomeCliente, String cpfCliente, Integer qntPessoas) {
+        ClienteModel cliente = new ClienteModel(nomeCliente, cpfCliente);
+        this.requisicaoController.abrirRequisicao(cliente, qntPessoas);
         return cliente;
     }
 }

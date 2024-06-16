@@ -10,6 +10,7 @@ package view;
  */
 
 import controller.ClienteController;
+import controller.RequisicaoController;
 import model.ClienteModel;
 
 public class CadastrarClienteView extends javax.swing.JFrame {
@@ -20,7 +21,8 @@ public class CadastrarClienteView extends javax.swing.JFrame {
     public CadastrarClienteView() {
         initComponents();
     }
-    ClienteController clienteController = new ClienteController();
+    RequisicaoController requisicaoController;
+    ClienteController clienteController = new ClienteController(requisicaoController);
     
     /**
      * This method is called from within the constructor to initialize the form.

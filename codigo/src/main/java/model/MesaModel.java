@@ -7,7 +7,8 @@ package model;
 /**
  *
  * @author thiag
- */public class MesaModel {
+ */
+public class MesaModel {
     private int quantidade;
     private boolean ocupado;
 

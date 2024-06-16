@@ -55,5 +55,4 @@ public class RequisicaoModel {
     public ArrayList<Pedido> getListaPedidos() { 
         return listaPedidos;
     }
-    
 }

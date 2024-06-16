@@ -11,4 +11,8 @@ public class MesaController {
     public boolean verificaCapacidade(int quantPessoas, MesaModel mesa){
         return quantPessoas <= mesa.getQuantidade();
     }
+    
+    public void alocarMesa(MesaModel mesa) {
+        mesa.ocuparMesa();
+    }
 }
