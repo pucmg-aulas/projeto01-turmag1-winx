@@ -36,7 +36,7 @@ public class RequisicaoController {
         return requisicao;
     }
 
-    public void finalizarRequisicao(RequisicaoModel requisicao) {
+     public void finalizarRequisicao(RequisicaoModel requisicao) {
         requisicao.setDataSaida(LocalDateTime.now());
         requisicao.getMesa().desocuparMesa();
         verificarListaDeEspera();
