@@ -22,6 +22,11 @@ public class RestauranteModel {
     private  ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     public RestauranteModel() {
+        this.mesas = new ArrayList<>();
+        this.listasRequisicoes = new ArrayList<>();
+        this.listasEspera = new ArrayList<>();
+        this.requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
+        this.listaProdutos = new ArrayList<>();
     }
 
     public ArrayList<MesaModel> getMesas() {
@@ -57,6 +62,6 @@ public class RestauranteModel {
     }
     
     public void adicionarRequisicaoNoVetor(RequisicaoModel requisicao) {
-        this.listasRequisicoes.add(requisicao);
+        listasRequisicoes.add(requisicao);
     }
 }

@@ -43,6 +43,10 @@ public class RequisicaoModel {
     public MesaModel getMesa(){
         return mesa;
     }
+    
+    public void setMesa(MesaModel mesa){
+        this.mesa = mesa;
+    }
 
     public double getTAXA() {
         return TAXA;

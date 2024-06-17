@@ -17,13 +17,17 @@ import model.RestauranteModel;
 public class RequisicaoController {
 
     
-    private MesaController mesaController;
+    
     private RestauranteModel restauranteModel = new RestauranteModel();
+    private MesaController mesaController = new MesaController(restauranteModel);
 
     public RequisicaoModel abrirRequisicao(ClienteModel cliente, int quantPessoas) {
         RequisicaoModel requisicao = new RequisicaoModel(LocalDateTime.now(), quantPessoas, cliente);
         decidirDestinoDaRequisicao(requisicao);
-        System.out.println(requisicao.getClienteNome());
+        MesaModel mesa = mesaController.verificarMesasDisponiveis(quantPessoas);
+        if(mesaController.verificaCapacidade(quantPessoas, mesa)){
+            requisicao.setMesa(mesa);
+        }
         restauranteModel.adicionarRequisicaoNoVetor(requisicao);
         return requisicao;
     }
@@ -57,7 +61,7 @@ public class RequisicaoController {
     private void decidirDestinoDaRequisicao(RequisicaoModel requisicao) {
         MesaModel m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
         if (m != null) {
-            mesaController.alocarMesa(m);
+            mesaController.alocarMesa(m, requisicao);
             restauranteModel.adicionarRequisicaoNoVetor(requisicao);
             if (restauranteModel.getListasEspera().contains(requisicao)) {
                 restauranteModel.addRequisicoesDaListaDeEsperaAtendidas(requisicao);

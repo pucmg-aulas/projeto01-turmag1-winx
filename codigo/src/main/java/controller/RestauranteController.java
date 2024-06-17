@@ -53,6 +53,7 @@ public class RestauranteController {
     public void resumoRequisicao(Requisicao requisicao) {
         // Retorna um resumo da requisição
     }
+   
 
     // Outros métodos de controle conforme necessário
 }
