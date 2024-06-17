@@ -19,7 +19,7 @@ public class RequisicaoModel {
     private int quantPessoas;
     private ClienteModel cliente;
     private Mesa mesa;
-    private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
+    private ArrayList<Pedido> listaPedidos = new ArrayList<>();
     private final double TAXA = 0.10;
     
     public RequisicaoModel(LocalDateTime dataEntrada, int quantPessoas, ClienteModel cliente) {

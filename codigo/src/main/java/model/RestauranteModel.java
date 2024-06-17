@@ -15,33 +15,33 @@ import restaurante.Requisicao;
  */
 public class RestauranteModel {
 
-    private static ArrayList<MesaModel> mesas = new ArrayList<>();
-    private static ArrayList<RequisicaoModel> listasRequisicoes = new ArrayList<>();
-    private static ArrayList<RequisicaoModel> listasEspera = new ArrayList<>();
-    private static ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
-    private static ArrayList<Produto> listaProdutos = new ArrayList<>();
+    private  ArrayList<MesaModel> mesas = new ArrayList<>();
+    private  ArrayList<RequisicaoModel> listasRequisicoes = new ArrayList<>();
+    private  ArrayList<RequisicaoModel> listasEspera = new ArrayList<>();
+    private  ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas = new ArrayList<>();
+    private  ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     public RestauranteModel() {
     }
 
-    public static ArrayList<MesaModel> getMesas() {
-        return mesas;
+    public ArrayList<MesaModel> getMesas() {
+        return this.mesas;
     }
 
-    public static ArrayList<RequisicaoModel> getListasRequisicoes() {
-        return listasRequisicoes;
+    public ArrayList<RequisicaoModel> getListasRequisicoes() {
+        return this.listasRequisicoes;
     }
 
-    public static ArrayList<RequisicaoModel> getListasEspera() {
-        return listasEspera;
+    public ArrayList<RequisicaoModel> getListasEspera() {
+        return this.listasEspera;
     }
 
-    public static ArrayList<RequisicaoModel> getRequisicoesDaListaDeEsperaAtendidas() {
-        return requisicoesDaListaDeEsperaAtendidas;
+    public ArrayList<RequisicaoModel> getRequisicoesDaListaDeEsperaAtendidas() {
+        return this.requisicoesDaListaDeEsperaAtendidas;
     }
 
-    public static ArrayList<Produto> getListaProdutos() {
-        return listaProdutos;
+    public ArrayList<Produto> getListaProdutos() {
+        return this.listaProdutos;
     }
 
     public void addListaEspera(RequisicaoModel requisicao) {
@@ -49,7 +49,7 @@ public class RestauranteModel {
     }
 
     public void removeAllEspera(ArrayList<RequisicaoModel> requisicoesDaListaDeEsperaAtendidas) {
-        listasEspera.removeAll(requisicoesDaListaDeEsperaAtendidas);
+        this.listasEspera.removeAll(requisicoesDaListaDeEsperaAtendidas);
     }
     
     public void addRequisicoesDaListaDeEsperaAtendidas(RequisicaoModel requisicao){
@@ -57,6 +57,6 @@ public class RestauranteModel {
     }
     
     public void adicionarRequisicaoNoVetor(RequisicaoModel requisicao) {
-        listasRequisicoes.add(requisicao);
+        this.listasRequisicoes.add(requisicao);
     }
 }
