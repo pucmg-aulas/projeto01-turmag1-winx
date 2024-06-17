@@ -23,8 +23,10 @@ public class RequisicaoController {
 
     public RequisicaoModel abrirRequisicao(ClienteModel cliente, int quantPessoas) {
         RequisicaoModel requisicao = new RequisicaoModel(LocalDateTime.now(), quantPessoas, cliente);
-        decidirDestinoDaRequisicao(requisicao);
+        
+        //decidirDestinoDaRequisicao(requisicao);
         MesaModel mesa = mesaController.verificarMesasDisponiveis(quantPessoas);
+        System.out.println(mesa);
         if(mesaController.verificaCapacidade(quantPessoas, mesa)){
             requisicao.setMesa(mesa);
         }
@@ -49,17 +51,8 @@ public class RequisicaoController {
         restauranteModel.removeAllEspera(restauranteModel.getRequisicoesDaListaDeEsperaAtendidas());
     }
 
-    private MesaModel verificarMesasDisponiveis(int quantPessoas) {
-        for (MesaModel mesa : restauranteModel.getMesas()) {
-            if (!mesa.isOcupado() && mesaController.verificaCapacidade(quantPessoas, mesa)) {
-                return mesa;
-            }
-        }
-        return null;
-    }
-
     private void decidirDestinoDaRequisicao(RequisicaoModel requisicao) {
-        MesaModel m = verificarMesasDisponiveis(requisicao.getQuantPessoas());
+        MesaModel m = mesaController.verificarMesasDisponiveis(requisicao.getQuantPessoas());
         if (m != null) {
             mesaController.alocarMesa(m, requisicao);
             restauranteModel.adicionarRequisicaoNoVetor(requisicao);

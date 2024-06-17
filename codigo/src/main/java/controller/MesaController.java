@@ -34,6 +34,7 @@ public class MesaController {
     
     public MesaModel verificarMesasDisponiveis(int quantPessoas) {
         for (MesaModel mesa : restauranteModel.getMesas()) {
+            System.out.println(mesa);
             if (!mesa.isOcupado() && verificaCapacidade(quantPessoas, mesa)) {
                 return mesa;
             }
