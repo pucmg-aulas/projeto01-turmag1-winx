@@ -14,12 +14,6 @@ public class MenuController {
     private MenuView menuView;
     private FazerPedidoView fazerPedidoView;
 
-    public MenuController(RestauranteModel restauranteModel, MenuView menuView) {
-        this.restauranteModel = restauranteModel;
-        this.menuView = menuView;
-        this.menuView.setController(this);
-    }
-    
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
             RestauranteModel restauranteModel = new RestauranteModel();

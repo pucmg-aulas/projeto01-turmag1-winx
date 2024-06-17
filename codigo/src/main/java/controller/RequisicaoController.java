@@ -24,7 +24,7 @@ public class RequisicaoController {
         RequisicaoModel requisicao = new RequisicaoModel(LocalDateTime.now(), quantPessoas, cliente);
         decidirDestinoDaRequisicao(requisicao);
         System.out.println(requisicao.getClienteNome());
-        
+        restauranteModel.adicionarRequisicaoNoVetor(requisicao);
         return requisicao;
     }
 

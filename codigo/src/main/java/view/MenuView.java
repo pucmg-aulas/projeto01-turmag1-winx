@@ -21,7 +21,7 @@ public class MenuView extends javax.swing.JFrame {
         initComponents();
     }
     
-    private MenuController controller;
+    private MenuController controller = new MenuController();
     
     public void setController(MenuController controller) {
         this.controller = controller;
@@ -117,7 +117,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_fazerPedidoBtnActionPerformed
 
     private void listRequisicoesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listRequisicoesBtnActionPerformed
-       controller.abrirAbrirListarRequisicaoView();
+        controller.abrirAbrirListarRequisicaoView();
     }//GEN-LAST:event_listRequisicoesBtnActionPerformed
 
     /**

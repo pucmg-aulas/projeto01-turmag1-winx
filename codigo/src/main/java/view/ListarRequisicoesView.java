@@ -3,19 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-import model.RestauranteModel;
+
 import java.util.List;
 import model.RequisicaoModel;
+import model.RestauranteModel;
+
 /**
  *
  * @author thiag
  */
-
-
 public class ListarRequisicoesView extends javax.swing.JFrame {
 
     /**
-     * Creates new form ListarRequisicoes
+     * Creates new form ListarRequisicoesView
      */
     public ListarRequisicoesView() {
         initComponents();
@@ -30,61 +30,61 @@ public class ListarRequisicoesView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        verRequisicoesBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        requisicoesPainel = new javax.swing.JTextArea();
+        listRequisicoes = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        verRequisicoesBtn.setText("Ver Requisições");
-        verRequisicoesBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Ver Requisições");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verRequisicoesBtnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        requisicoesPainel.setColumns(20);
-        requisicoesPainel.setRows(5);
-        requisicoesPainel.setText("Requisicoes:");
-        jScrollPane1.setViewportView(requisicoesPainel);
+        listRequisicoes.setColumns(20);
+        listRequisicoes.setRows(5);
+        jScrollPane1.setViewportView(listRequisicoes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(196, 196, 196)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verRequisicoesBtn))
-                .addContainerGap(183, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(verRequisicoesBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verRequisicoesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verRequisicoesBtnActionPerformed
-    RestauranteModel restauranteModel = new RestauranteModel();
-    // Supondo que getListasRequisicoes() retorna uma lista de strings
-    List<RequisicaoModel> requisicoes = restauranteModel.getListasRequisicoes();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("Botão verRequisicoesBtn pressionado."); // Verifica se o método é chamado
+        RestauranteModel restauranteModel = new RestauranteModel();
+        List<RequisicaoModel> requisicoes = restauranteModel.getListasRequisicoes();
+        listRequisicoes.setText("");
 
-    // Limpar o conteúdo atual do JTextArea
-    requisicoesPainel.setText("");
+        for (RequisicaoModel requisicao : requisicoes) {
+            System.out.println("Cliente: " + requisicao.getClienteNome()); // Verifica se o loop está sendo executado
+            listRequisicoes.append(requisicao.getClienteNome() + "\n");
+        }
 
-    // Adicionar cada requisicao ao JTextArea
-    for (RequisicaoModel requisicao : requisicoes) {
-        requisicoesPainel.append(requisicao + "\n");
-    }
-    }//GEN-LAST:event_verRequisicoesBtnActionPerformed
+        listRequisicoes.revalidate();
+        listRequisicoes.repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,7 +112,6 @@ public class ListarRequisicoesView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ListarRequisicoesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -123,8 +122,8 @@ public class ListarRequisicoesView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea requisicoesPainel;
-    private javax.swing.JButton verRequisicoesBtn;
+    private javax.swing.JTextArea listRequisicoes;
     // End of variables declaration//GEN-END:variables
 }

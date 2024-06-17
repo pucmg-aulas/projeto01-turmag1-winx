@@ -18,7 +18,7 @@ public class RequisicaoModel {
     private LocalDateTime dataSaida;
     private int quantPessoas;
     private ClienteModel cliente;
-    private Mesa mesa;
+    private MesaModel mesa;
     private ArrayList<Pedido> listaPedidos = new ArrayList<>();
     private final double TAXA = 0.10;
     
@@ -40,7 +40,7 @@ public class RequisicaoModel {
         this.dataSaida = dataSaida;
     }
 
-    public Mesa getMesa(){
+    public MesaModel getMesa(){
         return mesa;
     }
 
