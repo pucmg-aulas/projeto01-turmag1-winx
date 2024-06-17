@@ -31,6 +31,8 @@
                       <Component id="abrirRequisisaoBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="fazerPedidoBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="listRequisicoesBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -45,6 +47,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="abrirRequisisaoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fazerPedidoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="listRequisicoesBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="mesasPainel" max="32767" attributes="0"/>
@@ -83,6 +86,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fazerPedidoBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="listRequisicoesBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar Requisi&#xe7;&#xf5;es"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listRequisicoesBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

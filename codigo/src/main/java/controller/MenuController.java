@@ -7,6 +7,7 @@ import view.CadastrarClienteView;
 
 
 import javax.swing.JFrame;
+import view.ListarRequisicoesView;
 public class MenuController {
 
     private RestauranteModel restauranteModel;
@@ -24,9 +25,7 @@ public class MenuController {
             RestauranteModel restauranteModel = new RestauranteModel();
             MenuView menuView = new MenuView();
             FazerPedidoView pedidoView = new FazerPedidoView();
-            menuView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            pedidoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            new MenuController(restauranteModel, menuView);
+            ListarRequisicoesView requisicoesView = new ListarRequisicoesView();
             menuView.setVisible(true);
         });
     }
@@ -41,5 +40,11 @@ public class MenuController {
         CadastrarClienteView abrirRequisicaoView = new CadastrarClienteView();
         abrirRequisicaoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         abrirRequisicaoView.setVisible(true);
+    }
+    
+        public void abrirAbrirListarRequisicaoView() {
+        ListarRequisicoesView requisicoesView = new ListarRequisicoesView();
+        requisicoesView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        requisicoesView.setVisible(true);
     }
 }

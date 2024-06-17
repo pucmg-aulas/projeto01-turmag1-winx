@@ -4,12 +4,16 @@ restaurante\Prato.class
 restaurante\Restaurante.class
 restaurante\Produto.class
 view\MenuView$2.class
+view\ListarRequisicoesView.class
+view\MenuView$4.class
 model\RequisicaoModel.class
+view\ListarRequisicoesView$1.class
 restaurante\Bebida.class
 model\PedidoModel.class
 view\FazerPedidoView$1.class
 view\MenuView$3.class
 model\ClienteModel.class
+view\ListarRequisicoesView$2.class
 model\MesaModel.class
 restaurante\Mesa.class
 restaurante\Requisicao.class

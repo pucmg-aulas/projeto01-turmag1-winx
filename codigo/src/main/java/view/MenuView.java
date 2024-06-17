@@ -39,6 +39,7 @@ public class MenuView extends javax.swing.JFrame {
         abrirRequisisaoBtn = new javax.swing.JButton();
         mesasPainel = new javax.swing.JPanel();
         fazerPedidoBtn = new javax.swing.JButton();
+        listRequisicoesBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
 
+        listRequisicoesBtn.setText("Listar Requisições");
+        listRequisicoesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listRequisicoesBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,6 +87,8 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(abrirRequisisaoBtn)
                         .addGap(18, 18, 18)
                         .addComponent(fazerPedidoBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(listRequisicoesBtn)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -88,7 +98,8 @@ public class MenuView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(abrirRequisisaoBtn)
-                    .addComponent(fazerPedidoBtn))
+                    .addComponent(fazerPedidoBtn)
+                    .addComponent(listRequisicoesBtn))
                 .addGap(18, 18, 18)
                 .addComponent(mesasPainel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -104,6 +115,10 @@ public class MenuView extends javax.swing.JFrame {
     private void fazerPedidoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazerPedidoBtnActionPerformed
         controller.abrirFazerPedidoView();
     }//GEN-LAST:event_fazerPedidoBtnActionPerformed
+
+    private void listRequisicoesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listRequisicoesBtnActionPerformed
+       controller.abrirAbrirListarRequisicaoView();
+    }//GEN-LAST:event_listRequisicoesBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +158,7 @@ public class MenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirRequisisaoBtn;
     private javax.swing.JButton fazerPedidoBtn;
+    private javax.swing.JButton listRequisicoesBtn;
     private javax.swing.JPanel mesasPainel;
     // End of variables declaration//GEN-END:variables
 }
