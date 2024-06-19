@@ -7,6 +7,7 @@ package Requisicao;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import model.Requisicao;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,6 @@ import restaurante.Cliente;
 import restaurante.Mesa;
 import restaurante.Pedido;
 import restaurante.Produto;
-import restaurante.Requisicao;
 
 /**
  *

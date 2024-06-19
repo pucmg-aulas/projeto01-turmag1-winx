@@ -1,9 +1,22 @@
-package restaurante;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package model;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import restaurante.Cliente;
+import restaurante.Mesa;
+import restaurante.Pedido;
 
-public class Requisicao {
-
+/**
+ *
+ * @author imcat
+ */
+public class Requisicao implements Serializable{
+    
     private LocalDateTime dataEntrada;
     private LocalDateTime dataSaida;
     private int quantPessoas;
@@ -65,5 +78,5 @@ public class Requisicao {
     public ArrayList<Pedido> getListaPedidos() { 
         return listaPedidos;
     }
-        
+    
 }
