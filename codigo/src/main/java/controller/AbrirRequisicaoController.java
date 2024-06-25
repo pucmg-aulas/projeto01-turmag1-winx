@@ -6,6 +6,7 @@ package controller;
 
 import dao.Requisicoes;
 import java.time.LocalDateTime;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import view.AbrirRequisicaoView;
 import model.Requisicao;
@@ -24,6 +25,7 @@ public class AbrirRequisicaoController {
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
         this.requisicoes = Requisicoes.getInstance();
+        this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
             abrirRequisicao();
@@ -33,13 +35,13 @@ public class AbrirRequisicaoController {
             cancelar();
         });
         
-        //this.view.setVisible(true);
+        this.view.setVisible(true);
         
         //adicionar os listeners aqui
         // 
     }
     
-    public void abreView(){this.view.setVisible(true);}
+    //public void abreView(){this.view.setVisible(true);}
     
     public void abrirRequisicao(){
         //pegar os dados dos campos da view

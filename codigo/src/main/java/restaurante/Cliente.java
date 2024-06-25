@@ -4,11 +4,13 @@
  */
 package restaurante;
 
+import java.io.Serializable;
+
 /**
  *
  * @author imcat
  */
-public class Cliente {
+public class Cliente implements Serializable {
 
     private String nome;
     private String cpf;
