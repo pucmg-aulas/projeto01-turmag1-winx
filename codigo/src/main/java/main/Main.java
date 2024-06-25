@@ -70,13 +70,11 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void abrirRequisicaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnActionPerformed
-        AbrirRequisicaoController abrirRequisicaoController = new AbrirRequisicaoController();
-        
-        abrirRequisicaoController.abreView();
+        new AbrirRequisicaoController();
     }//GEN-LAST:event_abrirRequisicaoBtnActionPerformed
 
     private void abrirRequisicaoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnMouseClicked
-        System.out.println("entrou");
+    
     }//GEN-LAST:event_abrirRequisicaoBtnMouseClicked
 
     /**

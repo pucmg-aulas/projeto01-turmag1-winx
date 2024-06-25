@@ -4,6 +4,7 @@
  */
 package dao;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import model.Requisicao;
@@ -21,7 +22,7 @@ public class Requisicoes extends AbstractDAO {
     
     private Requisicoes() {
         this.requisicoes = new ArrayList<>();
-        this.path = ".src/main/java/data/requisicoes.ser";
+        this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "requisicoes.ser").toString();
     }
     
     public static Requisicoes getInstance(){
