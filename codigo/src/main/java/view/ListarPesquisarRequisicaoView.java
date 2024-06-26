@@ -21,6 +21,14 @@ public class ListarPesquisarRequisicaoView extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnFinalizarRequisicao() {
+        return btnFinalizarRequisicao;
+    }
+
+    public void setBtnFinalizarRequisicao(JButton btnFinalizarRequisicao) {
+        this.btnFinalizarRequisicao = btnFinalizarRequisicao;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +47,7 @@ public class ListarPesquisarRequisicaoView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRequisicoes = new javax.swing.JTable();
         btnFazerPedido = new javax.swing.JButton();
+        btnFinalizarRequisicao = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
@@ -81,13 +90,20 @@ public class ListarPesquisarRequisicaoView extends javax.swing.JFrame {
         btnFazerPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnFazerPedido.setText("Fazer Pedido");
 
+        btnFinalizarRequisicao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnFinalizarRequisicao.setText("Finalizar Requisição");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFazerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnFinalizarRequisicao)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFazerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(164, 164, 164)
@@ -119,7 +135,9 @@ public class ListarPesquisarRequisicaoView extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnFazerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnFinalizarRequisicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFazerPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -203,6 +221,7 @@ public class ListarPesquisarRequisicaoView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFazerPedido;
+    private javax.swing.JButton btnFinalizarRequisicao;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

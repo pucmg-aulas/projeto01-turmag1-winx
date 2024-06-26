@@ -6,6 +6,7 @@ package controller;
 
 import dao.RequisicoesDAO;
 import exception.FormatoInvalidoException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +43,14 @@ public class ListarPesquisarRequisicaoController {
         this.view.getBtnFazerPedido().addActionListener((e) -> {
             try {
                 selecionarRequisicaoParaFazerPedido();
+            } catch (FormatoInvalidoException ex) {
+                Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        this.view.getBtnFinalizarRequisicao().addActionListener((e) -> {
+            try {
+                selecionarRequisicaoParaFinalizar();
             } catch (FormatoInvalidoException ex) {
                 Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -113,7 +122,7 @@ public class ListarPesquisarRequisicaoController {
         view.getTbRequisicoes().setModel(tm);
     }
     
-     private void selecionarRequisicaoParaFazerPedido() throws FormatoInvalidoException{
+    private void selecionarRequisicaoParaFazerPedido() throws FormatoInvalidoException{
         
         if(view.getTbRequisicoes().getSelectedRow() != -1){
             
@@ -125,6 +134,31 @@ public class ListarPesquisarRequisicaoController {
                 List<Requisicao> requisicao = requisicoes.buscarRequisicao(nome);
                 Requisicao requisicaoParaFazerPedido = requisicao.get(0);
                 new FazerPedidoController(requisicaoParaFazerPedido);
+//                JOptionPane.showMessageDialog(view, nome + " Excluído com Sucesso!");
+//                carregaTabela();
+            }
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(view, "Selecione uma linha primeiro!");
+        }
+ 
+    }
+    
+    private void selecionarRequisicaoParaFinalizar() throws FormatoInvalidoException{
+        
+        if(view.getTbRequisicoes().getSelectedRow() != -1){
+            
+            int linha = this.view.getTbRequisicoes().getSelectedRow();
+            String nome = (String) this.view.getTbRequisicoes().getValueAt(linha, 0);
+            
+            int op = JOptionPane.showConfirmDialog(view, "Deseja abrir um pedido para " + nome + "?");
+            if(op == JOptionPane.YES_OPTION){
+                List<Requisicao> requisicao = requisicoes.buscarRequisicao(nome);
+                Requisicao requisicaoParaFinalizar = requisicao.get(0);
+                requisicaoParaFinalizar.setDataSaida(LocalDateTime.now());
+                requisicaoParaFinalizar.getMesa().desocuparMesa();
+                requisicoes.removerRequisicao(requisicaoParaFinalizar);
 //                JOptionPane.showMessageDialog(view, nome + " Excluído com Sucesso!");
 //                carregaTabela();
             }
