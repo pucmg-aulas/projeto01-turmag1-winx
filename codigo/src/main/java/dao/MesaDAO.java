@@ -18,10 +18,10 @@ public class MesaDAO extends AbstractDAO {
 
     private static MesaDAO instance;
     private List<Mesa> mesas = new ArrayList();
-    private String path;
+    private String path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "mesas.ser").toString();
 
     private MesaDAO() {
-        inicializarMesas();
+       
     }
 
     public static MesaDAO getInstance() {
@@ -29,11 +29,6 @@ public class MesaDAO extends AbstractDAO {
             instance = new MesaDAO();
         }
         return instance;
-    }
-
-    private void inicializarMesas() {
-        Cliente c = new Cliente("afaf", "afaf");
-        mesas.add(new Mesa(6, false, 1, c));
     }
 
     public List<Mesa> getMesas() {
