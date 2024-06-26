@@ -58,7 +58,7 @@ public class PedidoDAO extends AbstractDAO {
     }
     
     private void carregarPedido(){
-        this.pedidos.addAll(recuperar(path));
+        this.pedidos.addAll(leitura(path));
     }
     
     /*public Produto buscarPedidoPorNome(String nome){

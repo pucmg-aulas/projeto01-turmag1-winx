@@ -6,7 +6,7 @@ package main;
 
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
-import controller.ListarRequisicaoController;
+import controller.ListarPesquisarRequisicaoController;
 import controller.CadastrarProdutoController;
 import controller.FazerPedidoController;
 import controller.MesaController;
@@ -102,6 +102,14 @@ public class Main extends javax.swing.JFrame {
         MesaController mesaController = new MesaController();
         //sair();
     }//GEN-LAST:event_verMesasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            new ListarPesquisarRequisicaoController();
+        } catch (FormatoInvalidoException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
