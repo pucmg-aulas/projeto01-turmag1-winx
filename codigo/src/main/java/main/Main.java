@@ -69,8 +69,12 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void sair() {
+        this.dispose();
+    }
     private void abrirRequisicaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnActionPerformed
         new AbrirRequisicaoController();
+        sair();
     }//GEN-LAST:event_abrirRequisicaoBtnActionPerformed
 
     private void abrirRequisicaoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnMouseClicked

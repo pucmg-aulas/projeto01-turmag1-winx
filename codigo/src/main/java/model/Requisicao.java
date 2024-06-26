@@ -79,4 +79,9 @@ public class Requisicao implements Serializable{
         return listaPedidos;
     }
     
+    @Override
+    public String toString() {
+        return getClienteNome() + " - " + mesa;
+    }
+    
 }

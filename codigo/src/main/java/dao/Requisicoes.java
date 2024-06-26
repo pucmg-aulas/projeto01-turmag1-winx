@@ -35,7 +35,7 @@ public class Requisicoes extends AbstractDAO {
     public void addRequisicao(Requisicao requisicao){
         this.requisicoes.add(requisicao);
         gravar(path, requisicoes);
-        carregarRequisicoes();
+        getRequisicoes();
     }
     
     public Requisicao buscarRequisicao(String nomeCliente){
@@ -54,7 +54,7 @@ public class Requisicoes extends AbstractDAO {
         gravar(path, requisicoes);   
     }
     
-    private void carregarRequisicoes(){
+    public void getRequisicoes(){
         this.requisicoes.addAll(recuperar(path));
     }
 

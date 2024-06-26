@@ -29,6 +29,7 @@ public class AbrirRequisicaoController {
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
             abrirRequisicao();
+            sair();
         });
         
         this.view.getCancelaBtn().addActionListener((e) -> {
@@ -42,7 +43,10 @@ public class AbrirRequisicaoController {
     }
     
     //public void abreView(){this.view.setVisible(true);}
-    
+    private void sair() {
+        this.view.dispose();
+    }
+     
     public void abrirRequisicao(){
         //pegar os dados dos campos da view
         String nomeCliente = view.getNomeClienteField().getText();
