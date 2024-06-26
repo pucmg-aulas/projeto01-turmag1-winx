@@ -33,7 +33,8 @@ public class MesaController {
         while (it.hasNext()) {
             Mesa m = it.next();
             String clienteNome = m.getCliente() != null ? m.getCliente().getNome() : "N/A";
-            tm.addRow(new Object[]{m.getNumero(), clienteNome, m.isOcupado(), m.getQuantidade()});
+            String ocupado = m.isOcupado() == true ? "Ocupado" : "Livre";
+            tm.addRow(new Object[]{m.getNumero(), clienteNome, ocupado, m.getQuantidade()});
         }
         view.getMesas().setModel(tm);
     }
