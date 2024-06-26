@@ -7,6 +7,8 @@ package main;
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
 import controller.ListarPesquisarRequisicaoController;
+import controller.CadastrarProdutoController;
+import controller.FazerPedidoController;
 import controller.MesaController;
 //import controller.MesasController;
 import dao.RequisicoesDAO;
@@ -41,7 +43,6 @@ public class Main extends javax.swing.JFrame {
 
         abrirRequisicaoBtn1 = new javax.swing.JButton();
         verMesas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,37 +65,25 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ver Requisições");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(abrirRequisicaoBtn1)
-                        .addGap(90, 90, 90)
-                        .addComponent(verMesas)))
+                .addComponent(abrirRequisicaoBtn1)
+                .addGap(90, 90, 90)
+                .addComponent(verMesas)
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
+                .addContainerGap(184, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(abrirRequisicaoBtn1)
                     .addComponent(verMesas))
-                .addGap(37, 37, 37)
-                .addComponent(jButton1)
-                .addGap(38, 38, 38))
+                .addGap(98, 98, 98))
         );
 
         pack();
@@ -167,7 +156,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirRequisicaoBtn1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton verMesas;
     // End of variables declaration//GEN-END:variables
 }

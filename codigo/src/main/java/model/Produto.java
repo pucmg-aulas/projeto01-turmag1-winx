@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author letci
  */
-public abstract class Produto implements Serializable {
+public class Produto implements Serializable {
   private String nome;
   private double preco;
   private int estoque;
