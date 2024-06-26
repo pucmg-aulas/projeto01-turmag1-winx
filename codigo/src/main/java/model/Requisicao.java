@@ -7,7 +7,6 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import restaurante.Cliente;
 import restaurante.Mesa;
 import restaurante.Pedido;
 
@@ -77,6 +76,11 @@ public class Requisicao implements Serializable{
 
     public ArrayList<Pedido> getListaPedidos() { 
         return listaPedidos;
+    }
+    
+    @Override
+    public String toString() {
+        return getClienteNome() + " - " + mesa;
     }
     
 }

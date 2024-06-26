@@ -10,25 +10,28 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import view.AbrirRequisicaoView;
 import model.Requisicao;
-import restaurante.Cliente;
+import model.Cliente;
 
 /**
  *
  * @author imcat
  */
 public class AbrirRequisicaoController {
-    private RequisicaoDAO requisicaoDAO;
-    private AbrirRequisicaoView view;
+    private final Requisicoes requisicoes;
+    private final AbrirRequisicaoView view;
+    private  MesaController mesaController;
     
     
     
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
-        this.requisicaoDAO = RequisicaoDAO.getInstance();
+        this.mesaController = new MesaController();
+        this.requisicoes = Requisicoes.getInstance();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
             abrirRequisicao();
+            sair();
         });
         
         this.view.getCancelaBtn().addActionListener((e) -> {
@@ -42,7 +45,10 @@ public class AbrirRequisicaoController {
     }
     
     //public void abreView(){this.view.setVisible(true);}
-    
+    private void sair() {
+        this.view.dispose();
+    }
+     
     public void abrirRequisicao(){
         //pegar os dados dos campos da view
         String nomeCliente = view.getNomeClienteField().getText();
@@ -50,9 +56,10 @@ public class AbrirRequisicaoController {
         int quantPessoas = Integer.parseInt(view.getQuantPessoasField().getText());
         
         Cliente cliente = new Cliente(nomeCliente, cpfCliente);
+        mesaController.alocarMesa(cliente, quantPessoas);
         Requisicao r = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
         
-        requisicaoDAO.addRequisicao(r);
+        requisicoes.addRequisicao(r);
         
         JOptionPane.showMessageDialog(view, "Requisicao salva com sucesso!");
         
