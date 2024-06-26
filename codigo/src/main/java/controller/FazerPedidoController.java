@@ -32,6 +32,7 @@ public class FazerPedidoController {
         this.view = new FazerPedidoView();
         this.pedidoDAO = PedidoDAO.getInstance();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.produtoDAO = ProdutoDAO.getInstance();
         
         carregaTabela();
         

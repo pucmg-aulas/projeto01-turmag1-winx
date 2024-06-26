@@ -6,6 +6,8 @@ package main;
 
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
+import controller.CadastrarProdutoController;
+import controller.FazerPedidoController;
 import controller.MesaController;
 //import controller.MesasController;
 import dao.RequisicaoDAO;
@@ -38,6 +40,8 @@ public class Main extends javax.swing.JFrame {
 
         abrirRequisicaoBtn1 = new javax.swing.JButton();
         verMesas = new javax.swing.JButton();
+        fazerPedido = new javax.swing.JButton();
+        cadastraProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,25 +64,51 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        fazerPedido.setText("Fazer Pedido");
+        fazerPedido.setToolTipText("");
+        fazerPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fazerPedidoActionPerformed(evt);
+            }
+        });
+
+        cadastraProduto.setText("Cadastrar produto");
+        cadastraProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastraProdutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(abrirRequisicaoBtn1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(abrirRequisicaoBtn1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(fazerPedido)))
                 .addGap(90, 90, 90)
-                .addComponent(verMesas)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cadastraProduto)
+                    .addComponent(verMesas))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
+                .addContainerGap(184, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(abrirRequisicaoBtn1)
                     .addComponent(verMesas))
-                .addGap(98, 98, 98))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fazerPedido)
+                    .addComponent(cadastraProduto))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -96,6 +126,14 @@ public class Main extends javax.swing.JFrame {
 
         new MesaController();
     }//GEN-LAST:event_verMesasActionPerformed
+
+    private void fazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazerPedidoActionPerformed
+        new FazerPedidoController();
+    }//GEN-LAST:event_fazerPedidoActionPerformed
+
+    private void cadastraProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraProdutoActionPerformed
+        new CadastrarProdutoController();
+    }//GEN-LAST:event_cadastraProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +180,8 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirRequisicaoBtn1;
+    private javax.swing.JButton cadastraProduto;
+    private javax.swing.JButton fazerPedido;
     private javax.swing.JButton verMesas;
     // End of variables declaration//GEN-END:variables
 }
