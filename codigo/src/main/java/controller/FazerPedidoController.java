@@ -50,7 +50,7 @@ public class FazerPedidoController {
         });
         
         this.view.getCancelaBtn().addActionListener((e) -> {
-            //cancelar();
+            cancelar();
         });
         
         this.view.setVisible(true);
@@ -117,6 +117,14 @@ public class FazerPedidoController {
             JOptionPane.showMessageDialog(view, "Selecione uma linha primeiro!");
         }
        
+    }
+    
+     private void sair() {
+        this.view.dispose();
+    }
+    
+     private void cancelar() {
+        this.view.dispose();
     }
     
     

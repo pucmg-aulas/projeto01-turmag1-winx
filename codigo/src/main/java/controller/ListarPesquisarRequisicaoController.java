@@ -20,7 +20,7 @@ import view.ListarPesquisarRequisicaoView;
  */
 public class ListarPesquisarRequisicaoController {
     
-    private final ListarPesquisarRequisicaoView view;
+    private ListarPesquisarRequisicaoView view;
     private final RequisicoesDAO requisicoes;
 
     public ListarPesquisarRequisicaoController() throws FormatoInvalidoException {

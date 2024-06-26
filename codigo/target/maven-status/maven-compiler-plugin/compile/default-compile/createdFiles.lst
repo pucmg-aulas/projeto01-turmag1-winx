@@ -11,7 +11,6 @@ view\CadastrarMesaView$2.class
 view\CadastrarProdutoView.class
 view\ListarPesquisarRequisicaoView$1.class
 restaurante\Produto.class
-view\FazerPedidoView$3.class
 controller\ListarPesquisarRequisicaoController.class
 main\Restaurante.class
 model\Cliente.class
@@ -27,17 +26,22 @@ controller\AbrirRequisicaoController.class
 view\MesaView$1.class
 view\CadastrarProdutoView$3.class
 main\Main$3.class
-view\FazerPedidoView$2.class
 controller\FazerPedidoController.class
 controller\CadastrarMesaController.class
 view\MesaView$4.class
 view\CadastrarMesaView$4.class
+<<<<<<< HEAD
 view\FazerPedidoView.class
 controller\CadastrarProdutoController.class
 view\AbrirRequisicaoView$3.class
 controller\MesaController.class
 restaurante\Prato.class
 view\CadastrarProdutoView$2.class
+=======
+view\AbrirRequisicaoView$3.class
+controller\MesaController.class
+restaurante\Prato.class
+>>>>>>> 740a97e45395c8d79a2cfa1576af6cb22487660f
 view\ListarPesquisarRequisicaoView.class
 view\ListarPesquisarRequisicaoView$3.class
 controller\CadastrarMesaController$1.class
@@ -50,7 +54,6 @@ view\AbrirRequisicaoView$1.class
 dao\AbstractDAO.class
 view\MesaView$3.class
 model\Pedido.class
-view\FazerPedidoView$1.class
 main\Main$2.class
 view\ListarPesquisarRequisicaoView$2.class
 model\Mesa.class

@@ -71,6 +71,7 @@ public class Main extends javax.swing.JFrame {
                 btnAbrirRequisicaoActionPerformed(evt);
             }
         });
+        getContentPane().add(abrirRequisicaoBtn1, java.awt.BorderLayout.CENTER);
 
         btnPesquisarRequisicao.setText("Pesquisar Requisicao");
         btnPesquisarRequisicao.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,6 +217,14 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListarProdutosActionPerformed
 
+    private void cadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarProdutoActionPerformed
+        new CadastrarProdutoController();
+    }//GEN-LAST:event_cadastrarProdutoActionPerformed
+
+    private void fazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazerPedidoActionPerformed
+        new FazerPedidoController();
+    }//GEN-LAST:event_fazerPedidoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -252,6 +261,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton btnAbrirPedido;
     private javax.swing.JButton btnAbrirRequisicao;
     private javax.swing.JButton btnCadCliente;
@@ -265,5 +275,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+=======
+    private javax.swing.JButton abrirRequisicaoBtn1;
+    private javax.swing.JButton cadastrarProduto;
+    private javax.swing.JButton fazerPedido;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton verMesas;
+>>>>>>> 740a97e45395c8d79a2cfa1576af6cb22487660f
     // End of variables declaration//GEN-END:variables
 }
