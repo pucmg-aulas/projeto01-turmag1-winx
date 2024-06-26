@@ -21,6 +21,7 @@ public class Requisicao implements Serializable{
     private Mesa mesa;
     private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
     private final double TAXA = 0.10;
+    
 
 
 
@@ -78,7 +79,7 @@ public class Requisicao implements Serializable{
     
     @Override
     public String toString() {
-        return getClienteNome() + " - " + mesa;
+        return getClienteNome() + "%" + mesa + "%" + quantPessoas + "%" + calculaTotalComTaxa();
     }
     
 }

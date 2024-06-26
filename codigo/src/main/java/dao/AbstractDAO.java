@@ -32,7 +32,7 @@ public class AbstractDAO {
         }
     }
      
-     public List recuperar(String local)
+     public List leitura(String local)
     {
         List retorno = new ArrayList();
         try

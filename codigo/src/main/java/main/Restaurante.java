@@ -4,7 +4,7 @@
  */
 package main;
 
-import dao.RequisicaoDAO;
+import dao.RequisicoesDAO;
 import java.time.LocalDateTime;
 import model.Requisicao;
 import model.Cliente;
@@ -16,7 +16,7 @@ import model.Cliente;
 public class Restaurante extends javax.swing.JFrame {
     
     public static void main(String args[]){
-        RequisicaoDAO requisicoesDAO = RequisicaoDAO.getInstance();
+        RequisicoesDAO requisicoesDAO = RequisicoesDAO.getInstance();
         Cliente cliente = new Cliente("Isadora", "078.984.827-78");
         Requisicao requisicao = new Requisicao(LocalDateTime.now(), 4, cliente);
         requisicoesDAO.addRequisicao(requisicao);
