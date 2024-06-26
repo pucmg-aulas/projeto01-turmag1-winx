@@ -9,6 +9,7 @@ import exception.FormatoInvalidoException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Requisicao;
@@ -69,7 +70,7 @@ public class ListarPesquisarRequisicaoController {
             }
         });**/
         
-        
+        this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.view.setVisible(true);
         
     }

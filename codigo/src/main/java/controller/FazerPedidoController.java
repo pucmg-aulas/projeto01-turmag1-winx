@@ -104,7 +104,7 @@ public class FazerPedidoController {
                 
                 if(produto.getEstoque() >= quantProduto){
                     produto.setEstoque(produto.getEstoque() - quantProduto);
-                    
+                    requisicao.getListaPedidos().add(pedido);
                 }else if(produto.getEstoque() == 0){
                     produtoDAO.removerProduto(produto);
                 }
