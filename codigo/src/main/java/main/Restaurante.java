@@ -7,7 +7,7 @@ package main;
 import dao.Requisicoes;
 import java.time.LocalDateTime;
 import model.Requisicao;
-import restaurante.Cliente;
+import model.Cliente;
 
 /**
  *

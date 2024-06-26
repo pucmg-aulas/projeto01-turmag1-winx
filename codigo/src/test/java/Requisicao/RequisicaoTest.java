@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import restaurante.Bebida;
-import restaurante.Cliente;
+import model.Cliente;
 import restaurante.Mesa;
 import restaurante.Pedido;
 import restaurante.Produto;

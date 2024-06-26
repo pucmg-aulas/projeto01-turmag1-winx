@@ -6,7 +6,10 @@ package main;
 
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
+import controller.MesaController;
+//import controller.MesasController;
 import dao.Requisicoes;
+import view.MesaView;
 
 /**
  *
@@ -33,19 +36,27 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        abrirRequisicaoBtn = new javax.swing.JButton();
+        abrirRequisicaoBtn1 = new javax.swing.JButton();
+        verMesas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        abrirRequisicaoBtn.setText("Abrir Requisição");
-        abrirRequisicaoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        abrirRequisicaoBtn1.setText("Abrir Requisição");
+        abrirRequisicaoBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                abrirRequisicaoBtnMouseClicked(evt);
+                abrirRequisicaoBtn1MouseClicked(evt);
             }
         });
-        abrirRequisicaoBtn.addActionListener(new java.awt.event.ActionListener() {
+        abrirRequisicaoBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirRequisicaoBtnActionPerformed(evt);
+                abrirRequisicaoBtn1ActionPerformed(evt);
+            }
+        });
+
+        verMesas.setText("Ver Mesas");
+        verMesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verMesasActionPerformed(evt);
             }
         });
 
@@ -54,21 +65,26 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(abrirRequisicaoBtn)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addComponent(abrirRequisicaoBtn1)
+                .addGap(90, 90, 90)
+                .addComponent(verMesas)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
-                .addComponent(abrirRequisicaoBtn)
-                .addGap(105, 105, 105))
+                .addContainerGap(172, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(abrirRequisicaoBtn1)
+                    .addComponent(verMesas))
+                .addGap(98, 98, 98))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
      private void sair() {
         this.dispose();
     }
@@ -76,10 +92,20 @@ public class Main extends javax.swing.JFrame {
         new AbrirRequisicaoController();
         sair();
     }//GEN-LAST:event_abrirRequisicaoBtnActionPerformed
+=======
+    private void abrirRequisicaoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1MouseClicked
+        
+    }//GEN-LAST:event_abrirRequisicaoBtn1MouseClicked
+>>>>>>> ff4673062edce217099f399c915979beef205281
 
-    private void abrirRequisicaoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnMouseClicked
-    
-    }//GEN-LAST:event_abrirRequisicaoBtnMouseClicked
+    private void abrirRequisicaoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1ActionPerformed
+        new AbrirRequisicaoController();
+    }//GEN-LAST:event_abrirRequisicaoBtn1ActionPerformed
+
+    private void verMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMesasActionPerformed
+
+        new MesaController();
+    }//GEN-LAST:event_verMesasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,14 +143,15 @@ public class Main extends javax.swing.JFrame {
     }
 
     public JButton getAbrirRequisicaoBtn() {
-        return abrirRequisicaoBtn;
+        return abrirRequisicaoBtn1;
     }
 
     public void setAbrirRequisicaoBtn(JButton abrirRequisicaoBtn) {
-        this.abrirRequisicaoBtn = abrirRequisicaoBtn;
+        this.abrirRequisicaoBtn1 = abrirRequisicaoBtn;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abrirRequisicaoBtn;
+    private javax.swing.JButton abrirRequisicaoBtn1;
+    private javax.swing.JButton verMesas;
     // End of variables declaration//GEN-END:variables
 }
