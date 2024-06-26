@@ -20,10 +20,9 @@ public class MesaView extends javax.swing.JFrame {
     /**
      * Creates new form MesaView
      */
-    private MesaController mesaController;
+
     
     public MesaView() {
-        this.mesaController = new MesaController();
         initComponents();
     }
 

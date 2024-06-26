@@ -3,7 +3,6 @@ restaurante\Pedido.class
 restaurante\Prato.class
 restaurante\Restaurante.class
 view\AbrirRequisicaoView$2.class
-restaurante\Cliente.class
 controller\CadastrarMesaController$1.class
 main\Main.class
 view\AbrirRequisicaoView$5.class

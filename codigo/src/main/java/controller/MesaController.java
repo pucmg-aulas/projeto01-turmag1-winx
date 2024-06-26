@@ -32,7 +32,7 @@ public class MesaController {
         Iterator<Mesa> it = mesas.getMesas().iterator();
         while (it.hasNext()) {
             Mesa m = it.next();
-            tm.addRow(new Object[]{m.getNumero(),m.getCliente().getNome(), m.isOcupado()});
+            tm.addRow(new Object[]{m.getNumero(), m.getCliente().getNome(), m.isOcupado(), m.getQuantidade()});
         }
         view.getMesas().setModel(tm);
     }
