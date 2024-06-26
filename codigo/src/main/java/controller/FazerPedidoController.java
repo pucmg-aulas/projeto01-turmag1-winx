@@ -6,7 +6,10 @@ package controller;
 
 import dao.PedidoDAO;
 import dao.ProdutoDAO;
+import exception.FormatoInvalidoException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -34,14 +37,23 @@ public class FazerPedidoController {
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.produtoDAO = ProdutoDAO.getInstance();
         
-        carregaTabela();
+        try{
+            carregaTabela();
+        }catch(FormatoInvalidoException e){
+            System.out.println("message: " + e.getMessage());
+        }
+        
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
-            fazerPedido();
+            try {
+                fazerPedido();
+            } catch (FormatoInvalidoException ex) {
+                Logger.getLogger(FazerPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         
         this.view.getCancelaBtn().addActionListener((e) -> {
-            //cancelar();
+            cancelar();
         });
         
         this.view.setVisible(true);
@@ -50,22 +62,37 @@ public class FazerPedidoController {
     
     
     
-    private void carregaTabela(){
+    private void carregaTabela() throws FormatoInvalidoException{
         Object colunas[] = {"Nome", "Preco", "Estoque"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
        
         tm.setNumRows(0);
-        Iterator<Produto> it = produtoDAO.getProdutos().iterator();
-        while (it.hasNext()) {
-            Produto c = it.next();
-            String produto = c.toString();
-            String linha[] = produto.split("%");
-            tm.addRow(new Object[]{linha[0], linha[1]});
+        
+        System.out.println(produtoDAO.getProdutos().size());
+        
+        for(Produto produto: produtoDAO.getProdutos()){
+            try{
+                
+                String prod = produto.toString();
+                String[] linha = prod.split("%");
+                
+                 if (linha.length == 4) {
+                    // Adicionando a linha na tabela
+                    tm.addRow(new Object[]{linha[0], linha[1], linha[2], linha[3]});
+                } else {
+                    // Lançando exceção personalizada
+                    throw new FormatoInvalidoException("Formato de requisicao inválido: " + prod);
+                }
+            
+            } catch (ArrayIndexOutOfBoundsException | FormatoInvalidoException e){
+                throw new FormatoInvalidoException("Erro ao processar a requisicao: " + e.getMessage());
+            }
         }
+        
         view.getTbProdutos().setModel(tm);
     }
     
-    public void fazerPedido() {
+    public void fazerPedido() throws FormatoInvalidoException{
                
        int quantProduto =  Integer.parseInt(view.getQuantProdutoField().getText());
        
@@ -97,6 +124,14 @@ public class FazerPedidoController {
         }
        
        
+    }
+    
+     private void sair() {
+        this.view.dispose();
+    }
+    
+     private void cancelar() {
+        this.view.dispose();
     }
     
     

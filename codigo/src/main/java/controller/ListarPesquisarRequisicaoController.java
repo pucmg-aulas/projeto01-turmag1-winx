@@ -21,44 +21,13 @@ import view.ListarPesquisarRequisicaoView;
  */
 public class ListarPesquisarRequisicaoController {
     
-    private final ListarPesquisarRequisicaoView view;
+    private ListarPesquisarRequisicaoView view;
     private final RequisicoesDAO requisicoes;
 
     public ListarPesquisarRequisicaoController() throws FormatoInvalidoException {
     
         this.requisicoes = RequisicoesDAO.getInstance();
         this.view = new ListarPesquisarRequisicaoView();
-        
-        carregaTabela(requisicoes.getRequisicoes());
-        
-        this.view.getBtnPesquisar().addActionListener((e) -> {
-            try {
-                pesquisarRequisicao();
-            } catch (FormatoInvalidoException ex) {
-                Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        
-       /** this.view.getTxtCliente().getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                try {
-                    pesquisarRequisicao();
-                } catch (FormatoInvalidoException ex) {
-                    Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });**/
         
         
         this.view.setVisible(true);

@@ -43,6 +43,9 @@ public class Main extends javax.swing.JFrame {
 
         abrirRequisicaoBtn1 = new javax.swing.JButton();
         verMesas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        cadastrarProduto = new javax.swing.JButton();
+        fazerPedido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +60,7 @@ public class Main extends javax.swing.JFrame {
                 abrirRequisicaoBtn1ActionPerformed(evt);
             }
         });
+        getContentPane().add(abrirRequisicaoBtn1, java.awt.BorderLayout.CENTER);
 
         verMesas.setText("Ver Mesas");
         verMesas.addActionListener(new java.awt.event.ActionListener() {
@@ -64,27 +68,31 @@ public class Main extends javax.swing.JFrame {
                 verMesasActionPerformed(evt);
             }
         });
+        getContentPane().add(verMesas, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(abrirRequisicaoBtn1)
-                .addGap(90, 90, 90)
-                .addComponent(verMesas)
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(abrirRequisicaoBtn1)
-                    .addComponent(verMesas))
-                .addGap(98, 98, 98))
-        );
+        jButton1.setText("Ver Requisições");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, java.awt.BorderLayout.CENTER);
+
+        cadastrarProduto.setText("Cadastrar produto");
+        cadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarProdutoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrarProduto, java.awt.BorderLayout.LINE_END);
+
+        fazerPedido.setText("Fazer pedido");
+        fazerPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fazerPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(fazerPedido, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,6 +118,14 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarProdutoActionPerformed
+        new CadastrarProdutoController();
+    }//GEN-LAST:event_cadastrarProdutoActionPerformed
+
+    private void fazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazerPedidoActionPerformed
+        new FazerPedidoController();
+    }//GEN-LAST:event_fazerPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +172,9 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirRequisicaoBtn1;
+    private javax.swing.JButton cadastrarProduto;
+    private javax.swing.JButton fazerPedido;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton verMesas;
     // End of variables declaration//GEN-END:variables
 }
