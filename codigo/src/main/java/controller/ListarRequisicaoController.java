@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.Requisicoes;
+import dao.RequisicaoDAO;
 import java.util.Iterator;
 import model.Requisicao;
 import view.ListarRequisicaoView;
@@ -16,11 +16,11 @@ import view.ListarRequisicaoView;
 public class ListarRequisicaoController {
     
      private ListarRequisicaoView view;
-    private Requisicoes requisicoes;
+    private RequisicaoDAO requisicoes;
 
     public ListarRequisicaoController() {
     
-        this.requisicoes = Requisicoes.getInstance();
+        this.requisicoes = RequisicaoDAO.getInstance();
         this.view = new ListarRequisicaoView();
         
         carregaTabela();

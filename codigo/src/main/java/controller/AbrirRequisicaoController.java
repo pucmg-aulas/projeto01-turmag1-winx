@@ -17,7 +17,7 @@ import model.Cliente;
  * @author imcat
  */
 public class AbrirRequisicaoController {
-    private final Requisicoes requisicoes;
+    private final RequisicaoDAO requisicoes;
     private final AbrirRequisicaoView view;
     private  MesaController mesaController;
     
@@ -26,7 +26,7 @@ public class AbrirRequisicaoController {
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
         this.mesaController = new MesaController();
-        this.requisicoes = Requisicoes.getInstance();
+        this.requisicoes = RequisicaoDAO.getInstance();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         this.view.getConfirmaBtn().addActionListener((e) -> {

@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import model.Pedido;
+import model.Produto;
 
 /**
  *
@@ -17,6 +18,7 @@ public class PedidoDAO extends AbstractDAO {
     
     private List<Pedido> pedidos;
     private String path;
+    private ProdutoDAO produtoDAO;
     
     private static PedidoDAO instance;
     
@@ -58,4 +60,41 @@ public class PedidoDAO extends AbstractDAO {
     private void carregarPedido(){
         this.pedidos.addAll(recuperar(path));
     }
+    
+    /*public Produto buscarPedidoPorNome(String nome){
+        
+        for (Pedido pedido : getPedidos()) {
+            if(produto.getNome().equals(nome)){
+                return produto;
+            }
+        }
+        return null;
+    }*/
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public ProdutoDAO getProdutoDAO() {
+        return produtoDAO;
+    }
+
+    public void setProdutoDAO(ProdutoDAO produtoDAO) {
+        this.produtoDAO = produtoDAO;
+    }
+    
+    
+    
 }

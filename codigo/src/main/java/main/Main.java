@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
 import controller.MesaController;
 //import controller.MesasController;
-import dao.Requisicoes;
+import dao.RequisicaoDAO;
 import view.MesaView;
 
 /**
@@ -22,7 +22,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        Requisicoes requisicoes = Requisicoes.getInstance();
+        RequisicaoDAO requisicoes = RequisicaoDAO.getInstance();
         this.setVisible(true);
         
     }

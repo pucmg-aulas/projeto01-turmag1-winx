@@ -5,7 +5,7 @@
 package model;
 
 import java.io.Serializable;
-import restaurante.Produto;
+import model.Produto;
 
 /**
  *
