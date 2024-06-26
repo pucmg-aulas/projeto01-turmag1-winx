@@ -8,14 +8,17 @@ package dao;
  *
  * @author thiag
  */
-import model.Mesa;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import model.Cliente;
+import model.Mesa;
 
-public class MesaDAO {
+public class MesaDAO extends AbstractDAO {
+
     private static MesaDAO instance;
     private List<Mesa> mesas = new ArrayList();
+    private String path;
 
     private MesaDAO() {
         inicializarMesas();
@@ -37,14 +40,6 @@ public class MesaDAO {
         return mesas;
     }
 
-    public void adicionarMesa(Mesa mesa) {
-        mesas.add(mesa);
-    }
-
-    public void removerMesa(Mesa mesa) {
-        mesas.remove(mesa);
-    }
-
     public Mesa buscarMesaPorNumero(String numero) {
         for (Mesa m : mesas) {
             if (numero.equals(m.getNumero())) {
@@ -53,4 +48,19 @@ public class MesaDAO {
         }
         return null;
     }
+
+    public void adicionarMesa(Mesa mesa) {
+        this.mesas.add(mesa);
+        gravar(path, mesas);
+    }
+
+    public void removerMesa(Mesa mesa) {
+        this.mesas.remove(mesa);
+        gravar(path, mesas);
+    }
+
+    private void carregarMesas() {
+        this.mesas.addAll(recuperar(path));
+    }
+
 }

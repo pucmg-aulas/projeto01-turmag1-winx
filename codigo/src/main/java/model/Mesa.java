@@ -6,12 +6,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.Serializable;
 /**
  *
  * @author imcat
  */
-public class Mesa {
+public class Mesa implements Serializable {
     private int capacidade;
     private boolean ocupado;
     private int numero;
