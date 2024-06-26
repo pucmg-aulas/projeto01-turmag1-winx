@@ -100,19 +100,9 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void sair() {
-        this.dispose();
-    }
-    private void abrirRequisicaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnActionPerformed
-       
-        //sair();
-    }//GEN-LAST:event_abrirRequisicaoBtnActionPerformed
-
     private void abrirRequisicaoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1MouseClicked
          AbrirRequisicaoController abrirRequisicaoController = new AbrirRequisicaoController();
     }//GEN-LAST:event_abrirRequisicaoBtn1MouseClicked
-
 
     private void abrirRequisicaoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1ActionPerformed
         
