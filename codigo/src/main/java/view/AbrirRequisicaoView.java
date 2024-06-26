@@ -74,6 +74,11 @@ public class AbrirRequisicaoView extends javax.swing.JFrame {
         cancelaBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cancelaBtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelaBtn.setText("Cancelar");
+        cancelaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelaBtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -152,6 +157,10 @@ public class AbrirRequisicaoView extends javax.swing.JFrame {
     private void confirmaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmaBtnActionPerformed
+
+    private void cancelaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelaBtnActionPerformed
 
     /**
      * @param args the command line arguments
