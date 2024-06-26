@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.Requisicoes;
+import dao.RequisicaoDAO;
 import java.time.LocalDateTime;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,14 +17,14 @@ import restaurante.Cliente;
  * @author imcat
  */
 public class AbrirRequisicaoController {
-    private Requisicoes requisicoes;
+    private RequisicaoDAO requisicaoDAO;
     private AbrirRequisicaoView view;
     
     
     
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
-        this.requisicoes = Requisicoes.getInstance();
+        this.requisicaoDAO = RequisicaoDAO.getInstance();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
@@ -52,7 +52,7 @@ public class AbrirRequisicaoController {
         Cliente cliente = new Cliente(nomeCliente, cpfCliente);
         Requisicao r = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
         
-        requisicoes.addRequisicao(r);
+        requisicaoDAO.addRequisicao(r);
         
         JOptionPane.showMessageDialog(view, "Requisicao salva com sucesso!");
         

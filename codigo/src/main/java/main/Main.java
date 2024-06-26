@@ -6,7 +6,7 @@ package main;
 
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
-import dao.Requisicoes;
+import dao.RequisicaoDAO;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        Requisicoes requisicoes = Requisicoes.getInstance();
+        RequisicaoDAO requisicoes = RequisicaoDAO.getInstance();
         this.setVisible(true);
         
     }

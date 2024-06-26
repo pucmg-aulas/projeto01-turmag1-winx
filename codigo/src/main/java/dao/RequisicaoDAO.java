@@ -13,21 +13,21 @@ import model.Requisicao;
  *
  * @author imcat
  */
-public class Requisicoes extends AbstractDAO {
+public class RequisicaoDAO extends AbstractDAO {
     
     private List<Requisicao> requisicoes;
     private String path;
     
-    private static Requisicoes instance;
+    private static RequisicaoDAO instance;
     
-    private Requisicoes() {
+    private RequisicaoDAO() {
         this.requisicoes = new ArrayList<>();
-        this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "requisicoes.ser").toString();
+        this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "requisicaoDAO.ser").toString();
     }
     
-    public static Requisicoes getInstance(){
+    public static RequisicaoDAO getInstance(){
         if(instance == null){
-            instance = new Requisicoes();
+            instance = new RequisicaoDAO();
         }
         return instance;
     }

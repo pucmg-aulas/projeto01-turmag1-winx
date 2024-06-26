@@ -14,7 +14,6 @@ view\CadastrarMesaView.class
 main\Restaurante.class
 view\CadastrarMesaView$3.class
 view\AbrirRequisicaoView$4.class
-dao\Requisicoes.class
 view\AbrirRequisicaoView.class
 view\AbrirRequisicaoView$1.class
 dao\AbstractDAO.class
