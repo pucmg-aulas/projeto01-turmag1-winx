@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import model.Mesa;
 import model.Requisicao;
 
 public class Restaurante {
@@ -23,13 +24,13 @@ public class Restaurante {
         Scanner scanner = new Scanner(System.in);
         int op = 0;
 
-        Mesa mesa1 = new Mesa(4, false);
-        Mesa mesa2 = new Mesa(6, false);
-        Mesa mesa3 = new Mesa(8, false);
+      //  Mesa mesa1 = new Mesa(4, false, 1);
+       // Mesa mesa2 = new Mesa(6, false, 2);
+       // Mesa mesa3 = new Mesa(8, false, 3);
 
-        mesas.add(mesa1);
-        mesas.add(mesa2);
-        mesas.add(mesa3);
+      // mesas.add(mesa1);
+       // mesas.add(mesa2);
+       // mesas.add(mesa3);
 
         listaProdutos.add(new Bebida("Água", 4.00, 20));
         listaProdutos.add(new Bebida("Suco", 6.00, 20));
@@ -98,10 +99,10 @@ public class Restaurante {
 
     private static void listarMesas() {
         System.out.println("\n** Mesas **");
-        for (Mesa mesa : mesas) {
-            System.out.println((mesas.indexOf(mesa) + 1) + ". Mesa com capacidade para: " + mesa.getQuantidade()
-                    + " pessoas." + (mesa.getOcupado() ? " Status: Ocupada" : " Status: Livre") + "\n");
-        }
+       // for (Mesa mesa : mesas) {
+        //    System.out.println((mesas.indexOf(mesa) + 1) + ". Mesa com capacidade para: " + mesa.getQuantidade()
+        //            + " pessoas." + (mesa.getOcupado() ? " Status: Ocupada" : " Status: Livre") + "\n");
+        //}
     }
 
     private static void listarRequisicoesAbertas() {
@@ -172,7 +173,7 @@ public class Restaurante {
 
     public static Mesa verificarMesasDisponiveis(int quantPessoas) {
         for (Mesa mesa : mesas) {
-            if (mesa.getOcupado() == false && mesa.verificaCapacidade(quantPessoas)) {
+            if (mesa.isOcupado() == false && mesa.verificaCapacidade(quantPessoas)) {
                 return mesa;
             }
         }
@@ -196,7 +197,7 @@ public class Restaurante {
             }
 
             System.out.println("\nO cliente " + requisicao.getClienteNome()
-                    + " foi alocado com sucesso a uma mesa com capacidade para " + m.getQuantidade() + " pessoas.\n");
+                    + " foi alocado com sucesso a uma mesa com capacidade para " + m.getCapacidade() + " pessoas.\n");
         }
         if (m == null && !listasEspera.contains(requisicao)) {
             perguntarClienteQuerEntrarListaDeEspera(requisicao);
@@ -255,9 +256,9 @@ public class Restaurante {
         System.out.println("Quantos lugares a mesa possui?");
         quantidade = scanner.nextInt();
 
-        Mesa m = new Mesa(quantidade, false);
+        //Mesa m = new Mesa(quantidade, false, 2);
 
-        adicionarMesaNoVetor(m);
+        //adicionarMesaNoVetor(m);
     }
 
     public static void adicionarMesaNoVetor(Mesa m) {
@@ -293,7 +294,7 @@ public class Restaurante {
 
         //Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), requisicao, produtoPedido, quantidade );
         Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), produtoPedido, quantidade );
-        requisicao.adicionarPedidoNoVetor(p);
+        //requisicao.adicionarPedidoNoVetor(p);
         System.out.println("\nTotal do pedido : " + calculaTotalPedido(produtoPedido, quantidade));
         produtoPedido.atualizaEstoque(-quantidade);
     }

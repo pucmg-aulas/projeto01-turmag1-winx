@@ -4,7 +4,6 @@
  */
 package dao;
 
-import java.io.Serializable;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,15 +48,16 @@ public class RequisicoesDAO extends AbstractDAO {
         gravar(path, requisicoes);
     }
     
-    public Requisicao buscarRequisicao(String nomeCliente){
-        
+    public List<Requisicao> buscarRequisicao(String nomeCliente){
+        List<Requisicao> requisicoesEncontradas = new ArrayList<>();
         // adicionar tratamento de dados
         for(Requisicao requisicao : requisicoes){
             if (requisicao.getClienteNome().equals(nomeCliente)){
-                 return requisicao;
+                 requisicoesEncontradas.add(requisicao);
             }
         }
-        return null;
+        
+        return requisicoesEncontradas;
     }
     
     public void removerRequisicao(Requisicao requisicao){

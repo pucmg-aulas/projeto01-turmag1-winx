@@ -6,10 +6,14 @@ package controller;
 
 import dao.RequisicoesDAO;
 import exception.FormatoInvalidoException;
-import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import model.Requisicao;
-import view.ListarRequisicaoView;
+import view.ListarPesquisarRequisicaoView;
 
 /**
  *
@@ -17,30 +21,67 @@ import view.ListarRequisicaoView;
  */
 public class ListarPesquisarRequisicaoController {
     
-    private ListarRequisicaoView view;
+    private final ListarPesquisarRequisicaoView view;
     private final RequisicoesDAO requisicoes;
 
     public ListarPesquisarRequisicaoController() throws FormatoInvalidoException {
     
         this.requisicoes = RequisicoesDAO.getInstance();
-        this.view = new ListarRequisicaoView();
+        this.view = new ListarPesquisarRequisicaoView();
         
-        carregaTabela();
+        carregaTabela(requisicoes.getRequisicoes());
+        
+        this.view.getBtnPesquisar().addActionListener((e) -> {
+            try {
+                pesquisarRequisicao();
+            } catch (FormatoInvalidoException ex) {
+                Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+       /** this.view.getTxtCliente().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                try {
+                    pesquisarRequisicao();
+                } catch (FormatoInvalidoException ex) {
+                    Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });**/
+        
         
         this.view.setVisible(true);
         
     }
     
+    private void pesquisarRequisicao() throws FormatoInvalidoException{
+        
+        String nomeCliente = view.getTxtCliente().getText();
+        List<Requisicao> requisicoesEncontradas = requisicoes.buscarRequisicao(nomeCliente);
+        
+        carregaTabela(requisicoesEncontradas);
+        
+    }
     
-    private void carregaTabela() throws FormatoInvalidoException{
+    
+    private void carregaTabela(List<Requisicao> requisicoes) throws FormatoInvalidoException{
         Object colunas[] = {"Cliente", "Mesa", "Quantidade de Pessoas", "Total"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
        
         tm.setNumRows(0);
         
-        System.out.println(requisicoes.getRequisicoes().size());
-        
-        for(Requisicao requisicao : requisicoes.getRequisicoes()){
+        for(Requisicao requisicao : requisicoes){
             try{
                 
                 String req = requisicao.toString();

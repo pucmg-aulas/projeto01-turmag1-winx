@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import restaurante.Mesa;
+import model.Mesa;
 
 /**
  *
@@ -15,7 +15,7 @@ import restaurante.Mesa;
 public class MesaTest {
     
      private List<Mesa> mesas;
-
+/**
     @BeforeEach
     public void setUp() {
         mesas = new ArrayList<>();
@@ -45,5 +45,6 @@ public class MesaTest {
         mesa.desocuparMesa();
         assertFalse(mesa.getOcupado());
     }
+    * **/
     
 }

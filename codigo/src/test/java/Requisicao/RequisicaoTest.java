@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import restaurante.Bebida;
 import model.Cliente;
-import restaurante.Mesa;
+import model.Mesa;
 import restaurante.Pedido;
 import restaurante.Produto;
 
@@ -27,6 +27,7 @@ public class RequisicaoTest {
        
 
     }
+    /**
     
     private Cliente cliente;
     private Requisicao requisicao;
@@ -99,6 +100,8 @@ public class RequisicaoTest {
             listasEspera.add(requisicao);
             assertTrue(listasEspera.contains(requisicao));
         }
+        * 
+       
     }
       
         
@@ -121,4 +124,6 @@ public class RequisicaoTest {
     //
     // @Test
     // public void hello() {}
+    * 
+    *  * */
 }

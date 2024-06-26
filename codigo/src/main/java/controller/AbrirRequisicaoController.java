@@ -21,8 +21,6 @@ public class AbrirRequisicaoController {
     private final AbrirRequisicaoView view;
     private  MesaController mesaController;
     
-    
-    
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
         this.mesaController = new MesaController();
