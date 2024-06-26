@@ -6,10 +6,13 @@ package main;
 
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
+import controller.ListarRequisicaoController;
 import controller.MesaController;
 //import controller.MesasController;
-import dao.Requisicoes;
-import view.MesaView;
+import dao.RequisicoesDAO;
+import exception.FormatoInvalidoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +25,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        Requisicoes requisicoes = Requisicoes.getInstance();
+        RequisicoesDAO requisicoes = RequisicoesDAO.getInstance();
         this.setVisible(true);
         
     }
@@ -38,6 +41,7 @@ public class Main extends javax.swing.JFrame {
 
         abrirRequisicaoBtn1 = new javax.swing.JButton();
         verMesas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,15 +64,25 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ver Requisições");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(abrirRequisicaoBtn1)
-                .addGap(90, 90, 90)
-                .addComponent(verMesas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(abrirRequisicaoBtn1)
+                        .addGap(90, 90, 90)
+                        .addComponent(verMesas)))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,34 +92,45 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(abrirRequisicaoBtn1)
                     .addComponent(verMesas))
-                .addGap(98, 98, 98))
+                .addGap(37, 37, 37)
+                .addComponent(jButton1)
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
-     private void sair() {
+    
+    private void sair() {
         this.dispose();
     }
     private void abrirRequisicaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtnActionPerformed
-        new AbrirRequisicaoController();
-        sair();
+       
+        //sair();
     }//GEN-LAST:event_abrirRequisicaoBtnActionPerformed
-=======
+
     private void abrirRequisicaoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1MouseClicked
-        
+         AbrirRequisicaoController abrirRequisicaoController = new AbrirRequisicaoController();
     }//GEN-LAST:event_abrirRequisicaoBtn1MouseClicked
->>>>>>> ff4673062edce217099f399c915979beef205281
+
 
     private void abrirRequisicaoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1ActionPerformed
-        new AbrirRequisicaoController();
+        
     }//GEN-LAST:event_abrirRequisicaoBtn1ActionPerformed
 
     private void verMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMesasActionPerformed
 
-        new MesaController();
+        MesaController mesaController = new MesaController();
+        //sair();
     }//GEN-LAST:event_verMesasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            new ListarRequisicaoController();
+        } catch (FormatoInvalidoException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +177,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirRequisicaoBtn1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton verMesas;
     // End of variables declaration//GEN-END:variables
 }

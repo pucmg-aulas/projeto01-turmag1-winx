@@ -55,7 +55,7 @@ public class MesaDAO extends AbstractDAO {
     }
 
     private void carregarMesas() {
-        this.mesas.addAll(recuperar(path));
+        this.mesas.addAll(leitura(path));
     }
 
 }

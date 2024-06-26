@@ -4,6 +4,7 @@
  */
 package dao;
 
+import java.io.Serializable;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,29 +14,36 @@ import model.Requisicao;
  *
  * @author imcat
  */
-public class Requisicoes extends AbstractDAO {
+public class RequisicoesDAO extends AbstractDAO implements Serializable {
     
     private List<Requisicao> requisicoes;
+    
+    //Endereço do arquivo serializado que contém a coleção de carros
     private String path;
     
-    private static Requisicoes instance;
+    // Atributo da própria classe, estático, para implementar o Singleton
+    private static RequisicoesDAO instance;
     
-    private Requisicoes() {
+    private RequisicoesDAO() {
         this.requisicoes = new ArrayList<>();
         this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "requisicoes.ser").toString();
+        carregaRequisicoes();
     }
     
-    public static Requisicoes getInstance(){
+    public static RequisicoesDAO getInstance(){
         if(instance == null){
-            instance = new Requisicoes();
+            instance = new RequisicoesDAO();
         }
         return instance;
+    }
+    
+    private void carregaRequisicoes(){
+        this.requisicoes = super.leitura(path);
     }
     
     public void addRequisicao(Requisicao requisicao){
         this.requisicoes.add(requisicao);
         gravar(path, requisicoes);
-        getRequisicoes();
     }
     
     public Requisicao buscarRequisicao(String nomeCliente){
@@ -54,8 +62,9 @@ public class Requisicoes extends AbstractDAO {
         gravar(path, requisicoes);   
     }
     
-    public void getRequisicoes(){
-        this.requisicoes.addAll(recuperar(path));
+    public List<Requisicao> getRequisicoes() {
+        return requisicoes;
     }
+
 
 }
