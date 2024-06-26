@@ -69,7 +69,7 @@ public class Produto implements Serializable {
   
   @Override
     public String toString() {
-        return getNome() + "%" + getPreco() + "%" + getEstoque();
+        return nome + "%" + preco + "%" + estoque;
     }
 
 }

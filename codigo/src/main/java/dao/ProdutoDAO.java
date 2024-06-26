@@ -22,7 +22,7 @@ public class ProdutoDAO extends AbstractDAO {
 
     private ProdutoDAO() {
         this.produtos = new ArrayList<>();
-        this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "produtosDAO.txt").toString();
+        this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "produtosDAO.ser").toString();
     }
     
     public static ProdutoDAO getInstance() {
