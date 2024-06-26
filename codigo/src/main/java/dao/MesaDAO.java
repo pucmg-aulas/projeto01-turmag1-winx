@@ -11,10 +11,11 @@ package dao;
 import model.Mesa;
 import java.util.ArrayList;
 import java.util.List;
+import model.Cliente;
 
 public class MesaDAO {
     private static MesaDAO instance;
-    private List<Mesa> mesas;
+    private List<Mesa> mesas = new ArrayList();
 
     private MesaDAO() {
         inicializarMesas();
@@ -28,11 +29,16 @@ public class MesaDAO {
     }
 
     private void inicializarMesas() {
-        mesas = new ArrayList<>();
-        mesas.add(new Mesa(6, false, 1, null));
-        mesas.add(new Mesa(6, false, 2, null));
-        mesas.add(new Mesa(8, false, 3, null));
-        mesas.add(new Mesa(10, false, 4, null));
+        Cliente c = new Cliente("afaf", "afaf");
+        mesas.add(new Mesa(6, false, 1, c));
+        mesas.add(new Mesa(6, false, 2, c));
+        mesas.add(new Mesa(8, false, 3, c));
+        mesas.add(new Mesa(10, false, 4, c));
+        mesas.add(new Mesa(10, false, 4, c));
+        mesas.add(new Mesa(10, false, 4, c));
+        mesas.add(new Mesa(10, false, 4, c));
+        mesas.add(new Mesa(10, false, 4, c));
+        mesas.add(new Mesa(10, false, 4, c));
     }
 
     public List<Mesa> getMesas() {

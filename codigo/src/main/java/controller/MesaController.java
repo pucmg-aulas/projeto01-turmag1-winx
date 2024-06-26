@@ -24,7 +24,7 @@ public class MesaController {
         this.view.setVisible(true);
     }
     
-    private void carregaTabela(){
+    private void carregaTabela() {
         Object colunas[] = {"Número", "Cliente", "Ocupado", "Quantidade"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
        
@@ -32,7 +32,8 @@ public class MesaController {
         Iterator<Mesa> it = mesas.getMesas().iterator();
         while (it.hasNext()) {
             Mesa m = it.next();
-            tm.addRow(new Object[]{m.getNumero(), m.getCliente().getNome(), m.isOcupado(), m.getQuantidade()});
+            String clienteNome = m.getCliente() != null ? m.getCliente().getNome() : "N/A";
+            tm.addRow(new Object[]{m.getNumero(), clienteNome, m.isOcupado(), m.getQuantidade()});
         }
         view.getMesas().setModel(tm);
     }
