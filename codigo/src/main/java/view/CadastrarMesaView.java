@@ -116,8 +116,6 @@ public class CadastrarMesaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void confirmaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaBtnActionPerformed
-        
-        
         JOptionPane.showMessageDialog(this, "Mesa cadastrada com sucesso!");
     }//GEN-LAST:event_confirmaBtnActionPerformed
 

@@ -17,13 +17,15 @@ import model.Cliente;
  * @author imcat
  */
 public class AbrirRequisicaoController {
-    private Requisicoes requisicoes;
-    private AbrirRequisicaoView view;
+    private final Requisicoes requisicoes;
+    private final AbrirRequisicaoView view;
+    private  MesaController mesaController;
     
     
     
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
+        this.mesaController = new MesaController();
         this.requisicoes = Requisicoes.getInstance();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
@@ -50,6 +52,7 @@ public class AbrirRequisicaoController {
         int quantPessoas = Integer.parseInt(view.getQuantPessoasField().getText());
         
         Cliente cliente = new Cliente(nomeCliente, cpfCliente);
+        mesaController.alocarMesa(cliente, quantPessoas);
         Requisicao r = new Requisicao(LocalDateTime.now(), quantPessoas, cliente);
         
         requisicoes.addRequisicao(r);

@@ -12,19 +12,19 @@ import java.util.List;
  * @author imcat
  */
 public class Mesa {
-    private int quantidade;
+    private int capacidade;
     private boolean ocupado;
     private int numero;
     private Cliente cliente;
 
     public Mesa(int quantidade, boolean ocupado, int numero, Cliente cliente){
-        this.quantidade = quantidade;
+        this.capacidade = quantidade;
         this.ocupado = ocupado;
         this.numero = numero;
     }
 
-    public int getQuantidade(){
-        return quantidade;
+    public int getCapacidade(){
+        return capacidade;
     }
     
     public void setOcupado(boolean status){
@@ -44,7 +44,7 @@ public class Mesa {
     }
 
     public boolean verificaCapacidade(int quantPessoas){
-        return quantPessoas <= quantidade;
+        return quantPessoas <= capacidade;
     }
 
     public void setOcupado() {
