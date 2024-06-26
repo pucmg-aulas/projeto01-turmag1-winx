@@ -9,7 +9,6 @@ view\AbrirRequisicaoView$5.class
 view\CadastrarMesaView$2.class
 view\ListarPesquisarRequisicaoView$1.class
 restaurante\Produto.class
-view\FazerPedidoView$3.class
 controller\ListarPesquisarRequisicaoController.class
 main\Restaurante.class
 model\Cliente.class
@@ -19,21 +18,17 @@ view\AbrirRequisicaoView.class
 exception\FormatoInvalidoException.class
 restaurante\Bebida.class
 dao\ProdutoDAO.class
-controller\ListarPesquisarRequisicaoController$1.class
 view\CadastrarMesaView$1.class
 controller\AbrirRequisicaoController.class
 view\MesaView$1.class
 main\Main$3.class
-view\FazerPedidoView$2.class
 controller\FazerPedidoController.class
 controller\CadastrarMesaController.class
 view\MesaView$4.class
 view\CadastrarMesaView$4.class
-view\FazerPedidoView.class
 view\AbrirRequisicaoView$3.class
 controller\MesaController.class
 restaurante\Prato.class
-restaurante\Restaurante.class
 view\ListarPesquisarRequisicaoView.class
 view\ListarPesquisarRequisicaoView$3.class
 controller\CadastrarMesaController$1.class
@@ -47,7 +42,6 @@ dao\AbstractDAO.class
 view\MesaView$3.class
 main\Main$5.class
 model\Pedido.class
-view\FazerPedidoView$1.class
 main\Main$2.class
 view\ListarPesquisarRequisicaoView$2.class
 model\Mesa.class

@@ -33,14 +33,6 @@ public class FazerPedidoView extends javax.swing.JFrame {
         return tbProdutos;
     }
 
-    public JTextField getIdProdutoField() {
-        return idProdutoField;
-    }
-
-    public void setIdProdutoField(JTextField idProdutoField) {
-        this.idProdutoField = idProdutoField;
-    }
-
     public JTextField getQuantProdutoField() {
         return quantProdutoField;
     }
