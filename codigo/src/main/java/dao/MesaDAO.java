@@ -31,14 +31,6 @@ public class MesaDAO {
     private void inicializarMesas() {
         Cliente c = new Cliente("afaf", "afaf");
         mesas.add(new Mesa(6, false, 1, c));
-        mesas.add(new Mesa(6, false, 2, c));
-        mesas.add(new Mesa(8, false, 3, c));
-        mesas.add(new Mesa(10, false, 4, c));
-        mesas.add(new Mesa(10, false, 4, c));
-        mesas.add(new Mesa(10, false, 4, c));
-        mesas.add(new Mesa(10, false, 4, c));
-        mesas.add(new Mesa(10, false, 4, c));
-        mesas.add(new Mesa(10, false, 4, c));
     }
 
     public List<Mesa> getMesas() {

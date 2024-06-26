@@ -3,13 +3,15 @@ package controller;
 import dao.MesaDAO;
 import model.Mesa;
 import java.util.Iterator;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
 import view.MesaView;
 
 public class MesaController {
     
-    private MesaView view;
-    private MesaDAO mesas;
+    private final MesaView view;
+    private final MesaDAO mesas;
 
     public MesaController() {
         this.mesas = MesaDAO.getInstance();
@@ -22,6 +24,7 @@ public class MesaController {
         });
         
         this.view.setVisible(true);
+        this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     private void carregaTabela() {

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.CadastrarMesaController;
 import controller.MesaController;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -35,11 +36,18 @@ public class MesaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jPopupMenu4 = new javax.swing.JPopupMenu();
+        jPopupMenu5 = new javax.swing.JPopupMenu();
+        jPopupMenu6 = new javax.swing.JPopupMenu();
         verMesas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         mesas = new javax.swing.JTable();
+        abreCadastrarMesaPopup = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         verMesas.setText("Ver Mesas");
         verMesas.addActionListener(new java.awt.event.ActionListener() {
@@ -69,27 +77,39 @@ public class MesaView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(mesas);
 
+        abreCadastrarMesaPopup.setText("Cadastrar Mesa");
+        abreCadastrarMesaPopup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreCadastrarMesaPopupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(verMesas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(verMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(abreCadastrarMesaPopup))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(verMesas)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(verMesas)
+                        .addGap(18, 18, 18)
+                        .addComponent(abreCadastrarMesaPopup)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
         );
 
         pack();
@@ -99,6 +119,12 @@ public class MesaView extends javax.swing.JFrame {
           new MesaController();
     }//GEN-LAST:event_verMesasActionPerformed
 
+    private void abreCadastrarMesaPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarMesaPopupActionPerformed
+        new CadastrarMesaController();
+    }//GEN-LAST:event_abreCadastrarMesaPopupActionPerformed
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -159,6 +185,13 @@ public class MesaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abreCadastrarMesaPopup;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
+    private javax.swing.JPopupMenu jPopupMenu4;
+    private javax.swing.JPopupMenu jPopupMenu5;
+    private javax.swing.JPopupMenu jPopupMenu6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable mesas;
     private javax.swing.JButton verMesas;

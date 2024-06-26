@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.MesaController;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,8 +16,11 @@ public class CadastrarMesaView extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarMesaView
      */
+    
+    MesaController mesaController;
     public CadastrarMesaView() {
         initComponents();
+        mesaController = new MesaController();
     }
 
     /**
@@ -112,9 +116,9 @@ public class CadastrarMesaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void confirmaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaBtnActionPerformed
-        // TODO add your handling code here:
-        // Exibir mensagem de sucesso
-    JOptionPane.showMessageDialog(this, "Mesa cadastrada com sucesso!");
+        
+        
+        JOptionPane.showMessageDialog(this, "Mesa cadastrada com sucesso!");
     }//GEN-LAST:event_confirmaBtnActionPerformed
 
     private void cancelaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaBtnActionPerformed

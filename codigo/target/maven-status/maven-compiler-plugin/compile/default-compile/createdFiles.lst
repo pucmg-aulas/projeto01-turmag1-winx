@@ -24,6 +24,7 @@ main\Main$2.class
 model\Mesa.class
 main\Main$3.class
 controller\CadastrarMesaController.class
+view\MesaView$4.class
 restaurante\Mesa.class
 view\CadastrarMesaView$4.class
 view\AbrirRequisicaoView$3.class
