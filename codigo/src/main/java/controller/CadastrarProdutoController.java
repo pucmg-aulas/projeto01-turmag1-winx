@@ -47,7 +47,7 @@ public class CadastrarProdutoController {
         int estoque = Integer.parseInt(view.getEstoqueProdutoField().getText());
         
         Produto produto = new Produto(nome, preco,estoque );
-        
+        System.out.println(produto);
         produtoDAO.addProduto(produto);
         
         JOptionPane.showMessageDialog(view, "Produto salvo com sucesso!");

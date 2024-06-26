@@ -24,7 +24,6 @@ public class MesaController {
 
         carregaTabela();
 
-
         this.view.setVisible(true);
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
@@ -34,7 +33,7 @@ public class MesaController {
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
 
         tm.setNumRows(0);
-        
+
         // Pode usar diretamente mesas.getMesas() para obter a lista atualizada
         List<Mesa> listaMesas = mesas.getMesas();
 
@@ -47,26 +46,27 @@ public class MesaController {
         view.getMesas().setModel(tm);
     }
 
-   public void alocarMesa(Cliente cliente, int quantPessoas) {
-    Mesa mesaSelecionada = null;
+    public Mesa alocarMesa(Cliente cliente, int quantPessoas) {
+        Mesa mesaSelecionada = null;
 
-    for (Mesa m : mesas.getMesas()) {
-        if (!m.isOcupado() && m.getCapacidade() >= quantPessoas) {
-            if (mesaSelecionada == null || m.getCapacidade() < mesaSelecionada.getCapacidade()) {
-                mesaSelecionada = m;
+        for (Mesa m : mesas.getMesas()) {
+            if (!m.isOcupado() && m.getCapacidade() >= quantPessoas) {
+                if (mesaSelecionada == null || m.getCapacidade() < mesaSelecionada.getCapacidade()) {
+                    mesaSelecionada = m;
+                }
             }
         }
-    }
-    
-    if (mesaSelecionada != null) {
-        mesaSelecionada.setOcupado(true);
-        mesaSelecionada.setCliente(cliente);
-        mesas.adicionarMesa(mesaSelecionada); // Atualiza a mesa no DAO
-    } 
-}
 
-    
+        if (mesaSelecionada != null) {
+            mesaSelecionada.setOcupado(true);
+            mesaSelecionada.setCliente(cliente);
+            mesas.adicionarMesa(mesaSelecionada); // Atualiza a mesa no DAO
+            return mesaSelecionada;
+        }
+        return null;
+    }
+
     public void atualizarTabelaMesas() {
-    carregaTabela(); // Carrega novamente os dados das mesas na tabela
+        carregaTabela(); // Carrega novamente os dados das mesas na tabela
     }
 }
