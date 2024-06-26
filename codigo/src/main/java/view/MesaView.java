@@ -56,7 +56,7 @@ public class MesaView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Número", "Cliente", "Ocupado", "Quantidade"
+                "Número", "Cliente", "Ocupado", "Capacidade"
             }
         ) {
             Class[] types = new Class [] {

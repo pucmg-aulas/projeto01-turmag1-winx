@@ -25,7 +25,7 @@ public class MesaController {
     }
     
     private void carregaTabela() {
-        Object colunas[] = {"Número", "Cliente", "Ocupado", "Quantidade"};
+        Object colunas[] = {"Número", "Cliente", "Ocupado", "Capacidade"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
        
         tm.setNumRows(0);
@@ -33,7 +33,7 @@ public class MesaController {
         while (it.hasNext()) {
             Mesa m = it.next();
             String clienteNome = m.getCliente() != null ? m.getCliente().getNome() : "N/A";
-            String ocupado = m.isOcupado() == true ? "Ocupado" : "Livre";
+            String ocupado = m.isOcupado() ? "Ocupado" : "Livre";
             tm.addRow(new Object[]{m.getNumero(), clienteNome, ocupado, m.getQuantidade()});
         }
         view.getMesas().setModel(tm);
