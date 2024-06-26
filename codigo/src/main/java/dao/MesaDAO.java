@@ -8,6 +8,7 @@ package dao;
  *
  * @author thiag
  */
+import controller.MesaController;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import model.Mesa;
 public class MesaDAO extends AbstractDAO {
 
     private static MesaDAO instance;
+    
     private List<Mesa> mesas = new ArrayList();
     private String path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "mesas.ser").toString();
 
@@ -27,6 +29,7 @@ public class MesaDAO extends AbstractDAO {
     public static MesaDAO getInstance() {
         if (instance == null) {
             instance = new MesaDAO();
+            instance.carregarMesas(); // Carrega as mesas ao iniciar a instância
         }
         return instance;
     }
@@ -45,17 +48,17 @@ public class MesaDAO extends AbstractDAO {
     }
 
     public void adicionarMesa(Mesa mesa) {
-        this.mesas.add(mesa);
-        gravar(path, mesas);
+        this.mesas.add(mesa); // Adiciona a nova mesa à lista existente
+        gravar(path, mesas); // Grava a lista atualizada no arquivo
     }
-
+    
     public void removerMesa(Mesa mesa) {
         this.mesas.remove(mesa);
         gravar(path, mesas);
     }
 
     private void carregarMesas() {
+        this.mesas.clear(); // Limpa a lista antes de carregar as mesas do arquivo
         this.mesas.addAll(leitura(path));
-    }
-
+    } 
 }

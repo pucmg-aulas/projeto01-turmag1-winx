@@ -30,21 +30,15 @@ controller\FazerPedidoController.class
 controller\CadastrarMesaController.class
 view\MesaView$4.class
 view\CadastrarMesaView$4.class
-<<<<<<< HEAD
 view\FazerPedidoView.class
 controller\CadastrarProdutoController.class
 view\AbrirRequisicaoView$3.class
 controller\MesaController.class
 restaurante\Prato.class
 view\CadastrarProdutoView$2.class
-=======
-view\AbrirRequisicaoView$3.class
-controller\MesaController.class
-restaurante\Prato.class
->>>>>>> 740a97e45395c8d79a2cfa1576af6cb22487660f
 view\ListarPesquisarRequisicaoView.class
 view\ListarPesquisarRequisicaoView$3.class
-controller\CadastrarMesaController$1.class
+controller\DetalhesRequisicaoController.class
 dao\PedidoDAO.class
 model\Requisicao.class
 view\CadastrarMesaView.class

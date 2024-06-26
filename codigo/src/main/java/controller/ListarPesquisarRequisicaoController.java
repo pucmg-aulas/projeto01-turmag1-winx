@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Requisicao;
+import view.DetalhesRequisicaoView;
 import view.ListarPesquisarRequisicaoView;
 
 /**
@@ -112,27 +113,23 @@ public class ListarPesquisarRequisicaoController {
         view.getTbRequisicoes().setModel(tm);
     }
     
-     private void selecionarRequisicaoParaFazerPedido() throws FormatoInvalidoException{
-        
-        if(view.getTbRequisicoes().getSelectedRow() != -1){
-            
+    private void selecionarRequisicaoParaFazerPedido() throws FormatoInvalidoException {
+        if (view.getTbRequisicoes().getSelectedRow() != -1) {
             int linha = this.view.getTbRequisicoes().getSelectedRow();
             String nome = (String) this.view.getTbRequisicoes().getValueAt(linha, 0);
-            
+
             int op = JOptionPane.showConfirmDialog(view, "Deseja abrir um pedido para " + nome + "?");
-            if(op == JOptionPane.YES_OPTION){
+            if (op == JOptionPane.YES_OPTION) {
                 List<Requisicao> requisicao = requisicoes.buscarRequisicao(nome);
                 Requisicao requisicaoParaFazerPedido = requisicao.get(0);
-                new FazerPedidoController(requisicaoParaFazerPedido);
-//                JOptionPane.showMessageDialog(view, nome + " Excluído com Sucesso!");
-//                carregaTabela();
+
+                // Abrir a tela de detalhes passando a requisição selecionada
+                DetalhesRequisicaoView detalhesView = new DetalhesRequisicaoView();
+//                detalhesView.mostrarDetalhes();;
             }
-            
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(view, "Selecione uma linha primeiro!");
         }
- 
-    }
+}
     
 }
