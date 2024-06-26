@@ -5,6 +5,10 @@
 package view;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import model.Requisicao;
 
 /**
@@ -118,6 +122,54 @@ public class DetalhesRequisicaoView extends javax.swing.JFrame {
                 new DetalhesRequisicaoView().setVisible(true);
             }
         });
+    }
+
+    public Requisicao getRequisicao() {
+        return requisicao;
+    }
+
+    public void setRequisicao(Requisicao requisicao) {
+        this.requisicao = requisicao;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    public void setjTextField2(JTextField jTextField2) {
+        this.jTextField2 = jTextField2;
+    }
+
+    public JTable getTbRequisicoes() {
+        return tbRequisicoes;
+    }
+
+    public void setTbRequisicoes(JTable tbRequisicoes) {
+        this.tbRequisicoes = tbRequisicoes;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -84,7 +84,6 @@ public class ListarPesquisarRequisicaoController {
         
     }
     
-    
     private void carregaTabela(List<Requisicao> requisicoes) throws FormatoInvalidoException{
         Object colunas[] = {"Cliente", "Mesa", "Quantidade de Pessoas", "Total"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
@@ -99,7 +98,7 @@ public class ListarPesquisarRequisicaoController {
                 
                  if (linha.length == 4) {
                     // Adicionando a linha na tabela
-                    tm.addRow(new Object[]{linha[0], linha[1], linha[2], linha[3]});
+                    tm.addRow(new Object[]{linha[0], requisicao.getMesa(), linha[2], linha[3]});
                 } else {
                     // Lançando exceção personalizada
                     throw new FormatoInvalidoException("Formato de requisicao inválido: " + req);

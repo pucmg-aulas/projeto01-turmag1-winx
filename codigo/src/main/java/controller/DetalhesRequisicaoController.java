@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Mesa;
 import model.Requisicao;
@@ -10,28 +9,28 @@ import view.DetalhesRequisicaoView;
 public class DetalhesRequisicaoController {
 
     private DetalhesRequisicaoView view;
+    private Requisicao requisicao;
 
-    public DetalhesRequisicaoController() {
-        this.view = new DetalhesRequisicaoView();
+    public DetalhesRequisicaoController(DetalhesRequisicaoView view, Requisicao requisicao) {
+        this.view = view;
+        this.requisicao = requisicao;
     }
 
-    public void exibirDetalhesRequisicao(List<Requisicao> requisicoes) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Cliente", "Mesa", "Quantidade de Pessoas", "Total"});
+    // Método para carregar e exibir os detalhes da requisição na tabela
+    private void carregaTabela() {
+        Object colunas[] = {"Número", "Cliente", "Ocupado", "Capacidade"};
+        DefaultTableModel tm = new DefaultTableModel(colunas, 0);
 
-        for (Requisicao requisicao : requisicoes) {
-            String cliente = requisicao.getClienteNome();
-            Mesa mesa = requisicao.getMesa();
-            int qtdPessoas = requisicao.getQuantPessoas();
-            model.addRow(new Object[]{cliente, mesa, qtdPessoas});
-        }
+        tm.setNumRows(0);
+        
+        // Pode usar diretamente mesas.getMesas() para obter a lista atualizada
+        Requisicao req;
+       
 
-//        view.getTabelaDetalhes().setModel(model);
-        //view.mostrarDetalhes();
+        view.getTbRequisicoes().setModel(tm);
     }
 
-    public void mostrarMensagem(String mensagem) {
-        JOptionPane.showMessageDialog(view, mensagem);
-    }
-
+   public void atualizarTabela(){
+       carregaTabela();
+   }
 }
