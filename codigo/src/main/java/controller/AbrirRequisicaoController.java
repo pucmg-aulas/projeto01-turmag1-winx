@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import view.AbrirRequisicaoView;
 import model.Requisicao;
-import restaurante.Cliente;
+import model.Cliente;
 
 /**
  *
