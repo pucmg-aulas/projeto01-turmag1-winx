@@ -15,12 +15,12 @@ import view.ListarRequisicaoView;
  *
  * @author imcat
  */
-public class ListarRequisicaoController {
+public class ListarPesquisarRequisicaoController {
     
     private ListarRequisicaoView view;
     private final RequisicoesDAO requisicoes;
 
-    public ListarRequisicaoController() throws FormatoInvalidoException {
+    public ListarPesquisarRequisicaoController() throws FormatoInvalidoException {
     
         this.requisicoes = RequisicoesDAO.getInstance();
         this.view = new ListarRequisicaoView();

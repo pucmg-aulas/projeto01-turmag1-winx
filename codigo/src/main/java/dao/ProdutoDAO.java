@@ -50,7 +50,7 @@ public class ProdutoDAO extends AbstractDAO {
      }
     
         private void carregarProduto(){
-        this.produtos.addAll(recuperar(path));
+        this.produtos.addAll(leitura(path));
     }
     
      public void removerProduto(Produto produto){

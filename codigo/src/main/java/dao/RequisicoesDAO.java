@@ -14,18 +14,15 @@ import model.Requisicao;
  *
  * @author imcat
  */
-<<<<<<<< HEAD:codigo/src/main/java/dao/RequisicoesDAO.java
-public class RequisicoesDAO extends AbstractDAO implements Serializable {
-========
-public class RequisicaoDAO extends AbstractDAO {
->>>>>>>> 0a8b3c465240d0eb4245117bf62025f9d3bee5da:codigo/src/main/java/dao/RequisicaoDAO.java
+
+
+public class RequisicoesDAO extends AbstractDAO {
     
     private List<Requisicao> requisicoes;
     
     //Endereço do arquivo serializado que contém a coleção de carros
     private String path;
     
-<<<<<<<< HEAD:codigo/src/main/java/dao/RequisicoesDAO.java
     // Atributo da própria classe, estático, para implementar o Singleton
     private static RequisicoesDAO instance;
     
@@ -38,19 +35,8 @@ public class RequisicaoDAO extends AbstractDAO {
     public static RequisicoesDAO getInstance(){
         if(instance == null){
             instance = new RequisicoesDAO();
-========
-    private static RequisicaoDAO instance;
-    
-    private RequisicaoDAO() {
-        this.requisicoes = new ArrayList<>();
-        this.path = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "data", "requisicaoDAO.ser").toString();
-    }
-    
-    public static RequisicaoDAO getInstance(){
-        if(instance == null){
-            instance = new RequisicaoDAO();
->>>>>>>> 0a8b3c465240d0eb4245117bf62025f9d3bee5da:codigo/src/main/java/dao/RequisicaoDAO.java
         }
+        
         return instance;
     }
     
@@ -82,6 +68,4 @@ public class RequisicaoDAO extends AbstractDAO {
     public List<Requisicao> getRequisicoes() {
         return requisicoes;
     }
-
-
 }

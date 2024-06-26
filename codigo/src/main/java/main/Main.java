@@ -6,7 +6,7 @@ package main;
 
 import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
-import controller.ListarRequisicaoController;
+import controller.ListarPesquisarRequisicaoController;
 import controller.MesaController;
 //import controller.MesasController;
 import dao.RequisicoesDAO;
@@ -116,7 +116,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            new ListarRequisicaoController();
+            new ListarPesquisarRequisicaoController();
         } catch (FormatoInvalidoException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
