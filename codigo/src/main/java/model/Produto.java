@@ -57,5 +57,19 @@ public class Produto implements Serializable {
       // adicionar bvalidação
     this.estoque += quantidade;
   }
+  
+  public void diminuiEstoque(int quantidade){
+      // adicionar bvalidação
+    this.estoque -= quantidade;
+  }
+  
+  public double calculaTotalPedido(int quantidade){
+        return getPreco() * quantidade;
+    }
+  
+  @Override
+    public String toString() {
+        return getNome() + "%" + getPreco() + "%" + getEstoque();
+    }
 
 }

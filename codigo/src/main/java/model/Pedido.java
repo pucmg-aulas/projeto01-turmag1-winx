@@ -17,12 +17,14 @@ public class Pedido implements Serializable{
   //private Requisicao requisicao;
   private Produto produto;
   private int quantidade;
+  Requisicao requisicao;
 
-  public Pedido(double total, Produto produto, int quantidade) {
+  public Pedido(double total, Produto produto, int quantidade, Requisicao requisicao) {
     this.total = total;
     //this.requisicao = requisicao;
     this.produto = produto;
     this.quantidade = quantidade;
+    this.requisicao = requisicao;
   }
 
   public double getTotal() {

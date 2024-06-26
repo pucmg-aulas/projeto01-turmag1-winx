@@ -4,13 +4,11 @@
  */
 package main;
 
-import javax.swing.JButton;
 import controller.AbrirRequisicaoController;
-import controller.ListarPesquisarRequisicaoController;
+import controller.CadastrarMesaController;
 import controller.CadastrarProdutoController;
 import controller.FazerPedidoController;
-import controller.MesaController;
-//import controller.MesasController;
+import controller.ListarPesquisarRequisicaoController;
 import dao.RequisicoesDAO;
 import exception.FormatoInvalidoException;
 import java.util.logging.Level;
@@ -29,7 +27,6 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         RequisicoesDAO requisicoes = RequisicoesDAO.getInstance();
         this.setVisible(true);
-        
     }
 
     /**
@@ -41,75 +38,183 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        abrirRequisicaoBtn1 = new javax.swing.JButton();
-        verMesas = new javax.swing.JButton();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jLabel1 = new javax.swing.JLabel();
+        btnAbrirRequisicao = new javax.swing.JButton();
+        btnPesquisarRequisicao = new javax.swing.JButton();
+        btnCadProduto = new javax.swing.JButton();
+        btnAbrirPedido = new javax.swing.JButton();
+        btnCadMesa = new javax.swing.JButton();
+        btnCadCliente = new javax.swing.JButton();
+        btnListarProdutos = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 248, 226));
 
-        abrirRequisicaoBtn1.setText("Abrir Requisição");
-        abrirRequisicaoBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Menu");
+
+        btnAbrirRequisicao.setText("Abrir Requisição");
+        btnAbrirRequisicao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                abrirRequisicaoBtn1MouseClicked(evt);
+                btnAbrirRequisicaoMouseClicked(evt);
             }
         });
-        abrirRequisicaoBtn1.addActionListener(new java.awt.event.ActionListener() {
+        btnAbrirRequisicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirRequisicaoBtn1ActionPerformed(evt);
+                btnAbrirRequisicaoActionPerformed(evt);
             }
         });
 
-        verMesas.setText("Ver Mesas");
-        verMesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verMesasActionPerformed(evt);
+        btnPesquisarRequisicao.setText("Pesquisar Requisicao");
+        btnPesquisarRequisicao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPesquisarRequisicaoMouseClicked(evt);
             }
         });
+        btnPesquisarRequisicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarRequisicaoActionPerformed(evt);
+            }
+        });
+
+        btnCadProduto.setText("Cadastrar Produto");
+        btnCadProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadProdutoMouseClicked(evt);
+            }
+        });
+
+        btnAbrirPedido.setText("Abrir Pedido");
+        btnAbrirPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAbrirPedidoMouseClicked(evt);
+            }
+        });
+
+        btnCadMesa.setText("Cadastrar Mesa");
+        btnCadMesa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadMesaMouseClicked(evt);
+            }
+        });
+
+        btnCadCliente.setText("Cadastrar Cliente");
+
+        btnListarProdutos.setText("Listar Produtos");
+        btnListarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarProdutosActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Mesas");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Requisicoes");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Produtos");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(abrirRequisicaoBtn1)
-                .addGap(90, 90, 90)
-                .addComponent(verMesas)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(219, 219, 219)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPesquisarRequisicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAbrirRequisicao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCadCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAbrirPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCadMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(abrirRequisicaoBtn1)
-                    .addComponent(verMesas))
-                .addGap(98, 98, 98))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAbrirRequisicao, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisarRequisicao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAbrirPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnListarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void abrirRequisicaoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1MouseClicked
-         new AbrirRequisicaoController();
-    }//GEN-LAST:event_abrirRequisicaoBtn1MouseClicked
+    private void btnAbrirRequisicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirRequisicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAbrirRequisicaoActionPerformed
 
-    private void abrirRequisicaoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirRequisicaoBtn1ActionPerformed
-        
-    }//GEN-LAST:event_abrirRequisicaoBtn1ActionPerformed
+    private void btnPesquisarRequisicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarRequisicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarRequisicaoActionPerformed
 
-    private void verMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMesasActionPerformed
+    private void btnAbrirRequisicaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirRequisicaoMouseClicked
+        new AbrirRequisicaoController();
+    }//GEN-LAST:event_btnAbrirRequisicaoMouseClicked
 
-        MesaController mesaController = new MesaController();
-        //sair();
-    }//GEN-LAST:event_verMesasActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPesquisarRequisicaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarRequisicaoMouseClicked
         try {
             new ListarPesquisarRequisicaoController();
         } catch (FormatoInvalidoException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPesquisarRequisicaoMouseClicked
+
+    private void btnCadProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadProdutoMouseClicked
+        new CadastrarProdutoController();
+    }//GEN-LAST:event_btnCadProdutoMouseClicked
+
+    private void btnCadMesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadMesaMouseClicked
+        new CadastrarMesaController();
+    }//GEN-LAST:event_btnCadMesaMouseClicked
+
+    private void btnAbrirPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirPedidoMouseClicked
+        try {
+            new ListarPesquisarRequisicaoController();
+        } catch (FormatoInvalidoException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAbrirPedidoMouseClicked
+
+    private void btnListarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarProdutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,16 +251,19 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
-    public JButton getAbrirRequisicaoBtn() {
-        return abrirRequisicaoBtn1;
-    }
-
-    public void setAbrirRequisicaoBtn(JButton abrirRequisicaoBtn) {
-        this.abrirRequisicaoBtn1 = abrirRequisicaoBtn;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abrirRequisicaoBtn1;
-    private javax.swing.JButton verMesas;
+    private javax.swing.JButton btnAbrirPedido;
+    private javax.swing.JButton btnAbrirRequisicao;
+    private javax.swing.JButton btnCadCliente;
+    private javax.swing.JButton btnCadMesa;
+    private javax.swing.JButton btnCadProduto;
+    private javax.swing.JButton btnListarProdutos;
+    private javax.swing.JButton btnPesquisarRequisicao;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

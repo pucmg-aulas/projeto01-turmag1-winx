@@ -121,10 +121,5 @@ package Requisicao;
     //
     // @Test
     // public void hello() {}
-<<<<<<< HEAD
-    * 
-    *  * */
-}
-=======
+
 //}
->>>>>>> refs/remotes/origin/isadora

@@ -114,11 +114,11 @@ public class MesaView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMesasActionPerformed
-        new MesaController();
+       // new MesaController();
     }//GEN-LAST:event_verMesasActionPerformed
 
     private void abreCadastrarMesaPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarMesaPopupActionPerformed
-        new CadastrarMesaController();
+        //new CadastrarMesaController();
     }//GEN-LAST:event_abreCadastrarMesaPopupActionPerformed
     
     

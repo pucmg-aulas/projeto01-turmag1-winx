@@ -9,8 +9,7 @@ import exception.FormatoInvalidoException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Requisicao;
 import view.ListarPesquisarRequisicaoView;
@@ -38,6 +37,16 @@ public class ListarPesquisarRequisicaoController {
                 Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+        this.view.getBtnFazerPedido().addActionListener((e) -> {
+            try {
+                selecionarRequisicaoParaFazerPedido();
+            } catch (FormatoInvalidoException ex) {
+                Logger.getLogger(ListarPesquisarRequisicaoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        
         
        /** this.view.getTxtCliente().getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -101,6 +110,29 @@ public class ListarPesquisarRequisicaoController {
         }
         
         view.getTbRequisicoes().setModel(tm);
+    }
+    
+     private void selecionarRequisicaoParaFazerPedido() throws FormatoInvalidoException{
+        
+        if(view.getTbRequisicoes().getSelectedRow() != -1){
+            
+            int linha = this.view.getTbRequisicoes().getSelectedRow();
+            String nome = (String) this.view.getTbRequisicoes().getValueAt(linha, 0);
+            
+            int op = JOptionPane.showConfirmDialog(view, "Deseja abrir um pedido para " + nome + "?");
+            if(op == JOptionPane.YES_OPTION){
+                List<Requisicao> requisicao = requisicoes.buscarRequisicao(nome);
+                Requisicao requisicaoParaFazerPedido = requisicao.get(0);
+                new FazerPedidoController(requisicaoParaFazerPedido);
+//                JOptionPane.showMessageDialog(view, nome + " Excluído com Sucesso!");
+//                carregaTabela();
+            }
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(view, "Selecione uma linha primeiro!");
+        }
+ 
     }
     
 }

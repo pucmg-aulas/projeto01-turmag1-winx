@@ -6,7 +6,10 @@ package controller;
 
 import dao.PedidoDAO;
 import dao.ProdutoDAO;
-import java.util.Iterator;
+import exception.FormatoInvalidoException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -28,16 +31,22 @@ public class FazerPedidoController {
     private FazerPedidoView view;
     private Requisicao requisicao;
     
-    public FazerPedidoController() {
+    public FazerPedidoController(Requisicao requisicao) throws FormatoInvalidoException {
         this.view = new FazerPedidoView();
         this.pedidoDAO = PedidoDAO.getInstance();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.produtoDAO = ProdutoDAO.getInstance();
         
-        carregaTabela();
+        this.requisicao = requisicao;
+        
+        carregaTabelaDeProdutos();
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
-            fazerPedido();
+            try {
+                fazerPedido();
+            } catch (FormatoInvalidoException ex) {
+                Logger.getLogger(FazerPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         
         this.view.getCancelaBtn().addActionListener((e) -> {
@@ -48,47 +57,59 @@ public class FazerPedidoController {
     }
     
     
-    
-    
-    private void carregaTabela(){
-        Object colunas[] = {"Nome", "Preco", "Estoque"};
+    private void carregaTabelaDeProdutos() throws FormatoInvalidoException{
+        Object colunas[] = {"Nome", "Preço", "Estoque"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
        
         tm.setNumRows(0);
-        Iterator<Produto> it = produtoDAO.getProdutos().iterator();
-        while (it.hasNext()) {
-            Produto c = it.next();
-            String produto = c.toString();
-            String linha[] = produto.split("%");
-            tm.addRow(new Object[]{linha[0], linha[1]});
+        
+        for(Produto produto : produtoDAO.getProdutos()){
+            try{
+                String prod = produto.toString();
+                String linha[] = prod.split("%");
+                
+                 if (linha.length == 3) {
+                    // Adicionando a linha na tabela
+                    tm.addRow(new Object[]{linha[0], linha[1], linha[2]});
+                } else {
+                    // Lançando exceção personalizada
+                    throw new FormatoInvalidoException("Formato de requisicao inválido: " + prod);
+                }
+            }catch(ArrayIndexOutOfBoundsException | FormatoInvalidoException e){
+             throw new FormatoInvalidoException("Erro ao processar o pedido: " + e.getMessage());
+            }
+            
         }
+        
         view.getTbProdutos().setModel(tm);
     }
     
-    public void fazerPedido() {
+    
+    
+    public void fazerPedido() throws FormatoInvalidoException {
                
        int quantProduto =  Integer.parseInt(view.getQuantProdutoField().getText());
        
-       //Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), produtoPedido, quantidade);
+       //Pedido p = new Pedido(calculaTotalPedido(produtoPedido, quantidade), produtoPedido, quantidade)
        
-       if(view.getTbProdutos().getSelectedRow() != -1){
+        if(view.getTbProdutos().getSelectedRow() != -1){
             
             int linha = this.view.getTbProdutos().getSelectedRow();
             String nome = (String) this.view.getTbProdutos().getValueAt(linha, 0);
             
-            int op = JOptionPane.showConfirmDialog(view, "Selecionar " + nome + "?");
+            int op = JOptionPane.showConfirmDialog(view, "Deseja confirmar a escolha do " + nome + "?");
             if(op == JOptionPane.YES_OPTION){
-                Produto produtoEscolhido = produtoDAO.buscarProdutoPorNome(nome);
+                Produto produto = produtoDAO.buscarProduto(nome);
+                Pedido pedido = new Pedido(produto.calculaTotalPedido(quantProduto), produto, quantProduto, requisicao);
                 
-                /*produtoDAO.removerProduto(produto);
-                JOptionPane.showMessageDialog(view, nome + " Excluído com Sucesso!");
-                */
-                
-                Pedido p = new Pedido(calculaTotalPedido(produtoEscolhido, quantProduto), produtoEscolhido, quantProduto);
-                requisicao.adicionarPedidoNoVetor(p);
-                
-                
-                carregaTabela();
+                if(produto.getEstoque() >= quantProduto){
+                    produto.setEstoque(produto.getEstoque() - quantProduto);
+                    
+                }else if(produto.getEstoque() == 0){
+                    produtoDAO.removerProduto(produto);
+                }
+//                JOptionPane.showMessageDialog(view, nome + " Excluído com Sucesso!");
+//                carregaTabela();
             }
             
         }
@@ -96,13 +117,8 @@ public class FazerPedidoController {
             JOptionPane.showMessageDialog(view, "Selecione uma linha primeiro!");
         }
        
-       
     }
     
-    
-    private double calculaTotalPedido(Produto produto, int quantidade){
-        return produto.getPreco() * (double)quantidade;
-    }
     
     public PedidoDAO getPedidoDAO() {
         return pedidoDAO;

@@ -14,7 +14,7 @@ public class CadastrarMesaController {
         this.view = new CadastrarMesaView();
         this.view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
-        mesaDao = mesaDao.getInstance();
+        this.mesaDao = mesaDao.getInstance();
         
         this.view.getConfirmaBtn().addActionListener((e) -> {
             cadastrarMesa();
@@ -50,13 +50,5 @@ public class CadastrarMesaController {
 
     private void cancelar() {
         this.view.dispose();
-    }
-
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastrarMesaController();
-            }
-        });
     }
 }

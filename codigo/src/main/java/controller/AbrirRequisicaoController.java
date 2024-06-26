@@ -19,7 +19,7 @@ import model.Cliente;
 public class AbrirRequisicaoController {
     private final RequisicoesDAO requisicoes;
     private final AbrirRequisicaoView view;
-    private  MesaController mesaController;
+    private  MesaController mesaController = new MesaController();
     
     public AbrirRequisicaoController(){
         this.view = new AbrirRequisicaoView();
@@ -32,9 +32,9 @@ public class AbrirRequisicaoController {
             sair();
         });
         
-        this.view.getCancelaBtn().addActionListener((e) -> {
-            cancelar();
-        });
+//        this.view.getCancelaBtn().addActionListener((e) -> {
+//            cancelar();
+//        });
         
         this.view.setVisible(true);
         

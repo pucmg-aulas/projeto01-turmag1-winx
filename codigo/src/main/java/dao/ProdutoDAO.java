@@ -61,6 +61,19 @@ public class ProdutoDAO extends AbstractDAO {
     public List<Produto> getProdutos() {
         return produtos;
      }
+    
+  
+    
+    public Produto buscarProduto(String nomeProduto){
+        // adicionar tratamento de dados
+        for(Produto produto : produtos){
+            if (produto.getNome().equals(nomeProduto)){
+                 return produto;
+            }
+        }
+        
+        return null;
+    }
      
    
 }
