@@ -52,8 +52,7 @@ public class MesaController {
                 }
             }
         }
-
-        // Agora mesaMenorCapacidade contém a mesa com a menor capacidade disponível que caiba quantPessoas
+        
         if (mesaMenorCapacidade != null) {
             mesaMenorCapacidade.setOcupado(true);
             mesaMenorCapacidade.setCliente(cliente);
