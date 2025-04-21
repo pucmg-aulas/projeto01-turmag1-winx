@@ -28,3 +28,19 @@ public class Cliente implements Serializable {
         return cpf;
     }
 }
+
+/*
+ * problema: O CPF não é validado (formato ou dígitos verificadores).
+    Sugestão:
+
+    public void setCpf(String cpf) {  
+        if (cpf == null || !cpf.matches("\\d{11}")) {  
+            throw new IllegalArgumentException("CPF deve conter 11 dígitos numéricos");  
+        }  
+        this.cpf = cpf;  
+    }  
+
+    - Evita CPFs mal formatados (ex.: "123.456.789-00" ou "ABC123").
+
+    - Garante integridade mínima dos dados.
+ */

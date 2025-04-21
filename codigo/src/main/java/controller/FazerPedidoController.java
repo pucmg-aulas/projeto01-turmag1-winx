@@ -24,6 +24,21 @@ import view.FazerPedidoView;
  */
 public class FazerPedidoController {
 
+    /*
+     * problema: As instâncias de PedidoDAO e ProdutoDAO são obtidas via getInstance(), tornando o código difícil de testar e violando o princípio de injeção de dependência.
+
+    Sugestão:
+
+    
+    private final PedidoDAO pedidoDAO;
+    private final ProdutoDAO produtoDAO;
+
+    public FazerPedidoController(Requisicao requisicao, PedidoDAO pedidoDAO, ProdutoDAO produtoDAO) {
+        this.pedidoDAO = pedidoDAO;
+        this.produtoDAO = produtoDAO;
+    }
+     */
+
 
     
     private PedidoDAO pedidoDAO;
@@ -48,6 +63,22 @@ public class FazerPedidoController {
                 Logger.getLogger(FazerPedidoController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
+        /*
+         * Problema:
+
+            Exceções são capturadas e logadas, mas não há feedback para o usuário.
+
+            Sugestão:
+
+            this.view.getConfirmaBtn().addActionListener((e) -> {
+                try {
+                    fazerPedido();
+                } catch (FormatoInvalidoException ex) {
+                    JOptionPane.showMessageDialog(view, "Erro: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            });
+            */
         
         this.view.getCancelaBtn().addActionListener((e) -> {
             cancelar();

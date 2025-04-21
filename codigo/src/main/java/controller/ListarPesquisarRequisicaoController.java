@@ -26,6 +26,23 @@ public class ListarPesquisarRequisicaoController {
     private final RequisicoesDAO requisicoes;
 
     public ListarPesquisarRequisicaoController() throws FormatoInvalidoException {
+
+        /*
+         * problema:uso de RequisicoesDAO.getInstance() cria acoplamento forte e dificulta testes.
+
+            Sugestão:
+
+            
+            private final RequisicoesDAO requisicoes;
+
+            public ListarPesquisarRequisicaoController(RequisicoesDAO requisicoes) throws FormatoInvalidoException {
+                this.requisicoes = requisicoes;
+                 ...
+            }
+            Benefício:
+
+                - Permite mockar o DAO em testes unitários.
+         */
     
         this.requisicoes = RequisicoesDAO.getInstance();
         this.view = new ListarPesquisarRequisicaoView();
@@ -171,3 +188,31 @@ public class ListarPesquisarRequisicaoController {
     }
     
 }
+
+/*
+ * problema: selecionarRequisicaoParaFazerPedido() e selecionarRequisicaoParaFinalizar() têm lógica similar.
+
+    Sugestão:
+
+    private void selecionarRequisicao(String mensagem, Consumer<Requisicao> acao) throws FormatoInvalidoException {
+        if(view.getTbRequisicoes().getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(view, "Selecione uma linha primeiro!");
+            return;
+        }
+
+        int linha = view.getTbRequisicoes().getSelectedRow();
+        String nome = (String) view.getTbRequisicoes().getValueAt(linha, 0);
+        
+        if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(view, mensagem + nome + "?")) {
+            Requisicao req = requisicoes.buscarRequisicao(nome).get(0);
+            acao.accept(req);
+        }
+    }
+
+    selecionarRequisicao("Deseja abrir um pedido para ", req -> new FazerPedidoController(req));
+    selecionarRequisicao("Deseja finalizar ", req -> {
+        req.setDataSaida(LocalDateTime.now());
+        req.getMesa().desocuparMesa();
+        requisicoes.removerRequisicao(req);
+});
+ */
