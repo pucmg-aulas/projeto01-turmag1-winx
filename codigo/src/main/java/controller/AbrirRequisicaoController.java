@@ -30,6 +30,26 @@ public class AbrirRequisicaoController {
         this.view.getConfirmaBtn().addActionListener((e) -> {
             abrirRequisicao();
             sair();
+
+
+
+            /*
+             *  problema: Lógica de negócio (abrirRequisicao()) acoplada ao listener da view.
+
+                sugestão:
+                    - Extraia a ação para um método privado (ex.: onConfirmarClick()).
+                    - Trate exceções aqui, não dentro de abrirRequisicao().
+
+                Exemplo:
+
+                    this.view.getConfirmaBtn().addActionListener((e) -> {
+                        try {
+                            onConfirmarClick();
+                        } catch (IllegalArgumentException ex) {
+                            showError(ex.getMessage()); // Método auxiliar para exibir erros
+                        }
+                    });
+                            */
         });
         
 //        this.view.getCancelaBtn().addActionListener((e) -> {
@@ -52,6 +72,20 @@ public class AbrirRequisicaoController {
         String nomeCliente = view.getNomeClienteField().getText();
         String cpfCliente = view.getCpfField().getText();
         int quantPessoas = Integer.parseInt(view.getQuantPessoasField().getText());
+
+        /*
+         *  problema: conversão sem tratamento de erros. Se o texto não for um número, quebrará a aplicação.
+
+            Solução:
+                - Use try-catch ou valide com regex antes:
+
+            try {
+                int quantPessoas = Integer.parseInt(quantPessoasStr);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Número de pessoas inválido!");
+            }
+
+         */
         
         Cliente cliente = new Cliente(nomeCliente, cpfCliente);
         mesaController.alocarMesa(cliente, quantPessoas);
@@ -79,3 +113,11 @@ public class AbrirRequisicaoController {
     }
     
 }
+
+/*
+ * sugestão de melhoria: Esta classe está assumindo muitas responsabilidades (coordenação de view, alocação de mesas e persistência). Considere dividir em:
+
+    - RequisicaoService: Para lógica de negócio (validações, alocação).
+
+    - ClienteService: Para validação de CPF/nome.
+ */
